@@ -1,5 +1,5 @@
-./build
-./node_modules
+build
+node_modules
 
 # Editor directories and files
 .vscode/*
@@ -11,4 +11,4 @@
 *.njsproj
 *.sln
 *.sw?
-node_modules
+
