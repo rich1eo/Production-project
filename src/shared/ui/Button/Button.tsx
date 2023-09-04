@@ -18,7 +18,7 @@ export function Button(props: ButtonProps) {
 
   return (
     <button
-      type='button'
+      type="button"
       className={classNames(styles.Button, {}, [className, styles[theme]])}
       {...otherProps}
     >
