@@ -3,5 +3,8 @@
   "toggle": "переключить",
   "Home": "Главная",
   "About us": "О нас",
-  "Page not found": "Страница не найдена"
+  "Page not found": "Страница не найдена",
+  "Something went wrong": "Что-то пошло не так",
+  "Reload page": "Обновить страницу",
+  "Throw Error": "Выкинуть ошибку"
 }
