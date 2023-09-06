@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styles from './NavBar.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
-import AppLink from 'shared/ui/AppLink/AppLink';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 
 interface NavBarProps {
   className?: string;

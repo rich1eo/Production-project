@@ -15,7 +15,7 @@ interface AppLinkProps extends LinkProps {
   theme?: AppLinkTheme;
 }
 
-export default function AppLink({
+export function AppLink({
   className,
   children,
   to,
