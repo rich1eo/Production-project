@@ -25,6 +25,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '_' }],
     '@typescript-eslint/ban-ts-comment': 'warn',
     semi: ['error', 'always', { omitLastInOneLineBlock: true }],
+    'react/display-name': 'off',
   },
   settings: {
     react: {
