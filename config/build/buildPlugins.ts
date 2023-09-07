@@ -9,8 +9,7 @@ export function buildPlugins({
   paths,
   isDev,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
-  const plugins = [
-    new webpack.ProgressPlugin(),
+  const plugins: webpack.WebpackPluginInstance[] = [
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
@@ -24,6 +23,7 @@ export function buildPlugins({
   ];
 
   if (isDev) {
+    plugins.push(new webpack.ProgressPlugin());
     plugins.push(new webpack.HotModuleReplacementPlugin());
     plugins.push(
       new BundleAnalyzerPlugin({
