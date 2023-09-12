@@ -28,7 +28,6 @@ export default function Modal({
 
   const handleClose = useCallback(
     function handleClose() {
-      // onClose();
       setIsClosing(true);
       timeRef.current = setTimeout(() => {
         onClose();
