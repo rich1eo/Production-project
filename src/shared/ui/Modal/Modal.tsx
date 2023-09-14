@@ -10,6 +10,7 @@ interface ModalProps {
   children: ReactNode;
   isOpen: boolean;
   onClose: () => void;
+  lazy?: boolean;
 }
 
 export default function Modal({
@@ -17,9 +18,17 @@ export default function Modal({
   children,
   isOpen,
   onClose,
+  lazy,
 }: ModalProps) {
   const [isClosing, setIsClosing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const timeRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen]);
 
   const mods = {
     [styles.opened]: isOpen,
@@ -60,6 +69,10 @@ export default function Modal({
       window.removeEventListener('keydown', handleCloseOnEscKey);
     };
   }, [isOpen, handleCloseOnEscKey]);
+
+  if (lazy && !isMounted) {
+    return null;
+  }
 
   return (
     <Portal>
