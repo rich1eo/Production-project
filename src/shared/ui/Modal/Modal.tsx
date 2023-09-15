@@ -17,8 +17,8 @@ export default function Modal({
   className,
   children,
   isOpen,
-  onClose,
   lazy,
+  onClose,
 }: ModalProps) {
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);

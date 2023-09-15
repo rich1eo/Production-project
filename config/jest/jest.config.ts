@@ -32,6 +32,7 @@ export default {
   moduleNameMapper: {
     '\\.svg': path.resolve(__dirname, 'JestEmptyComponent.tsx'),
     '\\.(s?css)$': 'identity-obj-proxy',
+    axios: 'axios/dist/node/axios.cjs',
   },
 
   // A set of global variables that need to be available in all test environments

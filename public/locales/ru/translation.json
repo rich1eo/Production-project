@@ -9,5 +9,8 @@
   "Throw Error": "Выкинуть ошибку",
   "Sign In": "Войти",
   "Username": "Имя пользователя",
-  "Password": "Пароль"
+  "Password": "Пароль",
+  "Authorization form": "Форма Авторизации",
+  "Wrong username or password": "Неверный логин или пароль",
+  "Sign Out": "Выйти"
 }
