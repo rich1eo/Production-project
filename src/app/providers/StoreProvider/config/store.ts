@@ -1,8 +1,4 @@
-import {
-  DeepPartial,
-  ReducersMapObject,
-  configureStore,
-} from '@reduxjs/toolkit';
+import { ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 import { StateSchema } from './StateSchema';
 import { userReducer } from 'entities/User';
 import { createReducerManager } from './reducerManager';
@@ -29,3 +25,5 @@ export function createReduxStore(
 
   return store;
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

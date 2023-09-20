@@ -29,17 +29,6 @@
   gap: 2rem;
 }
 
-.link {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.icon {
-  fill: var(--inverted-primary-color);
-  transform: scale(1.2);
-}
-
 .collapsed {
   width: var(--sidebar-width-collapsed);
 
@@ -50,9 +39,5 @@
   .items {
     align-items: center;
     gap: 3rem;
-  }
-
-  .link span {
-    display: none;
   }
 }

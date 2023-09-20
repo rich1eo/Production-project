@@ -27,6 +27,7 @@ export default function DynamicModuleLoader(props: DynamicModuleLoaderProps) {
     Object.entries(reducers).forEach(
       ([reducerName, reducer]: ReducerListEntry) => {
         store.reducerManager.add(reducerName, reducer);
+        dispath({ type: `@Init ${reducerName} reducer` });
       }
     );
 
@@ -34,8 +35,8 @@ export default function DynamicModuleLoader(props: DynamicModuleLoaderProps) {
       if (removeAfterUnmount) {
         Object.entries(reducers).forEach(([reducerName]: ReducerListEntry) => {
           store.reducerManager.remove(reducerName);
+          dispath({ type: `@Destroy ${reducerName} reducer` });
         });
-        dispath({ type: '@Destroy reducer' });
       }
     };
   }, []);

@@ -1,0 +1,16 @@
+.link {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.icon {
+  fill: var(--inverted-primary-color);
+  transform: scale(1.2);
+}
+
+.collapsed {
+  span {
+    display: none;
+  }
+}

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -19,18 +19,20 @@ import { getLoginError } from '../../model/selectors/getLoginError/getLoginError
 import DynamicModuleLoader, {
   ReducerList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface LoginFormProps {
   className?: string;
+  onSuccess: () => void;
 }
 
 const initialReducers: ReducerList = {
   loginFrom: loginReducer,
 };
 
-const LoginForm = memo(({ className }: LoginFormProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
   const { t } = useTranslation();
-  const dispath = useDispatch();
+  const dispath = useAppDispatch();
 
   const username = useSelector(getLoginUsername);
   const password = useSelector(getLoginPassword);
@@ -51,9 +53,13 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
     [dispath]
   );
 
-  const handleLoginClick = useCallback(() => {
-    dispath(loginByUsername({ username, password }));
-  }, [dispath, password, username]);
+  const handleLoginClick = useCallback(async () => {
+    const res = await dispath(loginByUsername({ username, password }));
+
+    if (res.meta.requestStatus === 'fulfilled') {
+      onSuccess();
+    }
+  }, [onSuccess, dispath, password, username]);
 
   return (
     <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
