@@ -27,6 +27,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'warn',
     semi: ['error', 'always', { omitLastInOneLineBlock: true }],
     'react/display-name': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
   },
   settings: {
     react: {

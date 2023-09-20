@@ -8,7 +8,7 @@ const initialState: LoginShema = {
   password: '',
 };
 
-export const userSlice = createSlice({
+export const loginSlice = createSlice({
   name: 'login',
   initialState,
   reducers: {
@@ -19,13 +19,13 @@ export const userSlice = createSlice({
       state.password = action.payload;
     },
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addCase(loginByUsername.pending, state => {
+      .addCase(loginByUsername.pending, (state) => {
         state.error = undefined;
         state.isLoading = true;
       })
-      .addCase(loginByUsername.fulfilled, state => {
+      .addCase(loginByUsername.fulfilled, (state) => {
         state.isLoading = false;
       })
       .addCase(loginByUsername.rejected, (state, action) => {
@@ -35,5 +35,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { actions: loginActions } = userSlice;
-export const { reducer: loginReducer } = userSlice;
+export const { actions: loginActions } = loginSlice;
+export const { reducer: loginReducer } = loginSlice;
