@@ -9,10 +9,7 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof AboutPage>;
 
-const Template: ComponentStory<typeof AboutPage> = args => (
-  // @ts-ignore
-  <AboutPage {...args} />
-);
+const Template: ComponentStory<typeof AboutPage> = () => <AboutPage />;
 
 export const Normal = Template.bind({});
 Normal.args = {};

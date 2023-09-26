@@ -31,7 +31,7 @@ export const Input = memo((props: InputProps) => {
   useEffect(() => {
     if (autofocus) {
       setIsFocused(true);
-      ref.current.focus();
+      ref.current?.focus();
     }
   }, [autofocus]);
 
@@ -71,7 +71,7 @@ export const Input = memo((props: InputProps) => {
         {isFocused && (
           <span
             className={styles.caret}
-            style={{ left: `${caretPosition * 7}px` }}
+            style={{ left: `${caretPosition * 12}px` }}
           />
         )}
       </div>

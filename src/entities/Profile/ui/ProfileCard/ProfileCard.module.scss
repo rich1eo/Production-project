@@ -1,0 +1,17 @@
+.ProfileCard {
+  padding: 2rem;
+  border: 2px solid var(--inverted-bg-color);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.data {
+  margin-top: 3rem;
+}
+
+.input:not(:first-child) {
+  margin-top: 1rem;
+}
