@@ -2,5 +2,15 @@
   "Profile": "Profile",
   "Edit": "Edit",
   "First name": "First name",
-  "Second name": "Second name"
+  "Second name": "Second name",
+  "An error occurred while loading the profile": "An error occurred while loading the profile",
+  "Try to reload the page": "Try to reload the page",
+  "Cancel": "Cancel",
+  "Save": "Save",
+  "Age": "Age",
+  "City": "City",
+  "Country": "Country",
+  "Username": "Username",
+  "Avatar": "Avatar",
+  "Currency": "Currency"
 }

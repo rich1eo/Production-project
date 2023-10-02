@@ -2,5 +2,15 @@
   "Profile": "Профиль",
   "Edit": "Редактировать",
   "First name": "Имя",
-  "Second name": "Фамилия"
+  "Second name": "Фамилия",
+  "An error occurred while loading the profile": "Произошла ошибка при загрузке профиля",
+  "Try to reload the page": "Попробуйте перезагрузить страницу",
+  "Cancel": "Отменить",
+  "Save": "Сохранить",
+  "Age": "Возраст",
+  "City": "Город",
+  "Country": "Страна",
+  "Username": "Имя пользователя",
+  "Avatar": "Аватар",
+  "Currency": "Валюта"
 }

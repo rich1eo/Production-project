@@ -3,15 +3,23 @@
   border: 2px solid var(--inverted-bg-color);
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.data {
-  margin-top: 3rem;
-}
-
 .input:not(:first-child) {
   margin-top: 1rem;
+}
+
+.loading,
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.avatar {
+  margin-inline: auto;
+  margin-bottom: 1.5rem;
+}
+
+.editing {
+  border: 2px solid var(--primary-color);
 }

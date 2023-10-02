@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 
 import styles from './SideBar.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -19,6 +19,16 @@ const SideBar = memo(({ className }: SideBarProps) => {
     setCollapsed((state) => !state);
   }
 
+  const itemsList = useMemo(
+    () =>
+      SideBarItemsList.map((item) => {
+        return (
+          <SideBarItem key={item.path} item={item} collapsed={collapsed} />
+        );
+      }),
+    [collapsed]
+  );
+
   return (
     <aside
       className={classNames(styles.SideBar, { [styles.collapsed]: collapsed }, [
@@ -36,13 +46,7 @@ const SideBar = memo(({ className }: SideBarProps) => {
       >
         {collapsed ? '>' : '<'}
       </Button>
-      <div className={styles.items}>
-        {SideBarItemsList.map((item) => {
-          return (
-            <SideBarItem key={item.path} item={item} collapsed={collapsed} />
-          );
-        })}
-      </div>
+      <div className={styles.items}>{itemsList}</div>
       <div className={styles.switchers}>
         <ThemeSwitcher />
         <LangSwitcher short={collapsed} />
