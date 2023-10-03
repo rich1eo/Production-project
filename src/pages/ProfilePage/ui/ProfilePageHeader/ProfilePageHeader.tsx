@@ -27,7 +27,7 @@ export default function ProfilePageHeader({
     dispatch(profileActions.setReadonly(false));
   }, [dispatch]);
 
-  const hanldeCancelEdit = useCallback(() => {
+  const handleCancelEdit = useCallback(() => {
     dispatch(profileActions.cancelEdit());
   }, [dispatch]);
 
@@ -45,7 +45,7 @@ export default function ProfilePageHeader({
       )}
       {!readonly && (
         <div className={styles.editBtns}>
-          <Button theme={ThemeButton.OUTLINE_RED} onClick={hanldeCancelEdit}>
+          <Button theme={ThemeButton.OUTLINE_RED} onClick={handleCancelEdit}>
             {t('Cancel')}
           </Button>
           <Button theme={ThemeButton.OUTLINE} onClick={handleSave}>

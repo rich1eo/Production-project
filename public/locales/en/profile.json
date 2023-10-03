@@ -12,5 +12,10 @@
   "Country": "Country",
   "Username": "Username",
   "Avatar": "Avatar",
-  "Currency": "Currency"
+  "Currency": "Currency",
+  "First name and second name should be filled": "First name and second name should be filled",
+  "Age should be not float number": "Age should be not float number",
+  "Profile can not be empty": "Profile can not be empty",
+  "Server error": "Server error",
+  "Incorrect country": "Incorrect country"
 }

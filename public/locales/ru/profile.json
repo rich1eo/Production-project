@@ -12,5 +12,10 @@
   "Country": "Страна",
   "Username": "Имя пользователя",
   "Avatar": "Аватар",
-  "Currency": "Валюта"
+  "Currency": "Валюта",
+  "First name and second name should be filled": "Имя и Фамилия должны быть заполненны",
+  "Age should be not float number": "Возраст должен быть целым",
+  "Profile can not be empty": "Профиль должен быть заполнен",
+  "Server error": "Серверная ошибка",
+  "Incorrect country": "Некорректный регион"
 }
