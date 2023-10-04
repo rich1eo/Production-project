@@ -51,7 +51,9 @@ export default function ProfilePage({ className }: ProfilePageProps) {
   };
 
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if (__PROJECT__ === 'frontend') {
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   const handleChangeFirstName = useCallback(
