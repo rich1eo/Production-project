@@ -20,9 +20,15 @@ export function useTheme(): UseThemeResult {
     switch (theme) {
       case Theme.DARK:
         newTheme = Theme.LIGHT;
+        console.log('light');
         break;
       case Theme.LIGHT:
+        newTheme = Theme.ORANGE;
+        console.log('dark');
+        break;
+      case Theme.ORANGE:
         newTheme = Theme.DARK;
+        console.log('orange');
         break;
       default:
         newTheme = Theme.LIGHT;

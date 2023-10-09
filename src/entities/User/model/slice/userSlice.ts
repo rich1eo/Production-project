@@ -11,15 +11,15 @@ export const userSlice = createSlice({
     setAuthDate: (state, action: PayloadAction<User>) => {
       state.authData = action.payload;
     },
-    initAuthData: state => {
+    initAuthData: (state) => {
       const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
       if (user) {
         state.authData = JSON.parse(user);
       }
     },
-    logout: state => {
-      localStorage.removeItem(USER_LOCALSTORAGE_KEY);
+    logout: (state) => {
       state.authData = undefined;
+      localStorage.removeItem(USER_LOCALSTORAGE_KEY);
     },
   },
 });

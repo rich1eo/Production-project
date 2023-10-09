@@ -8,11 +8,11 @@ import { useDispatch } from 'react-redux';
 import { userActions } from 'entities/User';
 
 export default function App() {
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispath(userActions.initAuthData());
-  }, [dispath]);
+    dispatch(userActions.initAuthData());
+  }, [dispatch]);
 
   return (
     <div className={classNames('app')}>
