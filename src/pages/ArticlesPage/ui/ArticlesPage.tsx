@@ -1,16 +1,16 @@
 import { memo } from 'react';
-import styles from './ArticlesPage.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
 
 interface ArticlesPageProps {
   className?: string;
 }
 
 function ArticlesPage({ className }: ArticlesPageProps) {
+  const { t } = useTranslation();
+
   return (
-    <div className={classNames(styles.ArticlesPage, {}, [className])}>
-      Articles Page
-    </div>
+    <div className={classNames('', {}, [className])}>{t('Articles Page')}</div>
   );
 }
 

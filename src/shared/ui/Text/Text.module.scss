@@ -1,11 +1,9 @@
 .title {
-  font: var(--font-l);
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
 .text {
-  font: var(--font-m);
   color: var(--secondary-color);
 }
 
@@ -19,6 +17,8 @@
   }
 }
 
+// ALIGN
+
 .left {
   text-align: left;
 }
@@ -29,4 +29,26 @@
 
 .right {
   text-align: right;
+}
+
+// SIZE
+
+.size_m {
+  .title {
+    font: var(--font-l);
+  }
+
+  .text {
+    font: var(--font-m);
+  }
+}
+
+.size_l {
+  .title {
+    font: var(--font-xl);
+  }
+
+  .text {
+    font: var(--font-l);
+  }
 }

@@ -17,7 +17,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
   const [isAuthModal, setIsAuthModal] = useState(false);
   const { t } = useTranslation();
   const authData = useSelector(getUserAuthData);
-  const dispath = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   const handleCloseModal = useCallback(() => {
     setIsAuthModal(false);
@@ -28,8 +28,8 @@ export const NavBar = memo(({ className }: NavBarProps) => {
   };
 
   const handleLogout = useCallback(() => {
-    dispath(userActions.logout());
-  }, [dispath]);
+    dispatch(userActions.logout());
+  }, [dispatch]);
 
   if (authData) {
     return (

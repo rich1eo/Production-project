@@ -16,22 +16,22 @@ interface DynamicModuleLoaderProps {
 }
 
 export default function DynamicModuleLoader(props: DynamicModuleLoaderProps) {
-  const dispath = useDispatch();
   const { children, removeAfterUnmount, reducers } = props;
 
+  const dispatch = useDispatch();
   const store = useStore() as ReduxStoreWithManager;
 
   useEffect(() => {
     Object.entries(reducers).forEach(([reducerName, reducer]) => {
       store.reducerManager.add(reducerName as StateSchemaKey, reducer);
-      dispath({ type: `@Init ${reducerName} reducer` });
+      dispatch({ type: `@Init ${reducerName} reducer` });
     });
 
     return () => {
       if (removeAfterUnmount) {
         Object.entries(reducers).forEach(([reducerName]) => {
           store.reducerManager.remove(reducerName as StateSchemaKey);
-          dispath({ type: `@Destroy ${reducerName} reducer` });
+          dispatch({ type: `@Destroy ${reducerName} reducer` });
         });
       }
     };
