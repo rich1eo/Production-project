@@ -101,13 +101,15 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://img.freepik.com/premium-vector/hacker-e-sport-logo-style_192351-49.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "qwerty",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://cdn.vectorstock.com/i/preview-1x/75/67/programmer-computer-expert-chalk-white-icon-vector-37237567.jpg"
     }
   ],
   "profile": {
