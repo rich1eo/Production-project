@@ -1,10 +1,11 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
-import { ValidationProfileError } from 'entities/Profile';
+import { Profile, ValidationProfileError } from 'entities/Profile';
 import { updateProfileData } from './updateProfileData';
 
-const data = {
+const data: Profile = {
+  id: '1',
   username: 'admin',
   age: 22,
   country: Country.Ukraine,

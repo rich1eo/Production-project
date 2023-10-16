@@ -20,7 +20,7 @@ export default function App() {
       <Suspense fallback="">
         <NavBar />
         <div className="content-page">
-          <SideBar />
+          <SideBar className="no-shrink" />
           {inited && <AppRouter />}
         </div>
       </Suspense>

@@ -7,7 +7,9 @@
       "img": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
       "views": 1048,
       "createdAt": "22.09.2023",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -94,6 +96,24 @@
       "text": "test comment",
       "articleId": "1",
       "userId": "2"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "text",
+      "id": "3zKx-NY"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "text_2",
+      "id": "SeCtmOk"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "this is comment",
+      "id": "x5bbVhv"
     }
   ],
   "users": [
@@ -112,14 +132,28 @@
       "avatar": "https://cdn.vectorstock.com/i/preview-1x/75/67/programmer-computer-expert-chalk-white-icon-vector-37237567.jpg"
     }
   ],
-  "profile": {
-    "firstName": "Vladislav",
-    "secondName": "Rychkov",
-    "age": 23,
-    "currency": "USD",
-    "country": "Georgia",
-    "city": "Moscow",
-    "username": "admin",
-    "avatar": "https://img.freepik.com/premium-vector/hacker-e-sport-logo-style_192351-49.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "firstName": "Vlad",
+      "secondName": "Rychkov",
+      "age": 23,
+      "currency": "USD",
+      "country": "Georgia",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://img.freepik.com/premium-vector/hacker-e-sport-logo-style_192351-49.jpg"
+    },
+    {
+      "id": "2",
+      "firstName": "Test",
+      "secondName": "User",
+      "age": 27,
+      "currency": "EUR",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "user",
+      "avatar": "https://img.freepik.com/premium-vector/hacker-e-sport-logo-style_192351-49.jpg"
+    }
+  ]
 }
