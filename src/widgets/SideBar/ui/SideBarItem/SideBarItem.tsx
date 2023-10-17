@@ -1,6 +1,6 @@
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import styles from './SideBarItem.module.scss';
-import { SideBarItemType } from 'widgets/SideBar/model/items';
+import { SideBarItemType } from 'widgets/SideBar/model/types/sidebar';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
