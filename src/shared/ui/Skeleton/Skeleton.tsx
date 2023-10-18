@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, memo } from 'react';
 import styles from './Skeleton.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 
@@ -9,7 +9,7 @@ interface SkeletonProps {
   border?: string;
 }
 
-export default function Skeleton(props: SkeletonProps) {
+function Skeleton(props: SkeletonProps) {
   const { className, width, height, border } = props;
 
   const style: CSSProperties = {
@@ -25,3 +25,5 @@ export default function Skeleton(props: SkeletonProps) {
     />
   );
 }
+
+export default memo(Skeleton);

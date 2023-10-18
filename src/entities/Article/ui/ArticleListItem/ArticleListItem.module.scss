@@ -1,0 +1,110 @@
+.BIG {
+  .views {
+    margin-left: auto;
+    margin-right: 0.3rem;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+  }
+
+  .username {
+    margin-left: 8px;
+  }
+
+  .date {
+    margin-left: auto;
+  }
+
+  .title {
+    margin-top: 8px;
+  }
+
+  .img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    margin: 16px 0;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .textBlock {
+    max-height: 20rem;
+    overflow-y: hidden;
+  }
+}
+
+.SMALL {
+  width: 23rem;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  .imgWrapper {
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.6rem;
+  }
+
+  .date {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.01);
+
+    .date {
+      opacity: 1;
+    }
+  }
+
+  .infoWrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 0.8rem;
+  }
+
+  .types p {
+    width: 11.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .views {
+    margin-left: auto;
+    margin-right: 0.3rem;
+  }
+
+  .title {
+    margin-top: 0.8rem;
+  }
+
+  .title p {
+    width: 20rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.icon {
+  fill: currentcolor;
+}

@@ -19,9 +19,9 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'react', 'i18next'],
   rules: {
-    indent: ['error', 2],
+    indent: ['warn', 2],
     'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
+    quotes: ['warn', 'single'],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '_' }],
     '@typescript-eslint/ban-ts-comment': 'warn',

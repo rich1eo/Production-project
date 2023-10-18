@@ -1,0 +1,11 @@
+.BIG {
+  .card:not(:first-child) {
+    margin-top: 3rem;
+  }
+}
+
+.SMALL {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}

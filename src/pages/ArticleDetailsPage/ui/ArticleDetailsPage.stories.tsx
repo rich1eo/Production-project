@@ -23,6 +23,12 @@ const article: Article = {
   img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
   views: 1022,
   createdAt: '26.02.2022',
+  user: {
+    id: '1',
+    username: 'admin',
+    avatar:
+      'https://img.freepik.com/premium-vector/hacker-e-sport-logo-style_192351-49.jpg',
+  },
   type: [ArticleType.IT],
   blocks: [
     {
