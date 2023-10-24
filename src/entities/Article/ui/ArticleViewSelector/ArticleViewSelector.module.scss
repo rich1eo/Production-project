@@ -1,0 +1,9 @@
+.icon {
+  fill: currentcolor;
+}
+
+.notSelected {
+  & svg {
+    fill: var(--secondary-color);
+  }
+}
