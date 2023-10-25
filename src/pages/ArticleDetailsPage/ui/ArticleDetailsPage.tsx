@@ -22,6 +22,7 @@ import { AddCommentForm } from 'features/addCommentForm';
 import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
 import { Button } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 
 interface ArticlesPageProps {
   className?: string;
@@ -56,21 +57,21 @@ function ArticleDetailsPage({ className }: ArticlesPageProps) {
 
   if (!id) {
     return (
-      <div className={classNames('', {}, [className])}>
+      <Page className={classNames('', {}, [className])}>
         <Text title={t('Article not found')} theme={TextTheme.ERROR} />
-      </div>
+      </Page>
     );
   }
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <article className={classNames('', {}, [className])}>
+      <Page className={classNames('', {}, [className])}>
         <Button onClick={handleBackToList}>{t('Back to articles')}</Button>
         <ArticleDetails id={id} />
         <Text className={styles.commentTitle} title={t('Comments')} />
         <AddCommentForm onSendComment={onSendComment} />
         <CommentList isLoading={commentsIsLoading} comments={comments} />
-      </article>
+      </Page>
     </DynamicModuleLoader>
   );
 }

@@ -19,10 +19,10 @@ export default function App() {
     <div className={classNames('app')}>
       <Suspense fallback="">
         <NavBar />
-        <div className="content-page">
+        <main className="content-page">
           <SideBar className="no-shrink" />
           {inited && <AppRouter />}
-        </div>
+        </main>
       </Suspense>
     </div>
   );
