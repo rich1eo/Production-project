@@ -10,6 +10,9 @@ export const getArticlesPageError = (state: StateSchema) =>
 export const getArticlesPageView = (state: StateSchema) =>
   state.articlesPage?.view || ArticleListView.SMALL;
 
+export const getArticlesPageInited = (state: StateSchema) =>
+  state.articlesPage?._inited;
+
 // Pagination
 
 export const getArticlesPageNum = (state: StateSchema) =>

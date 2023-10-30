@@ -522,24 +522,24 @@
   "profile": [
     {
       "id": "1",
-      "first": "jghwer",
-      "lastname": "asfewr",
+      "firstName": "jghwer",
+      "secondName": "asfewr",
       "age": 465,
       "currency": "RUB",
       "country": "Belarus",
-      "city": "Moscow",
-      "username": "admin213",
-      "avatar": "https://avatars.mds.yandex.net/get-zen_doc/3413519/pub_5ff887b2fe4e686f6ae6ba3f_5ff887d7f906b16872a69755/scale_1200"
+      "city": "Minsk",
+      "username": "admin",
+      "avatar": "https://img.freepik.com/premium-vector/hacker-e-sport-logo-style_192351-49.jpg"
     },
     {
       "id": "2",
-      "first": "ulbi tv",
-      "lastname": "asf",
+      "firstName": "Test",
+      "secondName": "User",
       "age": 465,
       "currency": "RUB",
       "country": "Russia",
       "city": "Moscow",
-      "username": "ulbi tv",
+      "username": "user",
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
   ]
