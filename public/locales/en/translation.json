@@ -15,5 +15,17 @@
   "Sign Out": "Sign out",
   "Profile": "Profile",
   "Articles": "Articles",
-  "No comments": "No comments yet"
+  "No comments": "No comments yet",
+  "Sort by": "Sort by",
+  "Search": "Search",
+  "Ascend": "ascend",
+  "Descend": "descend",
+  "By": "By",
+  "title": "title",
+  "views": "views",
+  "date created": "created date",
+  "All": "All",
+  "Science": "Science",
+  "Economics": "Economics",
+  "Articles not found": "Articles not found"
 }
