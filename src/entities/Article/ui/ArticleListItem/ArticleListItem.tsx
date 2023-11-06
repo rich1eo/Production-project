@@ -1,46 +1,48 @@
-import { memo, useCallback } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import styles from './ArticleListItem.module.scss';
+
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Card } from 'shared/ui/Card/Card';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import Text from 'shared/ui/Text/Text';
 import EyeIcon from 'shared/assets/icons/eye.svg';
+import Avatar from 'shared/ui/Avatar/Avatar';
+
 import {
   Article,
   ArticleBlockType,
   ArticleListView,
   ArticleTextBlock,
 } from '../../model/types/article';
-import { Card } from 'shared/ui/Card/Card';
-import Avatar from 'shared/ui/Avatar/Avatar';
+
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 
 interface ArticleListItemProps {
   article: Article;
-  className?: string;
   view: ArticleListView;
+  target?: HTMLAttributeAnchorTarget;
+  className?: string;
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-  const { className, article, view } = props;
+  const { className, article, view, target } = props;
+
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   const types = (
     <Text text={article.type.join(', ')} className={styles.types} />
   );
+
   const views = (
     <>
       <Text text={article.views.toString()} className={styles.views} />
       <EyeIcon className={styles.icon} />
     </>
   );
-
-  const handleOpenArticle = useCallback(() => {
-    navigate(`${RoutePath.articles_details}${article.id}`);
-  }, [article.id, navigate]);
 
   if (view === ArticleListView.BIG) {
     const textBlock = article.blocks.find(
@@ -70,9 +72,14 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             />
           )}
           <div className={styles.footer}>
-            <Button onClick={handleOpenArticle} theme={ThemeButton.OUTLINE}>
-              {t('Читать далее...')}
-            </Button>
+            <AppLink
+              to={RoutePath.articles_details + article.id}
+              target={target}
+            >
+              <Button theme={ThemeButton.OUTLINE}>
+                {t('Читать далее...')}
+              </Button>
+            </AppLink>
             {views}
           </div>
         </Card>
@@ -81,13 +88,13 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
   }
 
   return (
-    <div
+    <AppLink
       className={classNames(styles.ArticleListItem, {}, [
         className,
         styles[view],
       ])}
-      onClick={handleOpenArticle}
-      role="button"
+      to={RoutePath.articles_details + article.id}
+      target={target}
     >
       <Card className={styles.card}>
         <div className={styles.imgWrapper}>
@@ -100,6 +107,6 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         </div>
         <Text text={article.title} className={styles.title} />
       </Card>
-    </div>
+    </AppLink>
   );
 });

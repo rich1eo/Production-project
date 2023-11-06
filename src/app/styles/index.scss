@@ -21,3 +21,18 @@ body {
 .no-shrink {
   flex-shrink: 0;
 }
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--card-bg);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--inverted-primary-color);
+  border-radius: 20px;
+  border: 2px solid var(--primary-color);
+}

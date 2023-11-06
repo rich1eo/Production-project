@@ -5,15 +5,19 @@ import {
   Reducer,
   ReducersMapObject,
 } from '@reduxjs/toolkit';
+
 import { AxiosInstance } from 'axios';
+
 import { ArticleDetailsSchema } from 'entities/Article';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/authByUsername';
-import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage';
 import { AddCommentFormSchema } from 'features/addCommentForm';
-import { ArticlePageSchema } from 'pages/ArticlesPage';
 import { UISchema } from 'features/UI';
+
+import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
+
+import { ArticlePageSchema } from 'pages/ArticlesPage';
 
 export interface StateSchema {
   user: UserSchema;
@@ -23,9 +27,9 @@ export interface StateSchema {
   loginFrom?: LoginSchema;
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
-  articleDetailsComments?: ArticleDetailsCommentSchema;
   addCommentForm?: AddCommentFormSchema;
   articlesPage?: ArticlePageSchema;
+  articleDetailsPage?: ArticleDetailsPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

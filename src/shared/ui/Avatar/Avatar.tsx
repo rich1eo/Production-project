@@ -1,5 +1,7 @@
-import { CSSProperties, useMemo } from 'react';
+import { CSSProperties, memo, useMemo } from 'react';
+
 import styles from './Avatar.module.scss';
+
 import { classNames } from 'shared/lib/classNames/classNames';
 
 interface AvatarProps {
@@ -9,7 +11,7 @@ interface AvatarProps {
   alt?: string;
 }
 
-export default function Avatar({ className, src, size, alt }: AvatarProps) {
+const Avatar = memo(({ className, src, size, alt }: AvatarProps) => {
   const sizes = useMemo<CSSProperties>(() => {
     return {
       width: size || 100,
@@ -25,4 +27,6 @@ export default function Avatar({ className, src, size, alt }: AvatarProps) {
       src={src}
     />
   );
-}
+});
+
+export default Avatar;
