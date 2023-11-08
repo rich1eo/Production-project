@@ -1,6 +1,5 @@
 .title {
   color: var(--primary-color);
-  margin-bottom: 1rem;
 }
 
 .text {
@@ -14,6 +13,16 @@
 
   .text {
     color: var(--color-red-100);
+  }
+}
+
+.inverted {
+  .title {
+    color: var(--inverted-primary-color);
+  }
+
+  .text {
+    color: var(--inverted-secondary-color);
   }
 }
 

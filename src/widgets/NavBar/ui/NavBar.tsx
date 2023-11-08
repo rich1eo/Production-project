@@ -3,11 +3,15 @@ import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import styles from './NavBar.module.scss';
+
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/authByUsername';
 import { getUserAuthData, userActions } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import Text, { TextTheme } from 'shared/ui/Text/Text';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 interface NavBarProps {
   className?: string;
@@ -34,6 +38,18 @@ export const NavBar = memo(({ className }: NavBarProps) => {
   if (authData) {
     return (
       <header className={classNames(styles.Navbar, {}, [className])}>
+        <Text
+          theme={TextTheme.INVERTED}
+          title={t('Ulbi TV App')}
+          className={styles.appName}
+        />
+        <AppLink
+          theme={AppLinkTheme.SECONDARY}
+          to={RoutePath.articles_create}
+          className={styles.createBtn}
+        >
+          {t('Create article')}
+        </AppLink>
         <Button
           theme={ThemeButton.CLEAR_INVERTED}
           onClick={handleLogout}
