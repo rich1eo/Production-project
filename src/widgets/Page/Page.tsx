@@ -13,6 +13,8 @@ import { StateSchema } from 'app/providers/StoreProvider';
 import { getUIScrollByPath, uiActions } from 'features/UI';
 import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
 
+export const PAGE_ID = 'PAGE_ID';
+
 interface PageProps {
   className?: string;
   children: ReactNode;
@@ -55,6 +57,7 @@ export const Page = memo((props: PageProps) => {
       ref={wrapperRef}
       className={classNames(cls.Page, {}, [className])}
       onScroll={handleScroll}
+      id={PAGE_ID}
     >
       {children}
       {onScrollEnd && <div className={cls.trigger} ref={triggerRef} />}
