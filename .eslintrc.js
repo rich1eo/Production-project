@@ -17,7 +17,13 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'react', 'i18next'],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'i18next',
+    'react-hooks',
+    'rich1e-plugin',
+  ],
   rules: {
     indent: ['warn', 2],
     'linebreak-style': ['error', 'unix'],
@@ -28,6 +34,7 @@ module.exports = {
     semi: ['error', 'always', { omitLastInOneLineBlock: true }],
     'react/display-name': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
+    'rich1e-plugin/path-checker': 'error',
   },
   settings: {
     react: {

@@ -6,18 +6,21 @@ import {
   useRef,
   useState,
 } from 'react';
+
 import styles from './Modal.module.scss';
+
 import { Mods, classNames } from 'shared/lib/classNames/classNames';
-import Portal from '../Portal/Portal';
+
+import { Portal } from '../Portal/Portal';
 
 const ANIMATION_DELAY = 100;
 
 interface ModalProps {
-  className?: string;
   children: ReactNode;
   isOpen: boolean;
   onClose: () => void;
   lazy?: boolean;
+  className?: string;
 }
 
 export default function Modal({

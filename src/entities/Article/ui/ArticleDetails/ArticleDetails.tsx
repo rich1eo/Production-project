@@ -4,26 +4,32 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import styles from './ArticleDetails.module.scss';
+
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
+
 import {
   getArticleDetailsData,
   getArticleDetailsError,
   getArticleDetailsIsLoading,
 } from '../../model/selectors/getArticleDetails';
+
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+
 import DynamicModuleLoader, {
   ReducerList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+
 import { classNames } from 'shared/lib/classNames/classNames';
 import Text, { TextAlign, TextSize } from 'shared/ui/Text/Text';
 import Skeleton from 'shared/ui/Skeleton/Skeleton';
 import Avatar from 'shared/ui/Avatar/Avatar';
+
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 
