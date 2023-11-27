@@ -1,3 +1,8 @@
+import { useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
+
 import {
   ProfileCard,
   ValidationProfileError,
@@ -9,22 +14,22 @@ import {
   profileActions,
   profileReducer,
 } from 'entities/Profile';
-import { useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import { classNames } from 'shared/lib/classNames/classNames';
+
 import DynamicModuleLoader, {
   ReducerList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader';
-import { getProfileForm } from 'entities/Profile/model/selectors/getProfileForm/getProfileForm';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+
+import { VStack } from 'shared/ui/Stack';
 import Text, { TextTheme } from 'shared/ui/Text/Text';
-import { useTranslation } from 'react-i18next';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { useParams } from 'react-router-dom';
+import { Country } from 'entities/Country';
+import { Currency } from 'entities/Currency';
+import { getProfileForm } from 'entities/Profile/model/selectors/getProfileForm/getProfileForm';
 import { Page } from 'widgets/Page/Page';
+
+import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader';
 
 interface ProfilePageProps {
   className?: string;
@@ -121,29 +126,31 @@ export default function ProfilePage({ className }: ProfilePageProps) {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <Page className={classNames('', {}, [className])}>
-        <ProfilePageHeader />
-        {validationErrors?.length &&
-          validationErrors.map((err) => (
-            <Text
-              key={err}
-              theme={TextTheme.ERROR}
-              text={validateErrorTranslates[err]}
-            />
-          ))}
-        <ProfileCard
-          data={formData}
-          isLoading={isLoading}
-          error={error}
-          onChangeFirstName={handleChangeFirstName}
-          onChangeSecondName={handleChangeSecondName}
-          onChangeAge={handleChangeAge}
-          onChangeCity={handleChangeCity}
-          onChangeAvatar={handleChangeAvatar}
-          onChangeUsername={handleChangeUsername}
-          onChangeCurrency={handleChangeCurrency}
-          onChangeCountry={handleChangeCountry}
-          readonly={readonly}
-        />
+        <VStack max gap="16">
+          <ProfilePageHeader />
+          {validationErrors?.length &&
+            validationErrors.map((err) => (
+              <Text
+                key={err}
+                theme={TextTheme.ERROR}
+                text={validateErrorTranslates[err]}
+              />
+            ))}
+          <ProfileCard
+            data={formData}
+            isLoading={isLoading}
+            error={error}
+            onChangeFirstName={handleChangeFirstName}
+            onChangeSecondName={handleChangeSecondName}
+            onChangeAge={handleChangeAge}
+            onChangeCity={handleChangeCity}
+            onChangeAvatar={handleChangeAvatar}
+            onChangeUsername={handleChangeUsername}
+            onChangeCurrency={handleChangeCurrency}
+            onChangeCountry={handleChangeCountry}
+            readonly={readonly}
+          />
+        </VStack>
       </Page>
     </DynamicModuleLoader>
   );

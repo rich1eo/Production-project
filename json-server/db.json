@@ -589,6 +589,18 @@
       "userId": "1",
       "text": "test",
       "id": "sK_nOm1"
+    },
+    {
+      "articleId": "18",
+      "userId": "1",
+      "text": "test1",
+      "id": "1a43WTV"
+    },
+    {
+      "articleId": "18",
+      "userId": "1",
+      "text": "test2",
+      "id": "JEF66WU"
     }
   ],
   "users": [

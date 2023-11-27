@@ -1,18 +1,20 @@
-import Text from 'shared/ui/Text/Text';
-import styles from './ProfilePageHeader.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+
 import {
   getProfileData,
   getProfileReadonly,
   profileActions,
   updateProfileData,
 } from 'entities/Profile';
-import { useCallback } from 'react';
+
+import Text from 'shared/ui/Text/Text';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from 'entities/User';
+import { HStack } from 'shared/ui/Stack';
 
 interface ProfilePageHeaderProps {
   className?: string;
@@ -41,7 +43,7 @@ export default function ProfilePageHeader({
   }, [dispatch]);
 
   return (
-    <div className={classNames(styles.ProfilePageHeader, {}, [className])}>
+    <HStack max justify="between" className={classNames('', {}, [className])}>
       <Text title={t('Profile')} />
       {canEdit && (
         <>
@@ -51,7 +53,7 @@ export default function ProfilePageHeader({
             </Button>
           )}
           {!readonly && (
-            <div className={styles.editBtns}>
+            <HStack gap="8">
               <Button
                 theme={ThemeButton.OUTLINE_RED}
                 onClick={handleCancelEdit}
@@ -61,10 +63,10 @@ export default function ProfilePageHeader({
               <Button theme={ThemeButton.OUTLINE} onClick={handleSave}>
                 {t('Save')}
               </Button>
-            </div>
+            </HStack>
           )}
         </>
       )}
-    </div>
+    </HStack>
   );
 }

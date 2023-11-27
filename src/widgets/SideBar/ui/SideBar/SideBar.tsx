@@ -1,13 +1,16 @@
 import { memo, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import styles from './SideBar.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
+
 import SideBarItem from '../SideBarItem/SideBarItem';
 import { getSideBarItems } from '../../model/selectors/getSideBarItems';
+
+import styles from './SideBar.module.scss';
+import { VStack } from 'shared/ui/Stack';
 
 interface SideBarProps {
   className?: string;
@@ -48,7 +51,9 @@ const SideBar = memo(({ className }: SideBarProps) => {
       >
         {collapsed ? '>' : '<'}
       </Button>
-      <div className={styles.items}>{itemsList}</div>
+      <VStack gap={collapsed ? '32' : '8'} className={styles.items}>
+        {itemsList}
+      </VStack>
       <div className={styles.switchers}>
         <ThemeSwitcher />
         <LangSwitcher short={collapsed} />

@@ -3,35 +3,34 @@ import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import styles from './ArticleDetails.module.scss';
-
-import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
-import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
-
 import {
   getArticleDetailsData,
   getArticleDetailsError,
   getArticleDetailsIsLoading,
 } from '../../model/selectors/getArticleDetails';
 
+import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-
 import DynamicModuleLoader, {
   ReducerList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from 'shared/lib/classNames/classNames';
 import Text, { TextAlign, TextSize } from 'shared/ui/Text/Text';
 import Skeleton from 'shared/ui/Skeleton/Skeleton';
 import Avatar from 'shared/ui/Avatar/Avatar';
+import { HStack, VStack } from 'shared/ui/Stack';
 
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
+
+import styles from './ArticleDetails.module.scss';
 
 interface ArticleDetailsProps {
   id: string;
@@ -106,21 +105,25 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
   } else if (data) {
     content = (
       <>
-        <Avatar size={200} src={data.img} className={styles.avatar} />
-        <Text
-          className={styles.title}
-          title={data?.title}
-          text={data.subtitle}
-          size={TextSize.L}
-        />
-        <div className={styles.articleInfo}>
-          <EyeIcon className={styles.icon} />
-          {<Text text={data.views.toString()} />}
-        </div>
-        <div className={styles.articleInfo}>
-          <CalendarIcon className={styles.icon} />
-          {<Text text={data.createdAt} />}
-        </div>
+        <HStack justify="center" max>
+          <Avatar size={200} src={data.img} className={styles.avatar} />
+        </HStack>
+        <VStack gap="4" max>
+          <Text
+            className={styles.title}
+            title={data?.title}
+            text={data.subtitle}
+            size={TextSize.L}
+          />
+          <HStack gap="8">
+            <EyeIcon className={styles.icon} />
+            {<Text text={data.views.toString()} />}
+          </HStack>
+          <HStack gap="8" className={styles.articleInfo}>
+            <CalendarIcon className={styles.icon} />
+            {<Text text={data.createdAt} />}
+          </HStack>
+        </VStack>
         {data.blocks.map((block) => renderBlock(block))}
       </>
     );
@@ -128,9 +131,12 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(styles.ArticleDetails, {}, [className])}>
+      <VStack
+        gap="16"
+        className={classNames(styles.ArticleDetails, {}, [className])}
+      >
         {content}
-      </div>
+      </VStack>
     </DynamicModuleLoader>
   );
 });
