@@ -4,6 +4,7 @@ import {
   ReducersMapObject,
   configureStore,
 } from '@reduxjs/toolkit';
+
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { userReducer } from 'entities/User';
 import { createReducerManager } from './reducerManager';
