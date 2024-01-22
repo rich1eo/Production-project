@@ -18,6 +18,7 @@ import { AddCommentForm } from 'features/addCommentForm';
 import { Page } from 'widgets/Page/Page';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { VStack } from 'shared/ui/Stack';
 
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
@@ -28,7 +29,6 @@ import { getArticleRecommendationsIsLoading } from '../../model/selectors/recomm
 import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
-import { VStack } from 'shared/ui/Stack';
 
 interface ArticlesPageProps {
   className?: string;

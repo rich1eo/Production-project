@@ -59,7 +59,7 @@ export const CountrySelect = memo(
         value={value}
         onChange={handleChange}
         readonly={readonly}
-        direction="top"
+        direction="top right"
         label={t('Country')}
       />
     );

@@ -8,7 +8,8 @@
   background-color: var(--inverted-bg-color);
 }
 
-.links {
+.links,
+.dropdown {
   display: flex;
   gap: 1.5rem;
   margin-left: auto;

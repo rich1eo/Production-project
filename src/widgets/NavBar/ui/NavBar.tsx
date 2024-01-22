@@ -12,6 +12,8 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import Text, { TextTheme } from 'shared/ui/Text/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import Avatar from 'shared/ui/Avatar/Avatar';
 
 interface NavBarProps {
   className?: string;
@@ -50,13 +52,21 @@ export const NavBar = memo(({ className }: NavBarProps) => {
         >
           {t('Create article')}
         </AppLink>
-        <Button
-          theme={ThemeButton.CLEAR_INVERTED}
-          onClick={handleLogout}
-          className={styles.links}
-        >
-          {t('Sign Out')}
-        </Button>
+        <Dropdown
+          className={styles.dropdown}
+          trigger={<Avatar size={30} src={authData.avatar} />}
+          items={[
+            {
+              content: t('Profile'),
+              href: RoutePath.profile + authData.id,
+            },
+            {
+              content: t('Sign Out'),
+              onClick: handleLogout,
+            },
+          ]}
+          direction="bottom left"
+        />
       </header>
     );
   }
