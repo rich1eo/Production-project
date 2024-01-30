@@ -17,5 +17,6 @@
   "Age should be not float number": "Age should be not float number",
   "Profile can not be empty": "Profile can not be empty",
   "Server error": "Server error",
-  "Incorrect country": "Incorrect country"
+  "Incorrect country": "Incorrect country",
+  "Profile not found": "Profile not found"
 }

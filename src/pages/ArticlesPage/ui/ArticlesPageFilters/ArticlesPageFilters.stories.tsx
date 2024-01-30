@@ -4,7 +4,7 @@ import { ArticlesPageFilters } from './ArticlesPageFilters';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
-  title: 'pages/Article/ArticlesPageFilters',
+  title: 'pages/ArticlePage/ArticlesPageFilters',
   component: ArticlesPageFilters,
 } as ComponentMeta<typeof ArticlesPageFilters>;
 

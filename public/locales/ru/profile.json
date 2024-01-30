@@ -17,5 +17,6 @@
   "Age should be not float number": "Возраст должен быть целым",
   "Profile can not be empty": "Профиль должен быть заполнен",
   "Server error": "Серверная ошибка",
-  "Incorrect country": "Некорректный регион"
+  "Incorrect country": "Некорректный регион",
+  "Profile not found": "Профиль не найден"
 }
