@@ -117,6 +117,7 @@ export function ProfileCard(props: ProfileCardProps) {
         className={styles.input}
         onChange={onChangeFirstName}
         readonly={readonly}
+        data-testid="ProfileCard.firstName"
       />
       <Input
         value={data?.secondName}
@@ -124,6 +125,7 @@ export function ProfileCard(props: ProfileCardProps) {
         className={styles.input}
         onChange={onChangeSecondName}
         readonly={readonly}
+        data-testid="ProfileCard.secondName"
       />
       <Input
         value={data?.age}

@@ -1,9 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import {
-  EditableProfileCard,
-  EditableProfileCardHeader,
-} from 'features/editableProfileCard';
+import { EditableProfileCard } from 'features/editableProfileCard';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { VStack } from 'shared/ui/Stack';
 import { Page } from 'widgets/Page/Page';
@@ -26,7 +23,6 @@ export default function ProfilePage({ className }: ProfilePageProps) {
   return (
     <Page className={classNames('', {}, [className])}>
       <VStack max gap="16">
-        <EditableProfileCardHeader />
         <EditableProfileCard id={id} />
       </VStack>
     </Page>
