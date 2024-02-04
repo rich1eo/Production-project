@@ -1,10 +1,8 @@
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleDetails } from 'entities/Article';
-import Text, { TextTheme } from 'shared/ui/Text/Text';
 
 import DynamicModuleLoader, {
   ReducerList,
@@ -29,15 +27,7 @@ const reducers: ReducerList = {
 
 function ArticleDetailsPage({ className }: ArticlesPageProps) {
   const { id } = useParams<{ id: string }>();
-  const { t } = useTranslation('article-details');
 
-  if (!id) {
-    return (
-      <Page className={classNames('', {}, [className])}>
-        <Text title={t('Article not found')} theme={TextTheme.ERROR} />
-      </Page>
-    );
-  }
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <Page className={classNames('', {}, [className])}>

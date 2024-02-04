@@ -33,7 +33,7 @@ import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import styles from './ArticleDetails.module.scss';
 
 interface ArticleDetailsProps {
-  id: string;
+  id?: string;
   className?: string;
 }
 

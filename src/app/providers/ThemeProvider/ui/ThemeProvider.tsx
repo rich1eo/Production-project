@@ -9,8 +9,14 @@ import {
 const defaultTheme =
   (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
 
-export default function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
+interface ThemeProviderProps {
+  children: ReactNode;
+  initialTheme?: Theme;
+}
+
+export default function ThemeProvider(props: ThemeProviderProps) {
+  const { children, initialTheme } = props;
+  const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
 
   useEffect(() => {
     document.body.className = theme;

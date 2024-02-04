@@ -4,10 +4,14 @@ import { Article } from '../../types/article';
 
 export const fetchArticleById = createAsyncThunk<
   Article,
-  string,
+  string | undefined,
   ThunkConfig<string>
 >('profile/fetchArticleById', async (articleId, thunkAPI) => {
   const { extra, rejectWithValue } = thunkAPI;
+
+  if (!articleId) {
+    rejectWithValue('Страница не найдена');
+  }
 
   try {
     const response = await extra.api.get<Article>(`/articles/${articleId}`, {
