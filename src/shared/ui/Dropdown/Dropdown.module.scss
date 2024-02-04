@@ -19,6 +19,7 @@
   border: 1px solid var(--primary-color);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .item {

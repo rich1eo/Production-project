@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { useSelector } from 'react-redux';
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -7,7 +8,12 @@ import styles from './NavBar.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/authByUsername';
-import { getUserAuthData, userActions } from 'entities/User';
+import {
+  getUserAuthData,
+  isUserAdmin,
+  isUserManager,
+  userActions,
+} from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import Text, { TextTheme } from 'shared/ui/Text/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
@@ -24,6 +30,10 @@ export const NavBar = memo(({ className }: NavBarProps) => {
   const { t } = useTranslation();
   const authData = useSelector(getUserAuthData);
   const dispatch = useAppDispatch();
+
+  const isAdmin = useSelector(isUserAdmin);
+  const isManager = useSelector(isUserManager);
+  const isAdminPanelAvailable = isAdmin || isManager;
 
   const handleCloseModal = useCallback(() => {
     setIsAuthModal(false);
@@ -42,7 +52,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
       <header className={classNames(styles.Navbar, {}, [className])}>
         <Text
           theme={TextTheme.INVERTED}
-          title={t('Ulbi TV App')}
+          title={t('Articles App')}
           className={styles.appName}
         />
         <AppLink
@@ -56,6 +66,14 @@ export const NavBar = memo(({ className }: NavBarProps) => {
           className={styles.dropdown}
           trigger={<Avatar size={30} src={authData.avatar} />}
           items={[
+            ...(isAdminPanelAvailable
+              ? [
+                  {
+                    content: t('Admin panel'),
+                    href: RoutePath.admin_panel,
+                  },
+                ]
+              : []),
             {
               content: t('Profile'),
               href: RoutePath.profile + authData.id,
