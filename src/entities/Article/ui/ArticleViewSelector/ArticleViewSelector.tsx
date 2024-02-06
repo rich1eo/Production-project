@@ -1,4 +1,4 @@
-import { ArticleListView } from 'entities/Article/model/types/article';
+import { ArticleListView } from '../../model/consts/consts';
 import styles from './ArticleViewSelector.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import ListIcon from 'shared/assets/icons/burger.svg';

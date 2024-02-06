@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import styles from './ArticleSortSelector.module.scss';
 
-import { ArticleSortField } from 'entities/Article/model/types/article';
+import { ArticleSortField } from '../../model/consts/consts';
 
 import { Select, SelectOption } from 'shared/ui/Select/Select';
 import { classNames } from 'shared/lib/classNames/classNames';

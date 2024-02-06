@@ -3,7 +3,7 @@ import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import { Profile } from 'entities/Profile';
 import { updateProfileData } from './updateProfileData';
-import { ValidationProfileError } from '../../types/editableProfileCardSchema';
+import { ValidationProfileError } from '../../consts/consts';
 
 const data: Profile = {
   id: '1',

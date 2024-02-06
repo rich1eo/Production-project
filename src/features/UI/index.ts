@@ -1,4 +1,4 @@
-export { UISchema } from './model/types/UISchema';
+export type { UISchema } from './model/types/UISchema';
 
 export { uiActions, uiReducer } from './model/slice/UISlice';
 

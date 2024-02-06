@@ -1,7 +1,7 @@
 import { Country } from 'entities/Country';
 import { validateProfileData } from './validateProfileData';
 import { Currency } from 'entities/Currency';
-import { ValidationProfileError } from '../../types/editableProfileCardSchema';
+import { ValidationProfileError } from '../../consts/consts';
 
 const profileData = {
   age: 23,

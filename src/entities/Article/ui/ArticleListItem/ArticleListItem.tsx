@@ -11,12 +11,8 @@ import Text from 'shared/ui/Text/Text';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import Avatar from 'shared/ui/Avatar/Avatar';
 
-import {
-  Article,
-  ArticleBlockType,
-  ArticleListView,
-  ArticleTextBlock,
-} from '../../model/types/article';
+import { Article, ArticleTextBlock } from '../../model/types/article';
+import { ArticleBlockType, ArticleListView } from '../../model/consts/consts';
 
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
