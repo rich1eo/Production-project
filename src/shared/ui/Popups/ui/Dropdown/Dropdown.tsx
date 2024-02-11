@@ -1,11 +1,16 @@
-import { Fragment, ReactNode } from 'react';
 import { Menu } from '@headlessui/react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import styles from './Dropdown.module.scss';
-import { DropdownDirection } from 'shared/types/ui';
-import { AppLink } from '../AppLink/AppLink';
+import { Fragment, ReactNode } from 'react';
 
-export interface DropdownItem {
+import { classNames } from 'shared/lib/classNames/classNames';
+import { DropdownDirection } from 'shared/types/ui';
+
+import { AppLink } from '../../../AppLink/AppLink';
+import { mapDirectionClass } from '../../styles/consts';
+
+import styles from './Dropdown.module.scss';
+import popupStyles from '../../styles/popup.module.scss';
+
+interface DropdownItem {
   disabled?: boolean;
   content?: ReactNode;
   onClick?: () => void;
@@ -19,21 +24,20 @@ interface DropdownProps {
   direction?: DropdownDirection;
 }
 
-const mapDirectionClass: Record<DropdownDirection, string> = {
-  'bottom left': styles.optionsBottomLeft,
-  'bottom right': styles.optionsBottomRight,
-  'top left': styles.optionsTopLeft,
-  'top right': styles.optionsTopRight,
-};
-
 export function Dropdown(props: DropdownProps) {
   const { className, items, trigger, direction = 'bottom right' } = props;
 
   const menuClasses = [mapDirectionClass[direction]];
 
   return (
-    <Menu as="div" className={classNames(styles.Dropdown, {}, [className])}>
-      <Menu.Button className={styles.btn}>{trigger}</Menu.Button>
+    <Menu
+      as="div"
+      className={classNames(styles.Dropdown, {}, [
+        className,
+        popupStyles.popup,
+      ])}
+    >
+      <Menu.Button className={popupStyles.trigger}>{trigger}</Menu.Button>
       <Menu.Items className={classNames(styles.menu, {}, menuClasses)}>
         {items.map((item) => {
           const content = ({ active }: { active: boolean }) => {
@@ -42,7 +46,7 @@ export function Dropdown(props: DropdownProps) {
                 type="button"
                 onClick={item.onClick}
                 className={classNames(styles.item, {
-                  [styles.active]: active,
+                  [popupStyles.active]: active,
                 })}
                 disabled={item.disabled}
               >
@@ -58,6 +62,7 @@ export function Dropdown(props: DropdownProps) {
                 to={item.href}
                 key={item.href}
                 disabled={item.disabled}
+                className={styles.link}
               >
                 {content}
               </Menu.Item>

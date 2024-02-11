@@ -25,7 +25,7 @@ module.exports = {
     'rich1e-plugin',
   ],
   rules: {
-    indent: ['warn', 2],
+    indent: off,
     'linebreak-style': ['error', 'unix'],
     quotes: ['warn', 'single'],
     'no-unused-vars': 'off',
