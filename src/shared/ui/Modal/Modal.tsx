@@ -7,13 +7,14 @@ import {
   useState,
 } from 'react';
 
+import { Mods, classNames } from 'shared/lib/classNames/classNames';
+import { useTheme } from 'app/providers/ThemeProvider';
+import { Portal } from '../Portal/Portal';
+import { Overlay } from '../Overlay/Overlay';
+
 import styles from './Modal.module.scss';
 
-import { Mods, classNames } from 'shared/lib/classNames/classNames';
-
-import { Portal } from '../Portal/Portal';
-
-const ANIMATION_DELAY = 100;
+const ANIMATION_DELAY = 300;
 
 interface ModalProps {
   children: ReactNode;
@@ -33,6 +34,7 @@ export default function Modal({
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const timeRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (isOpen) {
@@ -65,10 +67,6 @@ export default function Modal({
     [handleClose]
   );
 
-  function handleContentClick(event: React.MouseEvent) {
-    event.stopPropagation();
-  }
-
   useEffect(() => {
     if (isOpen) {
       window.addEventListener('keydown', handleCloseOnEscKey);
@@ -87,12 +85,15 @@ export default function Modal({
 
   return (
     <Portal>
-      <div className={classNames(styles.Modal, mods, [className])}>
-        <div className={styles.overlay} onClick={handleClose}>
-          <div className={styles.content} onClick={handleContentClick}>
-            {children}
-          </div>
-        </div>
+      <div
+        className={classNames(styles.Modal, mods, [
+          className,
+          theme,
+          'app_modal',
+        ])}
+      >
+        <Overlay onClick={handleClose} />
+        <div className={styles.content}>{children}</div>
       </div>
     </Portal>
   );
