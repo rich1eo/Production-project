@@ -49,6 +49,7 @@ export function Dropdown(props: DropdownProps) {
                   [popupStyles.active]: active,
                 })}
                 disabled={item.disabled}
+                key={item.content as string}
               >
                 {item.content}
               </button>
