@@ -6,11 +6,11 @@ import {
 } from '@reduxjs/toolkit';
 
 import { StateSchema, ThunkExtraArg } from './StateSchema';
-import { userReducer } from 'entities/User';
+import { userReducer } from '@/entities/User';
 import { createReducerManager } from './reducerManager';
-import { $api } from 'shared/api/api';
-import { uiReducer } from 'features/UI';
-import { rtkApi } from 'shared/api/rtkApi';
+import { $api } from '@/shared/api/api';
+import { uiReducer } from '@/features/UI';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 export function createReduxStore(
   initialState: StateSchema,

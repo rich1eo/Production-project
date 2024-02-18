@@ -2,14 +2,14 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 
-import { Input } from 'shared/ui/Input/Input';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Button } from 'shared/ui/Button/Button';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Input } from '@/shared/ui/Input/Input';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button } from '@/shared/ui/Button/Button';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import DynamicModuleLoader, {
   ReducerList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 import {
   getAddCommentFormError,
@@ -22,7 +22,7 @@ import {
 } from '../../model/slice/addCommentFormSlice';
 
 import styles from './AddCommentForm.module.scss';
-import { HStack } from 'shared/ui/Stack';
+import { HStack } from '@/shared/ui/Stack';
 
 export interface AddCommentFormProps {
   onSendComment: (text: string) => void;

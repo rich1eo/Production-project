@@ -1,9 +1,9 @@
 import { ArticleListView } from '../../model/consts/consts';
 import styles from './ArticleViewSelector.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
-import ListIcon from 'shared/assets/icons/burger.svg';
-import WindowIcon from 'shared/assets/icons/window.svg';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import ListIcon from '@/shared/assets/icons/burger.svg';
+import WindowIcon from '@/shared/assets/icons/window.svg';
+import { Button, ThemeButton } from '@/shared/ui/Button/Button';
 import { memo } from 'react';
 
 interface ArticleViewSelectorProps {

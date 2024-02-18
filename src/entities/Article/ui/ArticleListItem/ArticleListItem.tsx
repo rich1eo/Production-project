@@ -1,21 +1,20 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import styles from './ArticleListItem.module.scss';
-
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Card } from 'shared/ui/Card/Card';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import Text from 'shared/ui/Text/Text';
-import EyeIcon from 'shared/assets/icons/eye.svg';
-import Avatar from 'shared/ui/Avatar/Avatar';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Card } from '@/shared/ui/Card/Card';
+import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import Text from '@/shared/ui/Text/Text';
+import Avatar from '@/shared/ui/Avatar/Avatar';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
 
 import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleBlockType, ArticleListView } from '../../model/consts/consts';
-
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
+
+import styles from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
   article: Article;

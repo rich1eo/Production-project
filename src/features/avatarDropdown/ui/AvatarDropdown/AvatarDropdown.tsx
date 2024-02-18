@@ -7,12 +7,12 @@ import {
   isUserAdmin,
   isUserManager,
   userActions,
-} from 'entities/User';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import Avatar from 'shared/ui/Avatar/Avatar';
-import { Dropdown } from 'shared/ui/Popups';
+} from '@/entities/User';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import Avatar from '@/shared/ui/Avatar/Avatar';
+import { Dropdown } from '@/shared/ui/Popups';
 
 interface AvatarDropdownProps {
   className?: string;
@@ -43,11 +43,11 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
       items={[
         ...(isAdminPanelAvailable
           ? [
-              {
-                content: t('Admin panel'),
-                href: RoutePath.admin_panel,
-              },
-            ]
+            {
+              content: t('Admin panel'),
+              href: RoutePath.admin_panel,
+            },
+          ]
           : []),
         {
           content: t('Profile'),

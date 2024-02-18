@@ -19,17 +19,17 @@ import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleT
 
 import DynamicModuleLoader, {
   ReducerList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { classNames } from 'shared/lib/classNames/classNames';
-import Text, { TextAlign, TextSize } from 'shared/ui/Text/Text';
-import Skeleton from 'shared/ui/Skeleton/Skeleton';
-import Avatar from 'shared/ui/Avatar/Avatar';
-import { HStack, VStack } from 'shared/ui/Stack';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import Text, { TextAlign, TextSize } from '@/shared/ui/Text/Text';
+import Skeleton from '@/shared/ui/Skeleton/Skeleton';
+import Avatar from '@/shared/ui/Avatar/Avatar';
+import { HStack, VStack } from '@/shared/ui/Stack';
 
-import EyeIcon from 'shared/assets/icons/eye.svg';
-import CalendarIcon from 'shared/assets/icons/calendar.svg';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 
 import styles from './ArticleDetails.module.scss';
 

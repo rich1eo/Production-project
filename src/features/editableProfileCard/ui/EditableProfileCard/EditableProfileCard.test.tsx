@@ -1,12 +1,12 @@
 import userEvent from '@testing-library/user-event';
-import { Profile } from 'entities/Profile';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
-import componentRender from 'shared/lib/tests/componentRender/componentRender';
+import { Profile } from '@/entities/Profile';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
+import componentRender from '@/shared/lib/tests/componentRender/componentRender';
 import { EditableProfileCard } from './EditableProfileCard';
 import { profileReducer } from '../../model/slice/profileSlice';
 import { screen } from '@testing-library/react';
-import { $api } from 'shared/api/api';
+import { $api } from '@/shared/api/api';
 
 const profile: Profile = {
   id: '1',

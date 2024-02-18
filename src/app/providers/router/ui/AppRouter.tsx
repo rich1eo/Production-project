@@ -3,9 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import {
   AppRouterProps,
   routeConfig,
-} from 'shared/config/routeConfig/routeConfig';
-import { RequireAuth } from 'app/providers/router/ui/RequireAuth';
-import PageLoader from 'widgets/PageLoader/PageLoader';
+} from '@/shared/config/routeConfig/routeConfig';
+import { RequireAuth } from '@/app/providers/router/ui/RequireAuth';
+import PageLoader from '@/widgets/PageLoader/PageLoader';
 
 const AppRouter = () => {
   const renderWithWrapper = useCallback((route: AppRouterProps) => {
