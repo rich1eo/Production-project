@@ -1,7 +1,8 @@
 import { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 
-import styles from './Button.module.scss';
 import { Mods, classNames } from '@/shared/lib/classNames/classNames';
+
+import styles from './Button.module.scss';
 
 export enum ThemeButton {
   CLEAR = 'clear',
@@ -25,6 +26,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   square?: boolean;
   size?: ButtonSize;
   disabled?: boolean;
+  fullWidth?: boolean;
 }
 
 export const Button = memo((props: ButtonProps) => {
@@ -35,6 +37,7 @@ export const Button = memo((props: ButtonProps) => {
     square,
     size = ButtonSize.M,
     disabled,
+    fullWidth,
     ...otherProps
   } = props;
 
@@ -42,6 +45,7 @@ export const Button = memo((props: ButtonProps) => {
     [styles.square]: square,
     [styles[size]]: true,
     [styles.disabled]: disabled,
+    [styles.fullWidth]: fullWidth,
   };
 
   return (
