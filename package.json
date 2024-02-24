@@ -74,7 +74,7 @@
     "eslint-plugin-i18next": "^6.0.3",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-rich1e-plugin": "^0.0.1",
+    "eslint-plugin-rich1e-plugin": "^0.0.2",
     "eslint-plugin-storybook": "^0.6.13",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^7.2.13",

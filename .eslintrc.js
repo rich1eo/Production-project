@@ -34,7 +34,7 @@ module.exports = {
     semi: ['error', 'always', { omitLastInOneLineBlock: true }],
     'react/display-name': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
-    'rich1e-plugin/path-checker': 'error',
+    'rich1e-plugin/path-checker': ['error', { alias: '@' }],
   },
   settings: {
     react: {
