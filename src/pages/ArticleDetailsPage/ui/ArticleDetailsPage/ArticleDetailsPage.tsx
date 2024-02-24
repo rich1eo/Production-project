@@ -1,19 +1,19 @@
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleDetails } from '@/entities/Article';
-
+import { ArticleRating } from '@/features/articleRating';
+import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import DynamicModuleLoader, {
   ReducerList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-
 import { VStack } from '@/shared/ui/Stack';
-import { articleDetailsPageReducer } from '../../model/slice';
-import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
-import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
-import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { Page } from '@/widgets/Page/Page';
+
+import { articleDetailsPageReducer } from '../../model/slice';
+import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 import styles from './ArticleDetailsPage.module.scss';
 
@@ -28,12 +28,17 @@ const reducers: ReducerList = {
 function ArticleDetailsPage({ className }: ArticlesPageProps) {
   const { id } = useParams<{ id: string }>();
 
+  if (!id) {
+    return null;
+  }
+
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <Page className={classNames('', {}, [className])}>
         <VStack gap="16" max>
           <ArticleDetailsPageHeader />
           <ArticleDetails id={id} />
+          <ArticleRating articleId={id} />
           <ArticleRecommendationsList className={styles.recommendations} />
           <ArticleDetailsComments id={id} />
         </VStack>

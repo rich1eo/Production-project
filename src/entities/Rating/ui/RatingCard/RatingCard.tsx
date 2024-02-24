@@ -2,7 +2,6 @@ import { memo, useCallback, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonSize, ThemeButton } from '@/shared/ui/Button/Button';
 import { Card } from '@/shared/ui/Card/Card';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
@@ -12,23 +11,29 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
 import Text from '@/shared/ui/Text/Text';
 
-import styles from './RatingCard.module.scss';
-
 interface RatingCardProps {
   className?: string;
   title?: string;
   feedbackTitle?: string;
   hasFeedback?: boolean;
+  rate?: number;
   onCancel?: (starsCount: number) => void;
   onAccept?: (starsCount: number, feedback?: string) => void;
 }
 
 export const RatingCard = memo((props: RatingCardProps) => {
-  const { title, className, feedbackTitle, hasFeedback, onAccept, onCancel } =
-    props;
+  const {
+    title,
+    className,
+    feedbackTitle,
+    hasFeedback,
+    rate = 0,
+    onAccept,
+    onCancel,
+  } = props;
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [starsCount, setStarsCount] = useState(0);
+  const [starsCount, setStarsCount] = useState(rate);
   const [feedback, setFeedback] = useState('');
 
   const handleSelectStars = useCallback(
@@ -65,10 +70,14 @@ export const RatingCard = memo((props: RatingCardProps) => {
   );
 
   return (
-    <Card className={classNames(styles.RatingCard, {}, [className])}>
-      <VStack align="center" gap="8">
-        <Text title={title} />
-        <StarRating size={40} onSelect={handleSelectStars} />
+    <Card className={className} max>
+      <VStack align="center" gap="8" max>
+        <Text title={starsCount ? t('Thank you for feedback') : title} />
+        <StarRating
+          selectedStars={starsCount}
+          size={40}
+          onSelect={handleSelectStars}
+        />
       </VStack>
 
       <BrowserView>

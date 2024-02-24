@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 
-import { Mods, classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import StarIcon from '@/shared/assets/icons/star.svg';
 
 import styles from './StarRating.module.scss';
@@ -16,7 +16,9 @@ const start = [1, 2, 3, 4, 5];
 
 export const StarRating = memo((props: StarRatingProps) => {
   const { className, selectedStars = 0, size = 30, onSelect } = props;
-  const [currentStarsCount, setCurrentStarsCount] = useState(0);
+  const [currentStarsCount, setCurrentStarsCount] = useState(
+    selectedStars ?? 0
+  );
   const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
 
   const handleHover = (starsCount: number) => () => {
