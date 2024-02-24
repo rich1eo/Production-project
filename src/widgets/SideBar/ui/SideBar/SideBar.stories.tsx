@@ -6,11 +6,8 @@ import SideBar from './SideBar';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
-  title: 'widget/SideBar',
+  title: 'widgets/SideBar',
   component: SideBar,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof SideBar>;
 
 const Template: ComponentStory<typeof SideBar> = (args) => (

@@ -6,11 +6,8 @@ import { NavBar } from './NavBar';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
-  title: 'widget/NavBar',
+  title: 'widgets/NavBar',
   component: NavBar,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof NavBar>;
 
 const Template: ComponentStory<typeof NavBar> = (args) => <NavBar {...args} />;
