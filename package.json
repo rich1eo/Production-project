@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "scripts": {
     "start": "webpack serve --env port=3000",
     "start:vite": "vite",
@@ -28,9 +31,6 @@
     "generate:slice": "node ./scripts/createSlice/index.js",
     "imports:update": "ts-node ./scripts/updateImports.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/plugin-transform-runtime": "^7.18.10",
@@ -74,7 +74,7 @@
     "eslint-plugin-i18next": "^6.0.3",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-rich1e-plugin": "^0.0.2",
+    "eslint-plugin-rich1e-plugin": "^0.0.3",
     "eslint-plugin-storybook": "^0.6.13",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^7.2.13",

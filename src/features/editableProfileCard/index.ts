@@ -2,3 +2,4 @@ export { EditableProfileCard } from './ui/EditableProfileCard/EditableProfileCar
 export { EditableProfileCardHeader } from './ui/EditableProfileCardHeader/EditableProfileCardHeader';
 export { profileReducer } from './model/slice/profileSlice';
 export type { ProfileSchema } from './model/types/editableProfileCardSchema';
+export { ValidationProfileError } from './model/consts/consts';

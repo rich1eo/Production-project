@@ -1,1 +1,1 @@
-export { ForbiddenPageAsync } from './ui/ForbiddenPage.async';
+export { ForbiddenPageAsync as ForbiddenPage } from './ui/ForbiddenPage.async';

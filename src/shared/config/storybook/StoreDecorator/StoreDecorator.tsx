@@ -1,3 +1,4 @@
+/* eslint-disable rich1e-plugin/public-api-imports */
 /* eslint-disable indent */
 import { Story } from '@storybook/react';
 

@@ -13,5 +13,5 @@ export {
 
 export { getArticleDetailsData } from './model/selectors/getArticleDetails';
 
-export type { Article } from './model/types/article';
+export type { Article, ArticleTextBlock } from './model/types/article';
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
