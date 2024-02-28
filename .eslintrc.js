@@ -35,7 +35,17 @@ module.exports = {
     'react/display-name': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
     'rich1e-plugin/path-checker': ['error', { alias: '@' }],
-    'rich1e-plugin/public-api-imports': ['error', { alias: '@' }],
+    'rich1e-plugin/public-api-imports': [
+      'error',
+      {
+        alias: '@',
+        testFilesPatterns: [
+          '**/*.test.*',
+          '**/*.stories.*',
+          '**/StoreDecorator.tsx',
+        ],
+      },
+    ],
   },
   settings: {
     react: {
