@@ -3,12 +3,28 @@ import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
+import DynamicModuleLoader, {
+  ReducerList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import {
+  Text,
+  TextAlign,
+  TextSize,
+  Skeleton,
+  Avatar,
+  HStack,
+  VStack,
+} from '@/shared/ui';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar.svg';
+
 import {
   getArticleDetailsData,
   getArticleDetailsError,
   getArticleDetailsIsLoading,
 } from '../../model/selectors/getArticleDetails';
-
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { ArticleBlock } from '../../model/types/article';
@@ -16,20 +32,6 @@ import { ArticleBlockType } from '../../model/consts/consts';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-
-import DynamicModuleLoader, {
-  ReducerList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import Text, { TextAlign, TextSize } from '@/shared/ui/Text/Text';
-import Skeleton from '@/shared/ui/Skeleton/Skeleton';
-import Avatar from '@/shared/ui/Avatar/Avatar';
-import { HStack, VStack } from '@/shared/ui/Stack';
-
-import EyeIcon from '@/shared/assets/icons/eye.svg';
-import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 
 import styles from './ArticleDetails.module.scss';
 

@@ -5,9 +5,7 @@ import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
-import { HStack } from '@/shared/ui/Stack';
-import Text from '@/shared/ui/Text/Text';
+import { Button, ButtonTheme, Text, HStack } from '@/shared/ui';
 
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
@@ -46,7 +44,7 @@ export const EditableProfileCardHeader = memo(
           <>
             {readonly && (
               <Button
-                theme={ThemeButton.OUTLINE}
+                theme={ButtonTheme.OUTLINE}
                 onClick={handleEdit}
                 data-testid="EditableProfileCardHeader.EditBtn"
               >
@@ -56,14 +54,14 @@ export const EditableProfileCardHeader = memo(
             {!readonly && (
               <HStack gap="8">
                 <Button
-                  theme={ThemeButton.OUTLINE_RED}
+                  theme={ButtonTheme.OUTLINE_RED}
                   onClick={handleCancelEdit}
                   data-testid="EditableProfileCardHeader.CancelBtn"
                 >
                   {t('Cancel')}
                 </Button>
                 <Button
-                  theme={ThemeButton.OUTLINE}
+                  theme={ButtonTheme.OUTLINE}
                   onClick={handleSave}
                   data-testid="EditableProfileCardHeader.SaveBtn"
                 >

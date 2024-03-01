@@ -1,6 +1,8 @@
 import { CSSProperties, memo } from 'react';
-import styles from './Skeleton.module.scss';
+
 import { classNames } from '@/shared/lib/classNames/classNames';
+
+import styles from './Skeleton.module.scss';
 
 interface SkeletonProps {
   className?: string;
@@ -9,7 +11,7 @@ interface SkeletonProps {
   border?: string;
 }
 
-function Skeleton(props: SkeletonProps) {
+export const Skeleton = memo((props: SkeletonProps) => {
   const { className, width, height, border } = props;
 
   const style: CSSProperties = {
@@ -24,6 +26,4 @@ function Skeleton(props: SkeletonProps) {
       style={style}
     />
   );
-}
-
-export default memo(Skeleton);
+});

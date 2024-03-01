@@ -1,10 +1,13 @@
-import { ArticleListView } from '../../model/consts/consts';
-import styles from './ArticleViewSelector.module.scss';
+import { memo } from 'react';
+
 import { classNames } from '@/shared/lib/classNames/classNames';
 import ListIcon from '@/shared/assets/icons/burger.svg';
 import WindowIcon from '@/shared/assets/icons/window.svg';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
-import { memo } from 'react';
+import { Button, ButtonTheme } from '@/shared/ui';
+
+import { ArticleListView } from '../../model/consts/consts';
+
+import styles from './ArticleViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {
   className?: string;
@@ -34,7 +37,7 @@ export const ArticleViewSelector = memo(
         {viewTypes.map((viewType) => (
           <Button
             key={viewType.view}
-            theme={ThemeButton.CLEAR}
+            theme={ButtonTheme.CLEAR}
             onClick={handleClick(viewType.view)}
             className={classNames(
               '',

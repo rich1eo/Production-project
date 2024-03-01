@@ -7,9 +7,7 @@ import DynamicModuleLoader, {
   ReducerList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button } from '@/shared/ui/Button/Button';
-import { Input } from '@/shared/ui/Input/Input';
-import { HStack } from '@/shared/ui/Stack';
+import { Button, Input, HStack } from '@/shared/ui';
 
 import { getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
 import {

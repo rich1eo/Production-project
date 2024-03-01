@@ -11,8 +11,7 @@ import {
 } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import Avatar from '@/shared/ui/Avatar/Avatar';
-import { Dropdown } from '@/shared/ui/Popups';
+import { Avatar, Dropdown } from '@/shared/ui';
 import { RoutePath } from '@/shared/const/router';
 
 interface AvatarDropdownProps {

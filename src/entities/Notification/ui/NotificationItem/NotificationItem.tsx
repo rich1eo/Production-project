@@ -1,8 +1,7 @@
 import { memo } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card, CardTheme } from '@/shared/ui/Card/Card';
-import Text from '@/shared/ui/Text/Text';
+import { Card, CardTheme, Text } from '@/shared/ui';
 
 import { Notification } from '../../model/types/notification';
 
@@ -27,7 +26,12 @@ export const NotificationItem = memo(
 
     if (notification.href) {
       return (
-        <a className={styles.link} target="_blank" href={notification.href} rel="noreferrer">
+        <a
+          className={styles.link}
+          target="_blank"
+          href={notification.href}
+          rel="noreferrer"
+        >
           {content}
         </a>
       );

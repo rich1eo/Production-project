@@ -4,10 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
-import { Button } from '@/shared/ui/Button/Button';
+import { Button, HStack } from '@/shared/ui';
 import { getArticleDetailsData } from '@/entities/Article';
-import { HStack } from '@/shared/ui/Stack';
+import { RoutePath } from '@/shared/const/router';
 
 import { getCanEditArticle } from '../../model/selectors/article';
 

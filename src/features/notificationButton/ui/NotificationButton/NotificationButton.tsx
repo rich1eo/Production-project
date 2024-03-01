@@ -2,11 +2,9 @@ import { memo, useCallback, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 
 import { NotificationList } from '@/entities/Notification';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import { Button, ButtonTheme, Popover, Drawer } from '@/shared/ui';
 import Notification from '@/shared/assets/icons/notification.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Popover } from '@/shared/ui/Popups';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
 
 import styles from './NotificationButton.module.scss';
 
@@ -27,7 +25,7 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
   }, []);
 
   const trigger = (
-    <Button onClick={handleOpenDrawer} theme={ThemeButton.CLEAR}>
+    <Button onClick={handleOpenDrawer} theme={ButtonTheme.CLEAR}>
       <Notification className={styles.notification} />
     </Button>
   );

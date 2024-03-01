@@ -8,7 +8,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import DynamicModuleLoader, {
   ReducerList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui';
 import { Page } from '@/widgets/Page';
 
 import { articleDetailsPageReducer } from '../../model/slice';

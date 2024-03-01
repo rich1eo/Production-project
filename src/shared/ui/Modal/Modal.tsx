@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 
 import { Mods, classNames } from '@/shared/lib/classNames/classNames';
+import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { useTheme } from '@/app/providers/ThemeProvider';
+
 import { Portal } from '../Portal/Portal';
 import { Overlay } from '../Overlay/Overlay';
 
 import styles from './Modal.module.scss';
-import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 
 interface ModalProps {
   children: ReactNode;
@@ -16,7 +17,7 @@ interface ModalProps {
   className?: string;
 }
 
-export default function Modal(props: ModalProps) {
+export const Modal = (props: ModalProps) => {
   const { className, children, isOpen, lazy, onClose } = props;
   const { close, isClosing, isMounted } = useModal({
     animationDelay: 300,
@@ -49,4 +50,4 @@ export default function Modal(props: ModalProps) {
       </div>
     </Portal>
   );
-}
+};

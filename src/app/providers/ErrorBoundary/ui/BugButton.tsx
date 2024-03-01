@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui';
 
 // Компонент для тестирования ErrorBoundary
 export default function BugButton() {
@@ -9,7 +9,7 @@ export default function BugButton() {
   const { t } = useTranslation();
 
   function handleThrowError() {
-    setError(state => !state);
+    setError((state) => !state);
   }
 
   useEffect(() => {

@@ -1,13 +1,9 @@
-import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card } from '@/shared/ui/Card/Card';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import Text from '@/shared/ui/Text/Text';
-import Avatar from '@/shared/ui/Avatar/Avatar';
+import { Avatar, AppLink, Card, Button, ButtonTheme, Text } from '@/shared/ui';
+import { RoutePath } from '@/shared/const/router';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 
 import { Article, ArticleTextBlock } from '../../model/types/article';
@@ -71,7 +67,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
               to={RoutePath.articles_details + article.id}
               target={target}
             >
-              <Button theme={ThemeButton.OUTLINE}>
+              <Button theme={ButtonTheme.OUTLINE}>
                 {t('Читать далее...')}
               </Button>
             </AppLink>

@@ -3,11 +3,9 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
-import { Input } from '@/shared/ui/Input/Input';
+import { Button, ButtonTheme, Input, Text, TextTheme } from '@/shared/ui';
 import { loginActions, loginReducer } from '@/features/authByUsername';
 import { loginByUsername } from '@/features/authByUsername';
-import Text, { TextTheme } from '@/shared/ui/Text/Text';
 import DynamicModuleLoader, {
   ReducerList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
@@ -31,7 +29,7 @@ const initialReducers: ReducerList = {
 
 const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
   const { t } = useTranslation();
-  const dispath = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   const username = useSelector(getLoginUsername);
   const password = useSelector(getLoginPassword);
@@ -40,25 +38,25 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
 
   const handleChangeUsername = useCallback(
     (value: string) => {
-      dispath(loginActions.setUsername(value));
+      dispatch(loginActions.setUsername(value));
     },
-    [dispath]
+    [dispatch]
   );
 
   const handleChangePassword = useCallback(
     (value: string) => {
-      dispath(loginActions.setPassword(value));
+      dispatch(loginActions.setPassword(value));
     },
-    [dispath]
+    [dispatch]
   );
 
   const handleLoginClick = useCallback(async () => {
-    const res = await dispath(loginByUsername({ username, password }));
+    const res = await dispatch(loginByUsername({ username, password }));
 
     if (res.meta.requestStatus === 'fulfilled') {
       onSuccess();
     }
-  }, [onSuccess, dispath, password, username]);
+  }, [onSuccess, dispatch, password, username]);
 
   return (
     <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
@@ -84,7 +82,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
           />
         )}
         <Button
-          theme={ThemeButton.OUTLINE}
+          theme={ButtonTheme.OUTLINE}
           onClick={handleLoginClick}
           disabled={isLoading}
         >

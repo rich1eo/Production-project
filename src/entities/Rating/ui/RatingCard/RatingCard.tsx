@@ -2,14 +2,19 @@ import { memo, useCallback, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 
-import { Button, ButtonSize, ThemeButton } from '@/shared/ui/Button/Button';
-import { Card } from '@/shared/ui/Card/Card';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
-import { Input } from '@/shared/ui/Input/Input';
-import Modal from '@/shared/ui/Modal/Modal';
-import { HStack, VStack } from '@/shared/ui/Stack';
-import { StarRating } from '@/shared/ui/StarRating/StarRating';
-import Text from '@/shared/ui/Text/Text';
+import {
+  Card,
+  Drawer,
+  Input,
+  Modal,
+  HStack,
+  VStack,
+  StarRating,
+  Button,
+  ButtonSize,
+  ButtonTheme,
+  Text,
+} from '@/shared/ui';
 
 interface RatingCardProps {
   className?: string;
@@ -85,10 +90,10 @@ export const RatingCard = memo((props: RatingCardProps) => {
           <VStack max gap="32">
             {modalContent}
             <HStack max gap="8" justify="end">
-              <Button theme={ThemeButton.OUTLINE} onClick={handleAccept}>
+              <Button theme={ButtonTheme.OUTLINE} onClick={handleAccept}>
                 {t('Send')}
               </Button>
-              <Button theme={ThemeButton.OUTLINE_RED} onClick={handleCancel}>
+              <Button theme={ButtonTheme.OUTLINE_RED} onClick={handleCancel}>
                 {t('Cancel')}
               </Button>
             </HStack>

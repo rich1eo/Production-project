@@ -2,8 +2,7 @@ import { memo, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonSize, ThemeButton } from '@/shared/ui/Button/Button';
-import { VStack } from '@/shared/ui/Stack';
+import { Button, ButtonSize, ButtonTheme, VStack } from '@/shared/ui';
 import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
 import { LangSwitcher } from '@/widgets/LangSwitcher';
 
@@ -42,7 +41,7 @@ const SideBar = memo(({ className }: SideBarProps) => {
       data-testid="sidebar"
     >
       <Button
-        theme={ThemeButton.BACKGROUND_INVERTED}
+        theme={ButtonTheme.BACKGROUND_INVERTED}
         onClick={handleToggle}
         data-testid="sidebar-toggle"
         className={styles.collapsedBtn}

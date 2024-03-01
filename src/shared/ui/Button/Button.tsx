@@ -4,7 +4,7 @@ import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 
 import styles from './Button.module.scss';
 
-export enum ThemeButton {
+export enum ButtonTheme {
   CLEAR = 'clear',
   CLEAR_INVERTED = 'clearInverted',
   OUTLINE = 'outline',
@@ -22,7 +22,7 @@ export enum ButtonSize {
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: ReactNode;
-  theme?: ThemeButton;
+  theme?: ButtonTheme;
   square?: boolean;
   size?: ButtonSize;
   disabled?: boolean;
@@ -33,7 +33,7 @@ export const Button = memo((props: ButtonProps) => {
   const {
     className,
     children,
-    theme = ThemeButton.OUTLINE,
+    theme = ButtonTheme.OUTLINE,
     square,
     size = ButtonSize.M,
     disabled,

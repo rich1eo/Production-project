@@ -7,12 +7,11 @@ import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import Text, { TextTheme } from '@/shared/ui/Text/Text';
+import { Text, TextTheme, VStack } from '@/shared/ui';
 import { ProfileCard } from '@/entities/Profile';
 import DynamicModuleLoader, {
   ReducerList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { VStack } from '@/shared/ui/Stack';
 import { ValidationProfileError } from '@/features/editableProfileCard';
 
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
