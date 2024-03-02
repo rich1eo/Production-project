@@ -23,6 +23,7 @@ module.exports = {
     'i18next',
     'react-hooks',
     'rich1e-plugin',
+    'unused-imports',
   ],
   rules: {
     indent: ['warn', 2],
@@ -50,6 +51,8 @@ module.exports = {
         ],
       },
     ],
+    '@typescript-eslint/no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'error',
   },
   settings: {
     react: {
