@@ -33,6 +33,7 @@ export default {
     '\\.svg': path.resolve(__dirname, 'JestEmptyComponent.tsx'),
     '\\.(s?css)$': 'identity-obj-proxy',
     axios: 'axios/dist/node/axios.cjs',
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
 
   // A set of global variables that need to be available in all test environments
