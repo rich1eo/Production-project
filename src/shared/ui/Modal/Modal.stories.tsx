@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Modal from './Modal';
+import { Modal } from './Modal';
 
 export default {
   title: 'shared/Modal',
@@ -8,7 +8,7 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = args => <Modal {...args} />;
+const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
 
 export const ModalLight = Template.bind({});
 ModalLight.args = {
