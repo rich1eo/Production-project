@@ -5,8 +5,7 @@ import { Select } from '@/shared/ui';
 import type { SelectOption } from '@/shared/ui';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SortOrder } from '@/shared/types';
-
-import { ArticleSortField } from '../../model/consts/consts';
+import { ArticleSortField } from '@/entities/Article';
 
 import styles from './ArticleSortSelector.module.scss';
 

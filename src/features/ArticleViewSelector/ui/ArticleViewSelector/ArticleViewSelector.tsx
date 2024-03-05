@@ -5,9 +5,8 @@ import ListIcon from '@/shared/assets/icons/burger.svg';
 import WindowIcon from '@/shared/assets/icons/window.svg';
 import { Button, ButtonTheme } from '@/shared/ui';
 
-import { ArticleListView } from '../../model/consts/consts';
-
 import styles from './ArticleViewSelector.module.scss';
+import { ArticleListView } from '@/entities/Article';
 
 interface ArticleViewSelectorProps {
   className?: string;

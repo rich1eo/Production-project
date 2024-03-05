@@ -5,11 +5,11 @@ import { useTranslation } from 'react-i18next';
 import {
   ArticleListView,
   ArticleSortField,
-  ArticleSortSelector,
-  ArticleViewSelector,
   ArticleType,
-  ArticleTypeTabs,
 } from '@/entities/Article';
+import { ArticleSortSelector } from '@/features/ArticleSortSelector';
+import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
+import { ArticleViewSelector } from '@/features/ArticleViewSelector';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { Card, Input } from '@/shared/ui';
