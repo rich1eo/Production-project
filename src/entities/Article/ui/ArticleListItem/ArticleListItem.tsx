@@ -3,7 +3,7 @@ import { HTMLAttributeAnchorTarget, memo } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar, AppLink, Card, Button, ButtonTheme, Text } from '@/shared/ui';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleDetails } from '@/shared/const/router';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 
 import { Article, ArticleTextBlock } from '../../model/types/article';
@@ -63,10 +63,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             />
           )}
           <div className={styles.footer}>
-            <AppLink
-              to={RoutePath.articles_details + article.id}
-              target={target}
-            >
+            <AppLink to={getRouteArticleDetails(article.id)} target={target}>
               <Button theme={ButtonTheme.OUTLINE}>
                 {t('Читать далее...')}
               </Button>
@@ -84,7 +81,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         className,
         styles[view],
       ])}
-      to={RoutePath.articles_details + article.id}
+      to={getRouteArticleDetails(article.id)}
       target={target}
     >
       <Card className={styles.card}>

@@ -2,7 +2,7 @@ import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleCreate } from '@/shared/const/router';
 import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/authByUsername';
 import { AvatarDropdown } from '@/features/avatarDropdown';
@@ -47,7 +47,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
         />
         <AppLink
           theme={AppLinkTheme.SECONDARY}
-          to={RoutePath.articles_create}
+          to={getRouteArticleCreate()}
           className={styles.createBtn}
         >
           {t('Create article')}
