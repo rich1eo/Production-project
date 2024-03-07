@@ -4,5 +4,5 @@ import { Page } from '@/widgets/Page';
 export default function ForbiddenPage() {
   const { t } = useTranslation('forbidden');
 
-  return <Page>{t('Forbidden page')}</Page>;
+  return <Page data-testid="ForbiddenPage">{t('Forbidden page')}</Page>;
 }
