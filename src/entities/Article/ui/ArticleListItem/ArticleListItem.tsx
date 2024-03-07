@@ -2,7 +2,16 @@ import { useTranslation } from 'react-i18next';
 import { HTMLAttributeAnchorTarget, memo } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Avatar, AppLink, Card, Button, ButtonTheme, Text } from '@/shared/ui';
+import {
+  Avatar,
+  AppLink,
+  Card,
+  Button,
+  ButtonTheme,
+  Text,
+  AppImage,
+  Skeleton,
+} from '@/shared/ui';
 import { getRouteArticleDetails } from '@/shared/const/router';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 
@@ -55,7 +64,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           </div>
           <Text title={article.title} className={styles.title} />
           {types}
-          <img src={article.img} className={styles.img} alt={article.title} />
+          <AppImage
+            src={article.img}
+            className={styles.img}
+            alt={article.title}
+            fallback={<Skeleton width="100%" height={250} />}
+          />
           {textBlock && (
             <ArticleTextBlockComponent
               block={textBlock}
@@ -86,7 +100,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     >
       <Card className={styles.card}>
         <div className={styles.imgWrapper}>
-          <img src={article.img} alt={article.title} className={styles.img} />
+          <AppImage
+            src={article.img}
+            alt={article.title}
+            className={styles.img}
+            fallback={<Skeleton width="100%" height={200} border="6" />}
+          />
           <Text text={article.createdAt} className={styles.date} />
         </div>
         <div className={styles.infoWrapper}>

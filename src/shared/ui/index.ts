@@ -14,3 +14,4 @@ export * from './Stack';
 export * from './StarRating';
 export * from './Tabs';
 export * from './Text';
+export * from './AppImage';
