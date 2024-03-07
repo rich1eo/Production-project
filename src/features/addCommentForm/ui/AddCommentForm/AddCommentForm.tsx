@@ -26,42 +26,41 @@ const reducers: ReducerList = {
   addCommentForm: addNewCommentFormReducer,
 };
 
-const AddCommentForm = memo(
-  ({ className, onSendComment }: AddCommentFormProps) => {
-    const { t } = useTranslation('article-details');
-    const text = useSelector(getAddCommentFormText);
-    const dispatch = useAppDispatch();
+const AddCommentForm = memo((props: AddCommentFormProps) => {
+  const { className, onSendComment } = props;
+  const { t } = useTranslation('article-details');
+  const text = useSelector(getAddCommentFormText);
+  const dispatch = useAppDispatch();
 
-    const handleCommentTextChange = useCallback(
-      (value: string) => {
-        dispatch(addNewCommentFormActions.setText(value));
-      },
-      [dispatch]
-    );
+  const handleCommentTextChange = useCallback(
+    (value: string) => {
+      dispatch(addNewCommentFormActions.setText(value));
+    },
+    [dispatch]
+  );
 
-    const handleSendComment = useCallback(() => {
-      onSendComment(text);
-      handleCommentTextChange('');
-    }, [handleCommentTextChange, onSendComment, text]);
+  const handleSendComment = useCallback(() => {
+    onSendComment(text);
+    handleCommentTextChange('');
+  }, [handleCommentTextChange, onSendComment, text]);
 
-    return (
-      <DynamicModuleLoader reducers={reducers}>
-        <HStack
-          justify="between"
-          max
-          className={classNames(styles.AddCommentForm, {}, [className])}
-        >
-          <Input
-            className={styles.input}
-            placeholder={t('Add new comment')}
-            value={text}
-            onChange={handleCommentTextChange}
-          />
-          <Button onClick={handleSendComment}>{t('Send')}</Button>
-        </HStack>
-      </DynamicModuleLoader>
-    );
-  }
-);
+  return (
+    <DynamicModuleLoader reducers={reducers}>
+      <HStack
+        justify="between"
+        max
+        className={classNames(styles.AddCommentForm, {}, [className])}
+      >
+        <Input
+          className={styles.input}
+          placeholder={t('Add new comment')}
+          value={text}
+          onChange={handleCommentTextChange}
+        />
+        <Button onClick={handleSendComment}>{t('Send')}</Button>
+      </HStack>
+    </DynamicModuleLoader>
+  );
+});
 
 export default AddCommentForm;

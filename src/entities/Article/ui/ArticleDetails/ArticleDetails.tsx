@@ -1,6 +1,5 @@
 /* eslint-disable indent */
 import { memo, useCallback, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import DynamicModuleLoader, {
@@ -20,11 +19,7 @@ import {
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 
-import {
-  getArticleDetailsData,
-  getArticleDetailsError,
-  getArticleDetailsIsLoading,
-} from '../../model/selectors/getArticleDetails';
+import * as selectors from '../../model/selectors/getArticleDetails';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { ArticleBlock } from '../../model/types/article';
@@ -47,9 +42,9 @@ const reducers: ReducerList = {
 export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
   const { t } = useTranslation('article-details');
   const dispatch = useAppDispatch();
-  const isLoading = useSelector(getArticleDetailsIsLoading);
-  const error = useSelector(getArticleDetailsError);
-  const data = useSelector(getArticleDetailsData);
+  const isLoading = selectors.useArticleDetailsIsLoading();
+  const error = selectors.useArticleDetailsError();
+  const data = selectors.useArticleDetailsData();
 
   useEffect(() => {
     if (__PROJECT__ !== 'storybook') {

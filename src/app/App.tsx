@@ -4,17 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { NavBar } from '@/widgets/NavBar';
 import { SideBar } from '@/widgets/SideBar';
-import { getUserInited, userActions } from '@/entities/User';
+import { getUserInited } from '@/entities/User';
 
 import { AppRouter } from './providers/router';
+import { useUserActions } from '@/entities/User';
 
 export default function App() {
   const dispatch = useDispatch();
   const inited = useSelector(getUserInited);
+  const { initAuthData } = useUserActions();
 
   useEffect(() => {
-    dispatch(userActions.initAuthData());
-  }, [dispatch]);
+    initAuthData();
+  }, [initAuthData]);
 
   return (
     <div className={classNames('app')}>
