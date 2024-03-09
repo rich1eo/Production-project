@@ -10,7 +10,7 @@ jest.mock('axios');
 
 const mockedAxios = jest.mocked(axios, true);
 
-export default class TestAsyncThunk<Return, Arg, RejectedValue> {
+export class TestAsyncThunk<Return, Arg, RejectedValue> {
   dispatch: jest.MockedFn<any>;
 
   getState: () => StateSchema;
