@@ -2,13 +2,11 @@ import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import { Button, ButtonTheme, Input, Text, TextTheme } from '@/shared/ui';
 import { loginActions, loginReducer } from '@/features/authByUsername';
 import { loginByUsername } from '@/features/authByUsername';
-import DynamicModuleLoader, {
-  ReducerList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducerList } from '@/shared/lib';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';

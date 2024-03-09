@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 
 import styles from './AppLink.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 
 export enum AppLinkTheme {
   PRIMARY = 'primary',

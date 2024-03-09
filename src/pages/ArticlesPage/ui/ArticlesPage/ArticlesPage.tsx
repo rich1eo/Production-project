@@ -2,10 +2,8 @@ import { memo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { Page } from '@/widgets/Page';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import DynamicModuleLoader, {
-  ReducerList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { classNames } from '@/shared/lib';
+import { DynamicModuleLoader, ReducerList } from '@/shared/lib';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 

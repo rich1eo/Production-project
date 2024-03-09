@@ -1,17 +1,14 @@
 import { Suspense, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import { NavBar } from '@/widgets/NavBar';
 import { SideBar } from '@/widgets/SideBar';
-import { getUserInited } from '@/entities/User';
+import { useUserActions, useUserInited } from '@/entities/User';
 
 import { AppRouter } from './providers/router';
-import { useUserActions } from '@/entities/User';
 
 export default function App() {
-  const dispatch = useDispatch();
-  const inited = useSelector(getUserInited);
+  const inited = useUserInited();
   const { initAuthData } = useUserActions();
 
   useEffect(() => {

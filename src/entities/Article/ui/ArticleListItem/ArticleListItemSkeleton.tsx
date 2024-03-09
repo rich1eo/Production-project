@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import { Card, Skeleton } from '@/shared/ui';
 
 import { ArticleListView } from '../../model/consts/consts';

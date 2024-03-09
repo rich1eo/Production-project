@@ -4,10 +4,8 @@ import { useParams } from 'react-router-dom';
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleRating } from '@/features/articleRating';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import DynamicModuleLoader, {
-  ReducerList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { classNames } from '@/shared/lib';
+import { DynamicModuleLoader, ReducerList } from '@/shared/lib';
 import { VStack } from '@/shared/ui';
 import { Page } from '@/widgets/Page';
 

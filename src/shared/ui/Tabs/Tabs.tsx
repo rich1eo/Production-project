@@ -2,7 +2,7 @@ import { ReactNode, memo, useCallback } from 'react';
 
 import styles from './Tabs.module.scss';
 
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import { Card, CardTheme } from '../Card/Card';
 
 export interface TabItem {

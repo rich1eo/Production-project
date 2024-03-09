@@ -9,7 +9,7 @@ import {
   isUserManager,
   userActions,
 } from '@/entities/User';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar, Dropdown } from '@/shared/ui';
 import { getRouteAdminPanel, getRouteProfile } from '@/shared/const/router';

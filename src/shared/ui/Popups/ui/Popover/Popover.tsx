@@ -2,7 +2,7 @@ import { ReactNode, memo } from 'react';
 import { Popover as HPopover } from '@headlessui/react';
 
 import { DropdownDirection } from '@/shared/types/ui';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 
 import { mapDirectionClass } from '../../styles/consts';
 

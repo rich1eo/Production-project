@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 import { Button, ButtonTheme } from '@/shared/ui';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { Theme } from '@/shared/const/theme';
 import LightIcon from '@/shared/assets/icons/theme-light.svg';

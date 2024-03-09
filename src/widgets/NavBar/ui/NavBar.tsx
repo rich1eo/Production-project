@@ -7,7 +7,7 @@ import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/authByUsername';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import { NotificationButton } from '@/features/notificationButton';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import {
   AppLink,
   AppLinkTheme,

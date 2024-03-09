@@ -10,7 +10,7 @@ import {
 import { ArticleSortSelector } from '@/features/ArticleSortSelector';
 import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
 import { ArticleViewSelector } from '@/features/ArticleViewSelector';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { Card, Input } from '@/shared/ui';
 import { SortOrder } from '@/shared/types/sort';

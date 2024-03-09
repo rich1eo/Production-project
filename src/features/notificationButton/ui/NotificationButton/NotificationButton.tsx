@@ -4,7 +4,7 @@ import { BrowserView, MobileView } from 'react-device-detect';
 import { NotificationList } from '@/entities/Notification';
 import { Button, ButtonTheme, Popover, Drawer } from '@/shared/ui';
 import Notification from '@/shared/assets/icons/notification.svg';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 
 import styles from './NotificationButton.module.scss';
 

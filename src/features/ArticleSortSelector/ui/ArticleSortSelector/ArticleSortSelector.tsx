@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Select } from '@/shared/ui';
 import type { SelectOption } from '@/shared/ui';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import { SortOrder } from '@/shared/types/sort';
 import { ArticleSortField } from '@/entities/Article';
 

@@ -18,7 +18,7 @@ interface DynamicModuleLoaderProps {
   reducers: ReducerList;
 }
 
-export default function DynamicModuleLoader(props: DynamicModuleLoaderProps) {
+export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
   const { children, removeAfterUnmount = true, reducers } = props;
 
   const dispatch = useDispatch();
@@ -45,4 +45,4 @@ export default function DynamicModuleLoader(props: DynamicModuleLoaderProps) {
   }, []);
 
   return <>{children}</>;
-}
+};

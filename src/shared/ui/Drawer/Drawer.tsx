@@ -1,6 +1,6 @@
 import { memo, ReactNode, useCallback, useEffect } from 'react';
 
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import {
   AnimationProvider,
   useAnimationLibs,

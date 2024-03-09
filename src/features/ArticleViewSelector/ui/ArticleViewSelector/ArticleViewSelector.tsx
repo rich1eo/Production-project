@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import ListIcon from '@/shared/assets/icons/burger.svg';
 import WindowIcon from '@/shared/assets/icons/window.svg';
 import { Button, ButtonTheme } from '@/shared/ui';
