@@ -1,10 +1,7 @@
 import { memo } from 'react';
-
-import styles from './ArticleEditPage.module.scss';
-
-import { classNames } from '@/shared/lib';
-import { Page } from '@/widgets/Page';
 import { useParams } from 'react-router-dom';
+
+import { Page } from '@/widgets/Page';
 
 interface ArticleEditPageProps {
   className?: string;
@@ -15,7 +12,7 @@ const ArticleEditPage = memo(({ className }: ArticleEditPageProps) => {
   const isEdit = Boolean(id);
 
   return (
-    <Page className={classNames(styles.ArticleEditPage, {}, [className])}>
+    <Page className={className}>
       {isEdit ? 'Редактирование статьи с id: ' + id : 'Создание новой статьи'}
     </Page>
   );
