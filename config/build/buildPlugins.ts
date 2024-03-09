@@ -17,7 +17,6 @@ export function buildPlugins({
 }: BuildOptions): webpack.WebpackPluginInstance[] {
   const isProd = !isDev;
   const plugins: webpack.WebpackPluginInstance[] = [
-    new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
@@ -49,6 +48,7 @@ export function buildPlugins({
         openAnalyzer: false,
       })
     );
+    plugins.push(new webpack.ProgressPlugin());
   }
 
   if (isProd) {
