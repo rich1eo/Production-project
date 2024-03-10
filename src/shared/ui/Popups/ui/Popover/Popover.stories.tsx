@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Button } from '@/shared/ui';
+import { Button } from '../../../Button';
 import { Popover } from './Popover';
 
 export default {

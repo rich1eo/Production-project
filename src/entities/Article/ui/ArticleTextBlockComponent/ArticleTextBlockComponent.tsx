@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { classNames } from '@/shared/lib';
 import { Text } from '@/shared/ui';
-import type { ArticleTextBlock } from '@/entities/Article';
+import type { ArticleTextBlock } from '../../model/types/article';
 
 import styles from './ArticleTextBlockComponent.module.scss';
 
