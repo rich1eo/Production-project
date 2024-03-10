@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import withMock from 'storybook-addon-mock';
 
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
@@ -22,7 +21,6 @@ const article: Article = {
 export default {
   title: 'features/ArticleRecommendationsList',
   component: ArticleRecommendationsList,
-  decorators: [withMock],
   parameters: {
     mockData: [
       {

@@ -1,5 +1,5 @@
 import { memo, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -14,6 +14,7 @@ import { classNames } from '@/shared/lib';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { Card, Input } from '@/shared/ui';
 import { SortOrder } from '@/shared/types/sort';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import { articlesPageActions } from '../../model/slice/articlePageSlice';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
@@ -35,7 +36,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
   const { className } = props;
 
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const view = useSelector(getArticlesPageView);
   const sort = useSelector(getArticlesPageSort);

@@ -14,7 +14,7 @@ export default {
       },
     },
     '@storybook/addon-interactions',
-    'storybook-addon-mock/register',
+    'storybook-addon-mock',
     'storybook-addon-themes',
   ],
   framework: '@storybook/react',

@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import withMock from 'storybook-addon-mock';
 
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
@@ -10,7 +9,6 @@ import ArticlesPage from './ArticlesPage';
 export default {
   title: 'pages/ArticlePage/ArticlesPage',
   component: ArticlesPage,
-  decorators: [withMock],
   parameters: {
     mockData: [
       {
