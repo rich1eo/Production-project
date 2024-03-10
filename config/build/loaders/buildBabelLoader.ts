@@ -8,15 +8,9 @@ interface BuildBabelLoaderProps extends BuildOptions {
 export function buildBabelLoader({ isDev, isTsx }: BuildBabelLoaderProps) {
   const isProd = !isDev;
 
-  const exclude = [/node_modules/];
-
-  if (isProd) {
-    exclude.push(/\.test.ts$/);
-  }
-
   return {
     test: isTsx ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
-    exclude,
+    exclude: /node_modules/,
     use: {
       loader: 'babel-loader',
       options: {

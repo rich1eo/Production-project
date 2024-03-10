@@ -2,7 +2,7 @@
 /node_modules
 /extractedTranslations
 /storybook-static
-/reports
+/reports/unit
 .loki/report.html
 .loki/report.json
 
