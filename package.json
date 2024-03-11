@@ -1,10 +1,10 @@
 {
   "name": "production-project",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Collaborative blog about IT, computer science and anything related to the Internet",
+  "main": "src/index.tsx",
   "keywords": [],
-  "author": "",
+  "author": "Vlad Rychkov",
   "license": "ISC",
   "scripts": {
     "start": "webpack serve --env port=3000",
@@ -104,7 +104,7 @@
     "typescript": "^4.5.5",
     "vite": "^3.1.0",
     "vite-plugin-svgr": "^2.2.1",
-    "webpack": "^5.69.1",
+    "webpack": "^5.76.0",
     "webpack-bundle-analyzer": "^4.9.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
