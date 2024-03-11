@@ -1,26 +1,30 @@
-import { DefinePlugin, RuleSetRule, Configuration } from 'webpack';
 import path from 'path';
+import { Configuration, DefinePlugin, RuleSetRule } from 'webpack';
+import { StorybookConfig } from '@storybook/react-webpack5';
+
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
 import { BuildPaths } from '../build/types/config';
 
-export default {
+const getAbsolutePath = (packageName: string): any =>
+  path.dirname(require.resolve(path.join(packageName, 'package.json')));
+
+const config: StorybookConfig = {
   stories: ['../../src/**/*.stories.@(js|jsx|ts|tsx)'],
+
+  framework: getAbsolutePath('@storybook/react-webpack5'),
+
   addons: [
-    '@storybook/addon-links',
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        background: false,
-      },
-    },
-    '@storybook/addon-interactions',
-    'storybook-addon-mock',
-    'storybook-addon-themes',
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-themes'),
+    getAbsolutePath('@storybook/addon-interactions'),
+    getAbsolutePath('storybook-addon-mock'),
   ],
-  framework: '@storybook/react',
-  core: {
-    builder: 'webpack5',
+
+  docs: {
+    autodocs: false,
   },
+
   webpackFinal: async (config: Configuration) => {
     const paths: BuildPaths = {
       build: '',
@@ -63,3 +67,5 @@ export default {
     return config;
   },
 };
+
+export default config;
