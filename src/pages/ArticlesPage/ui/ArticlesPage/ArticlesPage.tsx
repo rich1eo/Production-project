@@ -40,6 +40,7 @@ function ArticlesPage({ className }: ArticlesPageProps) {
       <Page
         onScrollEnd={onLoadNextPart}
         className={classNames('', {}, [className])}
+        data-testid="ArticlesPage"
       >
         <ArticlesPageFilters />
         <ArticleInfiniteList className={styles.list} />
