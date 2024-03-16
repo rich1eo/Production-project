@@ -43,12 +43,14 @@ const ArticleRating = memo((props: ArticleRatingProps) => {
     },
     [articleId, rateArticleMutation, userData?.id]
   );
+
   const handleCancel = useCallback(
     (starsCount: number) => {
       handleRateArticle(starsCount);
     },
     [handleRateArticle]
   );
+
   const handleAccept = useCallback(
     (starsCount: number, feedback?: string) => {
       handleRateArticle(starsCount, feedback);

@@ -58,6 +58,7 @@ export const Flex = (props: FlexProps) => {
     justify = 'start',
     gap,
     max,
+    ...otherProps
   } = props;
 
   const classes = [
@@ -73,6 +74,8 @@ export const Flex = (props: FlexProps) => {
   };
 
   return (
-    <div className={classNames(styles.Flex, mods, classes)}>{children}</div>
+    <div className={classNames(styles.Flex, mods, classes)} {...otherProps}>
+      {children}
+    </div>
   );
 };

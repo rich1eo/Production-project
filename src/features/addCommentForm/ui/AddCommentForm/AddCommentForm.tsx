@@ -48,14 +48,18 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
         justify="between"
         max
         className={classNames(styles.AddCommentForm, {}, [className])}
+        data-testid="AddCommentForm"
       >
         <Input
           className={styles.input}
           placeholder={t('Add new comment')}
           value={text}
           onChange={handleCommentTextChange}
+          data-testid="AddCommentForm.input"
         />
-        <Button onClick={handleSendComment}>{t('Send')}</Button>
+        <Button onClick={handleSendComment} data-testid="AddCommentForm.btn">
+          {t('Send')}
+        </Button>
       </HStack>
     </DynamicModuleLoader>
   );

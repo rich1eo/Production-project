@@ -7,12 +7,12 @@ import styles from './StarRating.module.scss';
 
 interface StarRatingProps {
   className?: string;
-  onSelect?: (startRating: number) => void;
+  onSelect?: (starRating: number) => void;
   size?: number;
   selectedStars?: number;
 }
 
-const start = [1, 2, 3, 4, 5];
+const stars = [1, 2, 3, 4, 5];
 
 export const StarRating = memo((props: StarRatingProps) => {
   const { className, selectedStars = 0, size = 30, onSelect } = props;
@@ -43,18 +43,20 @@ export const StarRating = memo((props: StarRatingProps) => {
 
   return (
     <div className={classNames(styles.StarRating, {}, [className])}>
-      {start.map((starsNumber) => (
+      {stars.map((starNumber) => (
         <StarIcon
-          key={starsNumber}
+          key={starNumber}
           className={classNames(styles.starIcon, {
-            [styles.hovered]: currentStarsCount >= starsNumber,
+            [styles.hovered]: currentStarsCount >= starNumber,
             [styles.selected]: isSelected,
           })}
           width={size}
           height={size}
-          onMouseEnter={handleHover(starsNumber)}
+          onMouseEnter={handleHover(starNumber)}
           onMouseLeave={handleLeave}
-          onClick={handleClick(starsNumber)}
+          onClick={handleClick(starNumber)}
+          data-testid={`StarRating.${starNumber}`}
+          data-selected={currentStarsCount >= starNumber}
         />
       ))}
     </div>

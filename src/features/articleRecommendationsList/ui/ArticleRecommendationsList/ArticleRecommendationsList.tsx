@@ -33,6 +33,7 @@ export const ArticleRecommendationsList = memo(
         className={classNames(styles.ArticleRecommendationsList, {}, [
           className,
         ])}
+        data-testid="ArticleRecommendationList"
       >
         <Text size={TextSize.L} title={t('Recommendations')} />
         <ArticleList articles={articles} target="_blank" />

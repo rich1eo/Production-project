@@ -88,6 +88,7 @@ export function ProfileCard(props: ProfileCardProps) {
       max
       gap="16"
       className={classNames(styles.ProfileCard, mods, [className])}
+      data-testid="ProfileCard"
     >
       {data?.avatar && (
         <HStack justify="center" max>
