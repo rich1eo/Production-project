@@ -11,6 +11,7 @@ module.exports = {
     'plugin:i18next/recommended',
     'plugin:storybook/recommended',
     'plugin:react-hooks/recommended',
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -26,13 +27,9 @@ module.exports = {
     'unused-imports',
   ],
   rules: {
-    indent: ['warn', 2],
-    'linebreak-style': ['error', 'unix'],
-    quotes: ['warn', 'single'],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '_' }],
     '@typescript-eslint/ban-ts-comment': 'warn',
-    semi: ['error', 'always', { omitLastInOneLineBlock: true }],
     'react/display-name': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
     'rich1e-plugin/layer-imports': [
