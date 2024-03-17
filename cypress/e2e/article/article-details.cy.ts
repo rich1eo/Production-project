@@ -29,6 +29,7 @@ describe('Authorized User visit Article Detail page', () => {
   });
 
   it('successfully create rating', () => {
+    cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
     cy.getByTestId('ArticleDetails.Info');
     cy.getByTestId('RatingCard').scrollIntoView();
     cy.setRate(5, 'feedback');
