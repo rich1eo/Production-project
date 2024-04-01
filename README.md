@@ -175,6 +175,21 @@ Clear.args = {
 
 ---
 
+### Работа с feature flags
+
+Разрешено использование featureFlags только с помощью хелпера [toggleFeatures](/src/shared/lib/features/toggleFeatures.ts).
+
+В него передается объект с опциями:
+
+- name: название фичи флага
+- on: функция, срабатывающая после включения фичи
+- off: функция, срабатывающая после выключения фичи
+
+Для автоматического удаления фичи используется скрипт [removeFeature](/scripts/removeFeature.ts), который принимает 2 аргумента:
+
+1. name: название фичи флага
+2. featureState: состояние фичи (on/off)
+
 ## Сущности (entities)
 
 - [Article](/src/entities/Article/README.md)
