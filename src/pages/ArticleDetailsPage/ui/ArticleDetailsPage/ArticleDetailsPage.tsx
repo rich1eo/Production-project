@@ -1,20 +1,21 @@
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleRating } from '@/features/articleRating';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { classNames } from '@/shared/lib';
 import { DynamicModuleLoader, ReducerList } from '@/shared/lib';
-import { VStack } from '@/shared/ui';
+import { Card, VStack } from '@/shared/ui';
 import { Page } from '@/widgets/Page';
+import { ToggleFeature } from '@/shared/lib/features';
 
 import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 import styles from './ArticleDetailsPage.module.scss';
-import { toggleFeature } from '@/shared/lib/features';
 
 interface ArticlesPageProps {
   className?: string;
@@ -26,16 +27,11 @@ const reducers: ReducerList = {
 
 function ArticleDetailsPage({ className }: ArticlesPageProps) {
   const { id } = useParams<{ id: string }>();
+  const { t } = useTranslation('article-details');
 
   if (!id) {
     return null;
   }
-
-  const articleRating = toggleFeature({
-    name: 'isArticleRatingEnabled',
-    on: () => <ArticleRating articleId={id} />,
-    off: () => null,
-  });
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -43,7 +39,11 @@ function ArticleDetailsPage({ className }: ArticlesPageProps) {
         <VStack gap="16" max>
           <ArticleDetailsPageHeader />
           <ArticleDetails id={id} />
-          {articleRating}
+          <ToggleFeature
+            name="isArticleRatingEnabled"
+            on={<ArticleRating articleId={id} />}
+            off={<Card>{t('article.details.rating.card.not.available')}</Card>}
+          />
           <ArticleRecommendationsList className={styles.recommendations} />
           <ArticleDetailsComments id={id} />
         </VStack>
