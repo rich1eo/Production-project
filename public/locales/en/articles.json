@@ -1,3 +1,5 @@
 {
-  "Error during loading articles": "Error during loading articles"
+  "Error during loading articles": "Error during loading articles",
+  "articlePageGreeting.title": "Welcome!",
+  "articlePageGreeting.description": "Here you can search and view existing articles on various topics"
 }

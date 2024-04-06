@@ -1,3 +1,5 @@
 {
-  "Error during loading articles": "Ошибка при загрузке статей"
+  "Error during loading articles": "Ошибка при загрузке статей",
+  "articlePageGreeting.title": "Добро пожаловать",
+  "articlePageGreeting.description": "Здесь вы можете искать и просматривать существующие статьи на различные темы"
 }
