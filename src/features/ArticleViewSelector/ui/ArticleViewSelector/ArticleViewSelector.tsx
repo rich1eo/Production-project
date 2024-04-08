@@ -17,11 +17,11 @@ interface ArticleViewSelectorProps {
 const viewTypes = [
   {
     view: ArticleListView.BIG,
-    icon: <ListIcon className={styles.icon} />,
+    icon: <ListIcon className={styles.icon} width={24} height={24} />,
   },
   {
     view: ArticleListView.SMALL,
-    icon: <WindowIcon className={styles.icon} />,
+    icon: <WindowIcon className={styles.icon} width={24} height={24} />,
   },
 ];
 
@@ -41,7 +41,7 @@ export const ArticleViewSelector = memo(
             className={classNames(
               '',
               { [styles.notSelected]: view !== viewType.view },
-              []
+              [],
             )}
           >
             {viewType.icon}
@@ -49,5 +49,5 @@ export const ArticleViewSelector = memo(
         ))}
       </div>
     );
-  }
+  },
 );

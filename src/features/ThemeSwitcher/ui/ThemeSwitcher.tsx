@@ -3,9 +3,7 @@ import { memo, useCallback } from 'react';
 import { Button, ButtonTheme } from '@/shared/ui';
 import { classNames } from '@/shared/lib';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
-import { Theme } from '@/shared/const/theme';
-import LightIcon from '@/shared/assets/icons/theme-light.svg';
-import DarkIcon from '@/shared/assets/icons/theme-dark.svg';
+import ThemeIcon from '@/shared/assets/icons/theme-light.svg';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { saveJsonSettings } from '@/entities/User';
 
@@ -29,7 +27,7 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
       className={classNames('', {}, [className])}
       onClick={handleToggle}
     >
-      {theme === Theme.LIGHT ? <LightIcon /> : <DarkIcon />}
+      <ThemeIcon width={40} height={40} color="var(--inverted-primary-color)" />
     </Button>
   );
 });
