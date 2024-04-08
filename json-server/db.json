@@ -740,10 +740,11 @@
       "password": "123",
       "roles": ["ADMIN"],
       "features": {
-        "isArticleRatingEnabled": true
+        "isArticleRatingEnabled": true,
+        "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_orange_theme",
+        "theme": "app_dark_theme",
         "isArticlesPageHasBeenOpen": true
       },
       "avatar": "https://img.freepik.com/premium-vector/hacker-e-sport-logo-style_192351-49.jpg"
@@ -754,7 +755,8 @@
       "password": "123",
       "roles": ["USER"],
       "features": {
-        "isArticleRatingEnabled": false
+        "isArticleRatingEnabled": false,
+        "isAppRedesigned": false
       },
       "jsonSettings": {
         "theme": "app_dark_theme",
@@ -770,7 +772,8 @@
       "password": "123",
       "roles": ["MANAGER"],
       "features": {
-        "isArticleRatingEnabled": true
+        "isArticleRatingEnabled": true,
+        "isAppRedesigned": true
       },
       "jsonSettings": {
         "theme": "app_dark_theme",
@@ -785,7 +788,8 @@
       "password": "123",
       "roles": ["ADMIN"],
       "features": {
-        "isArticleRatingEnabled": true
+        "isArticleRatingEnabled": true,
+        "isAppRedesigned": true
       },
       "jsonSettings": {
         "theme": "app_dark_theme",

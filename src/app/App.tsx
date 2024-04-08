@@ -9,6 +9,8 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 
 import { AppRouter } from './providers/router';
 import { PageLoader } from '@/widgets/PageLoader';
+import { ToggleFeature } from '@/shared/lib/features';
+import { MainLayout } from '@/shared/layouts/MainLayout';
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -24,14 +26,31 @@ export default function App() {
   }
 
   return (
-    <div className={classNames('app', {}, [theme])}>
-      <Suspense fallback="">
-        <NavBar />
-        <main className="content-page">
-          <SideBar className="no-shrink" />
-          {inited && <AppRouter />}
-        </main>
-      </Suspense>
-    </div>
+    <ToggleFeature
+      name="isAppRedesigned"
+      on={
+        <div className={classNames('app_redesigned', {}, [theme])}>
+          <Suspense fallback="">
+            <MainLayout
+              header={<NavBar />}
+              content={<AppRouter />}
+              sidebar={<SideBar />}
+              toolbar={<div>123123123</div>}
+            />
+          </Suspense>
+        </div>
+      }
+      off={
+        <div className={classNames('app', {}, [theme])}>
+          <Suspense fallback="">
+            <NavBar />
+            <main className="content-page">
+              <SideBar className="no-shrink" />
+              <AppRouter />
+            </main>
+          </Suspense>
+        </div>
+      }
+    />
   );
 }

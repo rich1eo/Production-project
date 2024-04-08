@@ -15,3 +15,4 @@ export * from './StarRating';
 export * from './Tabs';
 export * from './Text';
 export * from './AppImage';
+export * from './AppLogo';

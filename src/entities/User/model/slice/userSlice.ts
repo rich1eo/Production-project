@@ -44,6 +44,9 @@ export const userSlice = buildSlice({
         state._inited = true;
       },
     );
+    builder.addCase(initAuthData.rejected, (state) => {
+      state._inited = true;
+    });
     builder.addCase(saveJsonSettings.rejected, (state) => {
       state._inited = true;
     });

@@ -12,6 +12,7 @@ import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { TestsProps } from '@/shared/types/tests';
 
 import cls from './Page.module.scss';
+import { toggleFeature } from '@/shared/lib/features';
 
 export const PAGE_ID = 'PAGE_ID';
 
@@ -27,7 +28,7 @@ export const Page = memo((props: PageProps) => {
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   const scrollPosition = useSelector((state: StateSchema) =>
-    getUIScrollByPath(state, pathname)
+    getUIScrollByPath(state, pathname),
   );
 
   const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -48,14 +49,20 @@ export const Page = memo((props: PageProps) => {
       uiActions.setScrollPosition({
         position: e.currentTarget.scrollTop,
         path: pathname,
-      })
+      }),
     );
   }, 500);
+
+  const pageCls = toggleFeature({
+    name: 'isAppRedesigned',
+    on: () => cls.PageRedesigned,
+    off: () => cls.Page,
+  });
 
   return (
     <section
       ref={wrapperRef}
-      className={classNames(cls.Page, {}, [className])}
+      className={classNames(pageCls, {}, [className])}
       onScroll={handleScroll}
       id={PAGE_ID}
       data-testid={props['data-testid'] ?? 'Page'}
