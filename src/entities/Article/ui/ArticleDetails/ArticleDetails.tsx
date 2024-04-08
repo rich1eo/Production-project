@@ -12,8 +12,8 @@ import {
   HStack,
   VStack,
 } from '@/shared/ui';
-import EyeIcon from '@/shared/assets/icons/eye.svg';
-import CalendarIcon from '@/shared/assets/icons/calendar.svg';
+import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
 
 import * as selectors from '../../model/selectors/getArticleDetails';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';

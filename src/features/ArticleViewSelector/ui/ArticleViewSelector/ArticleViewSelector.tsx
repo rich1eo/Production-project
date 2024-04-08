@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { classNames } from '@/shared/lib';
 import ListIcon from '@/shared/assets/icons/burger.svg';
-import WindowIcon from '@/shared/assets/icons/window.svg';
+import WindowIcon from '@/shared/assets/icons/tiled-24-24.svg';
 import { Button, ButtonTheme } from '@/shared/ui';
 
 import styles from './ArticleViewSelector.module.scss';
