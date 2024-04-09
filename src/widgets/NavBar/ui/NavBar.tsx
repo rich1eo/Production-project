@@ -18,7 +18,7 @@ import {
   TextTheme,
 } from '@/shared/ui';
 
-import styles from './NavBar.module.scss';
+import * as styles from './NavBar.module.scss';
 import { ToggleFeature } from '@/shared/lib/features';
 
 interface NavBarProps {
@@ -62,7 +62,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
             <AppLink
               theme={AppLinkTheme.SECONDARY}
               to={getRouteArticleCreate()}
-              className={styles.createBtn}
+              // className={styles.createBtn}
             >
               {t('Create article')}
             </AppLink>

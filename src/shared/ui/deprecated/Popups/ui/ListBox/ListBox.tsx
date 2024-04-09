@@ -9,7 +9,7 @@ import { HStack } from '../../../Stack';
 import { mapDirectionClass } from '../../styles/consts';
 
 import popupStyles from '../../styles/popup.module.scss';
-import styles from './ListBox.module.scss';
+import * as styles from './ListBox.module.scss';
 
 export interface ListBoxItem {
   value: string;
@@ -50,10 +50,7 @@ export const ListBox = memo((props: ListBoxProps) => {
       {label && <span>{label + '>'}</span>}
       <HListBox
         as="div"
-        className={classNames(styles.ListBox, {}, [
-          className,
-          popupStyles.popup,
-        ])}
+        className={classNames('', {}, [className, popupStyles.popup])}
         value={value}
         onChange={onChange}
         disabled={readonly}

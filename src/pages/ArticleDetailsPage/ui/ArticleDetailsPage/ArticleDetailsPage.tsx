@@ -15,7 +15,7 @@ import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
-import styles from './ArticleDetailsPage.module.scss';
+import * as styles from './ArticleDetailsPage.module.scss';
 
 interface ArticlesPageProps {
   className?: string;

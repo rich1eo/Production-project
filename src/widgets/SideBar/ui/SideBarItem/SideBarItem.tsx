@@ -8,7 +8,7 @@ import { AppLink, AppLinkTheme } from '@/shared/ui';
 
 import { SideBarItemType } from '../../model/types/sidebar';
 
-import styles from './SideBarItem.module.scss';
+import * as styles from './SideBarItem.module.scss';
 
 interface SideBarItemProps {
   item: SideBarItemType;

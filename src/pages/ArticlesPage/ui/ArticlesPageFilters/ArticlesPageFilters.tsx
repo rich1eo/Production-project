@@ -26,7 +26,7 @@ import {
   getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
 
-import styles from './ArticlesPageFilters.module.scss';
+import * as styles from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFiltersProps {
   className?: string;
@@ -54,7 +54,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
     (view: ArticleListView) => {
       dispatch(articlesPageActions.setView(view));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleChangeOrder = useCallback(
@@ -63,7 +63,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
       dispatch(articlesPageActions.setPage(1));
       fetchData();
     },
-    [dispatch, fetchData]
+    [dispatch, fetchData],
   );
 
   const handleChangeSort = useCallback(
@@ -72,7 +72,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
       dispatch(articlesPageActions.setPage(1));
       fetchData();
     },
-    [dispatch, fetchData]
+    [dispatch, fetchData],
   );
 
   const handleChangeSearch = useCallback(
@@ -81,7 +81,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
       dispatch(articlesPageActions.setPage(1));
       debouncedFetchData();
     },
-    [dispatch, debouncedFetchData]
+    [dispatch, debouncedFetchData],
   );
 
   const handleChangeType = useCallback(
@@ -90,11 +90,11 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
       dispatch(articlesPageActions.setPage(1));
       fetchData();
     },
-    [dispatch, fetchData]
+    [dispatch, fetchData],
   );
 
   return (
-    <div className={classNames(styles.ArticlesPageFilters, {}, [className])}>
+    <div className={classNames('', {}, [className])}>
       <div className={styles.sortWrapper}>
         <ArticleSortSelector
           order={order}

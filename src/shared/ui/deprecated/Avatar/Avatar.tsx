@@ -4,7 +4,7 @@ import { classNames } from '@/shared/lib';
 import UserIcon from '@/shared/assets/icons/avatar.svg';
 import { AppImage } from '../AppImage';
 
-import styles from './Avatar.module.scss';
+import * as styles from './Avatar.module.scss';
 import { Skeleton } from '../Skeleton';
 
 interface AvatarProps {

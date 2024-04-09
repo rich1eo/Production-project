@@ -5,7 +5,7 @@ import { Text, TextAlign } from '@/shared/ui';
 
 import { ArticleImgBlock } from '../../model/types/article';
 
-import styles from './ArticleImageBlockComponent.module.scss';
+import * as styles from './ArticleImageBlockComponent.module.scss';
 
 interface ArticleImageBlockComponentProps {
   block: ArticleImgBlock;
@@ -15,14 +15,10 @@ interface ArticleImageBlockComponentProps {
 export const ArticleImageBlockComponent = memo(
   ({ className, block }: ArticleImageBlockComponentProps) => {
     return (
-      <div
-        className={classNames(styles.ArticleImageBlockComponent, {}, [
-          className,
-        ])}
-      >
+      <div className={classNames('', {}, [className])}>
         <img className={styles.img} src={block.src} alt={block.title} />
         {block.title && <Text text={block.title} align={TextAlign.CENTER} />}
       </div>
     );
-  }
+  },
 );

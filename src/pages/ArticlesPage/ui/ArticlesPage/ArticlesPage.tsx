@@ -13,7 +13,7 @@ import { initArticlesPage } from '../../model/services/initArticlesPages/initArt
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
 
-import styles from './ArticlesPage.module.scss';
+import * as styles from './ArticlesPage.module.scss';
 import { ArticlePageGreeting } from '@/features/articlePageGreeting';
 
 interface ArticlesPageProps {

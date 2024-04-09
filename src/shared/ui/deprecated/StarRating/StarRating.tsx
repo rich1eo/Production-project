@@ -3,7 +3,7 @@ import { memo, useState } from 'react';
 import { classNames } from '@/shared/lib';
 import StarIcon from '@/shared/assets/icons/star.svg';
 
-import styles from './StarRating.module.scss';
+import * as styles from './StarRating.module.scss';
 
 interface StarRatingProps {
   className?: string;

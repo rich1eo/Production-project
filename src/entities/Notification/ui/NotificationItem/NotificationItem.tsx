@@ -5,7 +5,7 @@ import { Card, CardTheme, Text } from '@/shared/ui';
 
 import { Notification } from '../../model/types/notification';
 
-import styles from './NotificationItem.module.scss';
+import * as styles from './NotificationItem.module.scss';
 
 interface NotificationItemProps {
   className?: string;
@@ -38,5 +38,5 @@ export const NotificationItem = memo(
     }
 
     return content;
-  }
+  },
 );

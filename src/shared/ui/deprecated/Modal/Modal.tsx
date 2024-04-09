@@ -7,7 +7,7 @@ import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { Portal } from '../Portal/Portal';
 import { Overlay } from '../Overlay/Overlay';
 
-import styles from './Modal.module.scss';
+import * as styles from './Modal.module.scss';
 
 interface ModalProps {
   children: ReactNode;

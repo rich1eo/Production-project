@@ -6,7 +6,7 @@ import { Button, ButtonTheme, Popover, Drawer } from '@/shared/ui';
 import Notification from '@/shared/assets/icons/notification-20-20.svg';
 import { classNames } from '@/shared/lib';
 
-import styles from './NotificationButton.module.scss';
+import * as styles from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
   className?: string;

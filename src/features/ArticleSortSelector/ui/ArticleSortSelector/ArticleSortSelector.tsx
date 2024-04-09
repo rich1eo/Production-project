@@ -7,7 +7,7 @@ import { classNames } from '@/shared/lib';
 import { SortOrder } from '@/shared/types/sort';
 import { ArticleSortField } from '@/entities/Article';
 
-import styles from './ArticleSortSelector.module.scss';
+import * as styles from './ArticleSortSelector.module.scss';
 
 interface ArticleSortSelectorProps {
   className?: string;
@@ -33,7 +33,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
         content: t('Descend'),
       },
     ],
-    [t]
+    [t],
   );
 
   const sortFieldOptions = useMemo<SelectOption<ArticleSortField>[]>(
@@ -51,7 +51,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
         content: t('date created'),
       },
     ],
-    [t]
+    [t],
   );
 
   return (
@@ -67,7 +67,6 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
         options={orderOptions}
         label={t('By')}
         onChange={onChangeOrder}
-        className={styles.order}
       />
     </div>
   );

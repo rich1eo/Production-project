@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { classNames } from '@/shared/lib';
 
-import styles from './Text.module.scss';
+import * as styles from './Text.module.scss';
 
 export enum TextAlign {
   LEFT = 'left',
@@ -58,7 +58,7 @@ export const Text = memo((props: TextProps) => {
 
   return (
     <div
-      className={classNames(styles.Text, {}, [
+      className={classNames('', {}, [
         className,
         styles[theme],
         styles[align],

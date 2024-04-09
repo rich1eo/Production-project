@@ -7,7 +7,7 @@ import { Country, CountrySelect } from '@/entities/Country';
 
 import { Profile } from '../../model/types/profile';
 
-import styles from './ProfileCard.module.scss';
+import * as styles from './ProfileCard.module.scss';
 import { HStack, VStack } from '@/shared/ui';
 
 interface ProfileCardProps {

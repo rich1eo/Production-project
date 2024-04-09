@@ -10,7 +10,7 @@ import { ToggleFeature } from '@/shared/lib/features';
 import SideBarItem from '../SideBarItem/SideBarItem';
 import { getSideBarItems } from '../../model/selectors/getSideBarItems';
 
-import styles from './SideBar.module.scss';
+import * as styles from './SideBar.module.scss';
 
 interface SideBarProps {
   className?: string;

@@ -5,7 +5,7 @@ import ListIcon from '@/shared/assets/icons/burger.svg';
 import WindowIcon from '@/shared/assets/icons/tiled-24-24.svg';
 import { Button, ButtonTheme } from '@/shared/ui';
 
-import styles from './ArticleViewSelector.module.scss';
+import * as styles from './ArticleViewSelector.module.scss';
 import { ArticleListView } from '@/entities/Article';
 
 interface ArticleViewSelectorProps {
@@ -32,7 +32,7 @@ export const ArticleViewSelector = memo(
     };
 
     return (
-      <div className={classNames(styles.ArticleViewSelector, {}, [className])}>
+      <div className={classNames('', {}, [className])}>
         {viewTypes.map((viewType) => (
           <Button
             key={viewType.view}

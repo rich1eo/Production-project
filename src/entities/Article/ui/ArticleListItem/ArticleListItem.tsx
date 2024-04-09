@@ -19,7 +19,7 @@ import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleBlockType, ArticleListView } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
-import styles from './ArticleListItem.module.scss';
+import * as styles from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
   article: Article;
@@ -46,18 +46,15 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
   if (view === ArticleListView.BIG) {
     const textBlock = article.blocks.find(
-      (article) => article.type === ArticleBlockType.TEXT
+      (article) => article.type === ArticleBlockType.TEXT,
     ) as ArticleTextBlock;
 
     return (
       <div
-        className={classNames(styles.ArticleListItem, {}, [
-          className,
-          styles[view],
-        ])}
+        className={classNames('', {}, [className, styles[view]])}
         data-testid="ArticleListItem"
       >
-        <Card className={styles.card}>
+        <Card>
           <div className={styles.header}>
             <Avatar size={30} src={article.user.avatar} />
             <Text text={article.user.username} className={styles.username} />
@@ -92,15 +89,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
   return (
     <AppLink
-      className={classNames(styles.ArticleListItem, {}, [
-        className,
-        styles[view],
-      ])}
+      className={classNames('', {}, [className, styles[view]])}
       to={getRouteArticleDetails(article.id)}
       target={target}
       data-testid="ArticleListItem"
     >
-      <Card className={styles.card}>
+      <Card>
         <div className={styles.imgWrapper}>
           <AppImage
             src={article.img}

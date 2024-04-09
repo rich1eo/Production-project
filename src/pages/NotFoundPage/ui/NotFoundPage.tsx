@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import styles from './NotFoundPage.module.scss';
+import * as styles from './NotFoundPage.module.scss';
 import { classNames } from '@/shared/lib';
 import { Page } from '@/widgets/Page';
 

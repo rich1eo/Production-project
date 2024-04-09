@@ -4,7 +4,7 @@ import { classNames } from '@/shared/lib';
 import { Text } from '@/shared/ui';
 import type { ArticleTextBlock } from '../../model/types/article';
 
-import styles from './ArticleTextBlockComponent.module.scss';
+import * as styles from './ArticleTextBlockComponent.module.scss';
 
 interface ArticleTextBlockComponentProps {
   block: ArticleTextBlock;
@@ -14,11 +14,7 @@ interface ArticleTextBlockComponentProps {
 export const ArticleTextBlockComponent = memo(
   ({ className, block }: ArticleTextBlockComponentProps) => {
     return (
-      <div
-        className={classNames(styles.ArticleTextBlockComponent, {}, [
-          className,
-        ])}
-      >
+      <div className={classNames('', {}, [className])}>
         {block.title && <Text title={block.title} className={styles.title} />}
         {block.paragraphs.length &&
           block.paragraphs.map((paragraph, index) => (
@@ -26,5 +22,5 @@ export const ArticleTextBlockComponent = memo(
           ))}
       </div>
     );
-  }
+  },
 );

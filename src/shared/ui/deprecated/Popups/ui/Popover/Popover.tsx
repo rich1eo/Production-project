@@ -6,8 +6,8 @@ import { classNames } from '@/shared/lib';
 
 import { mapDirectionClass } from '../../styles/consts';
 
-import styles from './Popover.module.scss';
-import popupStyles from '../../styles/popup.module.scss';
+import * as styles from './Popover.module.scss';
+import * as popupStyles from '../../styles/popup.module.scss';
 
 interface PopoverProps {
   children: ReactNode;
@@ -25,9 +25,7 @@ export const Popover = memo((props: PopoverProps) => {
   const menuClasses = mapDirectionClass[direction];
 
   return (
-    <HPopover
-      className={classNames(styles.Popover, {}, [className, popupStyles.popup])}
-    >
+    <HPopover className={classNames('', {}, [className, popupStyles.popup])}>
       <HPopover.Button as="div" className={popupStyles.trigger}>
         {trigger}
       </HPopover.Button>

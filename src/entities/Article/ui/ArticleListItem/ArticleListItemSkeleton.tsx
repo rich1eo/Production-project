@@ -5,7 +5,7 @@ import { Card, Skeleton } from '@/shared/ui';
 
 import { ArticleListView } from '../../model/consts/consts';
 
-import styles from './ArticleListItem.module.scss';
+import * as styles from './ArticleListItem.module.scss';
 
 interface ArticleListItemSkeletonProps {
   view: ArticleListView;
@@ -18,13 +18,8 @@ export const ArticleListItemSkeleton = memo(
 
     if (view === ArticleListView.BIG) {
       return (
-        <div
-          className={classNames(styles.ArticleListItem, {}, [
-            className,
-            styles[view],
-          ])}
-        >
-          <Card className={styles.card}>
+        <div className={classNames('', {}, [className, styles[view]])}>
+          <Card>
             <div className={styles.header}>
               <Skeleton border="50%" height={30} width={30} />
               <Skeleton width={150} height={16} className={styles.username} />
@@ -41,14 +36,9 @@ export const ArticleListItemSkeleton = memo(
     }
 
     return (
-      <div
-        className={classNames(styles.ArticleListItem, {}, [
-          className,
-          styles[view],
-        ])}
-      >
-        <Card className={styles.card}>
-          <div className={styles.imageWrapper}>
+      <div className={classNames('', {}, [className, styles[view]])}>
+        <Card>
+          <div>
             <Skeleton width={200} height={200} className={styles.img} />
           </div>
           <div className={styles.infoWrapper}>
@@ -58,5 +48,5 @@ export const ArticleListItemSkeleton = memo(
         </Card>
       </div>
     );
-  }
+  },
 );

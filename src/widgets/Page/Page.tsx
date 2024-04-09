@@ -11,7 +11,7 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { TestsProps } from '@/shared/types/tests';
 
-import cls from './Page.module.scss';
+import * as cls from './Page.module.scss';
 import { toggleFeature } from '@/shared/lib/features';
 
 export const PAGE_ID = 'PAGE_ID';

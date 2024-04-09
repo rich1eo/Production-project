@@ -14,7 +14,7 @@ import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLogi
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 
-import styles from './LoginForm.module.scss';
+import * as styles from './LoginForm.module.scss';
 
 export interface LoginFormProps {
   className?: string;
@@ -38,14 +38,14 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     (value: string) => {
       dispatch(loginActions.setUsername(value));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleChangePassword = useCallback(
     (value: string) => {
       dispatch(loginActions.setPassword(value));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleLoginClick = useCallback(async () => {

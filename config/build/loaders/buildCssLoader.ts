@@ -9,6 +9,7 @@ export function buildCssLoader(isDev: boolean) {
       {
         loader: 'css-loader',
         options: {
+          esModule: true,
           modules: {
             auto: (resPath: string) => resPath.includes('.module.'),
             localIdentName: isDev

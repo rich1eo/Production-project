@@ -2,7 +2,7 @@ import { CSSProperties, memo } from 'react';
 
 import { classNames } from '@/shared/lib';
 
-import styles from './Skeleton.module.scss';
+import * as styles from './Skeleton.module.scss';
 
 interface SkeletonProps {
   className?: string;

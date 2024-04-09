@@ -9,7 +9,7 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { Article } from '../../model/types/article';
 import { ArticleListView } from '../../model/consts/consts';
 
-import cls from './ArticleList.module.scss';
+import * as cls from './ArticleList.module.scss';
 
 interface ArticleListProps {
   articles: Article[];
@@ -37,7 +37,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
   if (!isLoading && !articles.length) {
     return (
-      <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+      <div className={classNames('', {}, [className, cls[view]])}>
         <Text size={TextSize.L} title={t('Articles not found')} />
       </div>
     );
@@ -45,7 +45,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
   return (
     <div
-      className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+      className={classNames('', {}, [className, cls[view]])}
       data-testid="ArticleList"
     >
       {articles.map((article) => (

@@ -7,8 +7,8 @@ import { DropdownDirection } from '@/shared/types/ui';
 import { AppLink } from '../../../AppLink/AppLink';
 import { mapDirectionClass } from '../../styles/consts';
 
-import styles from './Dropdown.module.scss';
-import popupStyles from '../../styles/popup.module.scss';
+import * as styles from './Dropdown.module.scss';
+import * as popupStyles from '../../styles/popup.module.scss';
 
 interface DropdownItem {
   disabled?: boolean;

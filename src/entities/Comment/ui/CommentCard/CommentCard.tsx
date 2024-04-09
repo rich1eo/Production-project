@@ -6,7 +6,7 @@ import { getRouteProfile } from '@/shared/const/router';
 
 import { Comment } from '../../model/types/comment';
 
-import styles from './CommentCard.module.scss';
+import * as styles from './CommentCard.module.scss';
 
 interface CommentCardProps {
   comment?: Comment;
@@ -29,12 +29,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
         data-testid="CommentCard.loading"
       >
         <div className={styles.header}>
-          <Skeleton
-            className={styles.avatar}
-            width={30}
-            height={30}
-            border="50%"
-          />
+          <Skeleton width={30} height={30} border="50%" />
           <Skeleton className={styles.username} height={16} width={100} />
         </div>
         <Skeleton className={styles.text} width="100%" height={50} />

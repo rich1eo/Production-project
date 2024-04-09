@@ -7,7 +7,7 @@ import { Text, TextSize, VStack } from '@/shared/ui';
 
 import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi';
 
-import styles from './ArticleRecommendationsList.module.scss';
+import * as styles from './ArticleRecommendationsList.module.scss';
 
 interface ArticleRecommendationsListProps {
   className?: string;
@@ -39,5 +39,5 @@ export const ArticleRecommendationsList = memo(
         <ArticleList articles={articles} target="_blank" />
       </VStack>
     );
-  }
+  },
 );

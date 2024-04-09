@@ -13,7 +13,7 @@ import {
   addNewCommentFormReducer,
 } from '../../model/slice/addCommentFormSlice';
 
-import styles from './AddCommentForm.module.scss';
+import * as styles from './AddCommentForm.module.scss';
 
 export interface AddCommentFormProps {
   onSendComment: (text: string) => void;
@@ -34,7 +34,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
     (value: string) => {
       dispatch(addNewCommentFormActions.setText(value));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleSendComment = useCallback(() => {
