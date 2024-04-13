@@ -8,7 +8,7 @@ import { Button } from '../../../Button/Button';
 import { HStack } from '../../../Stack';
 import { mapDirectionClass } from '../../styles/consts';
 
-import popupStyles from '../../styles/popup.module.scss';
+import * as popupStyles from '../../styles/popup.module.scss';
 import * as styles from './ListBox.module.scss';
 
 export interface ListBoxItem {

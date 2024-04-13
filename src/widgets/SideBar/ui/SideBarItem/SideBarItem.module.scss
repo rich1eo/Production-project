@@ -13,4 +13,24 @@
   span {
     display: none;
   }
+
+  padding: 0 8px !important;
+}
+
+.linkRedesigned {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  padding: 0 16px;
+}
+
+.active {
+  background: linear-gradient(
+    90deg,
+    rgba(29 69 255 / 30%) 1.15%,
+    rgba(94 211 243 / 0%) 99.97%
+  );
+  position: relative;
+  border-left: 2px solid var(--accent-redesigned);
 }

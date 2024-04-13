@@ -24,7 +24,7 @@ import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleC
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
-import styles from './ArticleDetails.module.scss';
+import * as styles from './ArticleDetails.module.scss';
 
 interface ArticleDetailsProps {
   id?: string;
@@ -82,12 +82,7 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
   if (isLoading) {
     content = (
       <>
-        <Skeleton
-          className={styles.avatar}
-          width={200}
-          height={200}
-          border="50%"
-        />
+        <Skeleton width={200} height={200} border="50%" />
         <Skeleton className={styles.title} width={300} height={32} />
         <Skeleton className={styles.skeleton} width={600} height={24} />
         <Skeleton className={styles.skeleton} width="100%" height={200} />
@@ -100,7 +95,7 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
     content = (
       <>
         <HStack justify="center" max>
-          <Avatar size={200} src={data.img} className={styles.avatar} />
+          <Avatar size={200} src={data.img} />
         </HStack>
         <VStack gap="4" max data-testid="ArticleDetails.Info">
           <Text
@@ -113,7 +108,7 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
             <EyeIcon className={styles.icon} />
             {<Text text={data.views.toString()} />}
           </HStack>
-          <HStack gap="8" className={styles.articleInfo}>
+          <HStack gap="8">
             <CalendarIcon className={styles.icon} />
             {<Text text={data.createdAt} />}
           </HStack>

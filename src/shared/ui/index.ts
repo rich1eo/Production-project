@@ -15,4 +15,8 @@ export * from './deprecated/StarRating';
 export * from './deprecated/Tabs';
 export * from './deprecated/Text';
 export * from './deprecated/AppImage';
-export * from './deprecated/AppLogo';
+
+export * from './redesigned/AppLogo';
+export * from './redesigned/Icon';
+export { AppLink as AppLinkRedesigned } from './redesigned/AppLink';
+export { Button as ButtonRedesigned } from './redesigned/Button';

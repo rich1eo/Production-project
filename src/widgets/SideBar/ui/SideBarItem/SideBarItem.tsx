@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib';
-import { AppLink, AppLinkTheme } from '@/shared/ui';
+import { AppLink, AppLinkRedesigned, AppLinkTheme, Icon } from '@/shared/ui';
+import { ToggleFeature } from '@/shared/lib/features';
 
 import { SideBarItemType } from '../../model/types/sidebar';
 
@@ -24,14 +25,31 @@ const SideBarItem = memo(({ item, collapsed }: SideBarItemProps) => {
   }
 
   return (
-    <AppLink
-      className={classNames(styles.link, { [styles.collapsed]: collapsed })}
-      to={item.path}
-      theme={AppLinkTheme.SECONDARY}
-    >
-      <item.Icon className={styles.icon} />
-      <span>{t(item.text)}</span>
-    </AppLink>
+    <ToggleFeature
+      name="isAppRedesigned"
+      on={
+        <AppLinkRedesigned
+          to={item.path}
+          activeClassName={styles.active}
+          className={classNames(styles.linkRedesigned, {
+            [styles.collapsed]: collapsed,
+          })}
+        >
+          <Icon Svg={item.Icon} clickable={collapsed} onClick={() => {}} />
+          <span>{t(item.text)}</span>
+        </AppLinkRedesigned>
+      }
+      off={
+        <AppLink
+          className={classNames(styles.link, { [styles.collapsed]: collapsed })}
+          to={item.path}
+          theme={AppLinkTheme.SECONDARY}
+        >
+          <item.Icon className={styles.icon} />
+          <span>{t(item.text)}</span>
+        </AppLink>
+      }
+    />
   );
 });
 
