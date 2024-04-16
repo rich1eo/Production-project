@@ -2,12 +2,13 @@
   min-height: 100dvh;
   display: grid;
   grid-template-areas: 'sidebar content rightbar';
-  grid-template-columns: 284px 1fr 100px;
+  grid-template-columns: min-content 1fr max-content;
 }
 
 .sidebar {
   grid-area: sidebar;
   padding: 32px;
+  max-width: 284px;
 }
 
 .content {
@@ -36,6 +37,5 @@
 }
 
 .toolbar {
-  // justify-self: end;
   height: 100%;
 }

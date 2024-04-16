@@ -28,9 +28,6 @@ interface ListBoxProps {
   label?: string;
 }
 
-/**
- * @deprecated
- */
 export const ListBox = memo((props: ListBoxProps) => {
   const {
     className,
@@ -43,7 +40,7 @@ export const ListBox = memo((props: ListBoxProps) => {
     label,
   } = props;
 
-  const optionsClasses = [mapDirectionClass[direction]];
+  const optionsClasses = [mapDirectionClass[direction], popupStyles.menu];
 
   return (
     <HStack gap="4">

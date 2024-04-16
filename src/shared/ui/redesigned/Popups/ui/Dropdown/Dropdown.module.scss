@@ -1,0 +1,28 @@
+.Dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.item {
+  background: var(--dark-bg-redesigned);
+  padding: 10px 15px;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: var(--text-redesigned);
+  cursor: pointer;
+}
+
+.link {
+  &:hover {
+    opacity: 1;
+  }
+}

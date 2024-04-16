@@ -2,10 +2,12 @@ import { CSSProperties, memo, useMemo } from 'react';
 
 import { classNames } from '@/shared/lib';
 import UserIcon from '@/shared/assets/icons/avatar.svg';
+
 import { AppImage } from '../../redesigned/AppImage';
+import { Icon } from '../Icon';
+import { Skeleton } from '../Skeleton';
 
 import * as styles from './Avatar.module.scss';
-import { Skeleton } from '../Skeleton';
 
 interface AvatarProps {
   className?: string;
@@ -14,9 +16,6 @@ interface AvatarProps {
   alt?: string;
 }
 
-/**
- * @deprecated
- */
 export const Avatar = memo((props: AvatarProps) => {
   const { className, src, size = 100, alt } = props;
   const sizes = useMemo<CSSProperties>(() => {
@@ -27,9 +26,7 @@ export const Avatar = memo((props: AvatarProps) => {
   }, [size]);
 
   const loadingFallback = <Skeleton width={size} height={size} border="50%" />;
-  const errorFallback = (
-    <UserIcon fill="var(--primary-color)" width={size} height={size} />
-  );
+  const errorFallback = <Icon Svg={UserIcon} width={size} height={size} />;
 
   return (
     <AppImage
