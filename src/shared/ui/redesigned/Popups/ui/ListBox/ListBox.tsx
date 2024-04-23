@@ -1,5 +1,5 @@
 import { Listbox as HListBox } from '@headlessui/react';
-import { Fragment, ReactNode, memo } from 'react';
+import { Fragment, ReactNode, useMemo } from 'react';
 
 import { classNames } from '@/shared/lib';
 import { DropdownDirection } from '@/shared/types/ui';
@@ -11,24 +11,25 @@ import { mapDirectionClass } from '../../styles/consts';
 import * as popupStyles from '../../styles/popup.module.scss';
 import * as styles from './ListBox.module.scss';
 
-export interface ListBoxItem {
-  value: string;
+export interface ListBoxItem<T extends string> {
+  value: T;
   content: ReactNode;
   disabled?: boolean;
+  selected?: true;
 }
 
-interface ListBoxProps {
-  items?: ListBoxItem[];
+interface ListBoxProps<T extends string> {
+  items?: ListBoxItem<T>[];
   className?: string;
-  value?: string;
+  value?: T;
   defaultValue?: string;
-  onChange: (value: string) => void;
+  onChange: (value: T) => void;
   readonly?: boolean;
   direction?: DropdownDirection;
   label?: string;
 }
 
-export const ListBox = memo((props: ListBoxProps) => {
+export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
   const {
     className,
     items,
@@ -42,6 +43,10 @@ export const ListBox = memo((props: ListBoxProps) => {
 
   const optionsClasses = [mapDirectionClass[direction], popupStyles.menu];
 
+  const selectedItem = useMemo(() => {
+    return items?.find((item) => item.value === value);
+  }, [items, value]);
+
   return (
     <HStack gap="4">
       {label && <span>{label + '>'}</span>}
@@ -53,7 +58,9 @@ export const ListBox = memo((props: ListBoxProps) => {
         disabled={readonly}
       >
         <HListBox.Button as="div" className={styles.trigger}>
-          <Button disabled={readonly}>{value ?? defaultValue}</Button>
+          <Button disabled={readonly} variant="filled">
+            {selectedItem?.content ?? defaultValue}
+          </Button>
         </HListBox.Button>
         <HListBox.Options
           className={classNames(styles.options, {}, optionsClasses)}
@@ -70,9 +77,10 @@ export const ListBox = memo((props: ListBoxProps) => {
                   className={classNames(styles.item, {
                     [popupStyles.active]: active,
                     [popupStyles.disabled]: item.disabled,
+                    [popupStyles.selected]: selected,
                   })}
                 >
-                  {selected && '>'}
+                  {selected}
                   {item.content}
                 </li>
               )}
@@ -82,4 +90,4 @@ export const ListBox = memo((props: ListBoxProps) => {
       </HListBox>
     </HStack>
   );
-});
+};

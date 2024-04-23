@@ -128,14 +128,14 @@ const replaceComponent = (node: Node) => {
 files.forEach((file) => {
   file.forEachDescendant((node) => {
     if (node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)) {
-      replaceFunction(node);
+      return replaceFunction(node);
     }
 
     if (
       node.isKind(SyntaxKind.JsxSelfClosingElement) &&
       isToggleComponent(node)
     ) {
-      replaceComponent(node);
+      return replaceComponent(node);
     }
   });
 });

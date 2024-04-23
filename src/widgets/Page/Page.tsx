@@ -10,9 +10,9 @@ import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfin
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { TestsProps } from '@/shared/types/tests';
+import { toggleFeature } from '@/shared/lib/features';
 
 import * as cls from './Page.module.scss';
-import { toggleFeature } from '@/shared/lib/features';
 
 export const PAGE_ID = 'PAGE_ID';
 
@@ -36,7 +36,11 @@ export const Page = memo((props: PageProps) => {
 
   useInfiniteScroll({
     triggerRef,
-    wrapperRef,
+    wrapperRef: toggleFeature({
+      name: 'isAppRedesigned',
+      on: () => undefined,
+      off: () => wrapperRef,
+    }),
     callback: onScrollEnd,
   });
 

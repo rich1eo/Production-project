@@ -1,0 +1,9 @@
+.Tabs {
+  display: flex;
+  gap: 0.8rem;
+  cursor: pointer;
+}
+
+.selected {
+  padding: 8px 16px;
+}

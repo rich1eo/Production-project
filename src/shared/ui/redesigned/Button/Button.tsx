@@ -4,13 +4,7 @@ import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 
 import * as styles from './Button.module.scss';
 
-type ButtonVariant =
-  | 'clear'
-  | 'clearInverted'
-  | 'outline'
-  | 'outlineRed'
-  | 'background'
-  | 'backgroundInverted';
+type ButtonVariant = 'clear' | 'outline' | 'filled';
 
 type ButtonSize = 'm' | 'l' | 'xl';
 

@@ -1,13 +1,14 @@
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Select } from '@/shared/ui';
+import { ListBoxRedesigned, Select, TextRedesigned, VStack } from '@/shared/ui';
 import type { SelectOption } from '@/shared/ui';
 import { classNames } from '@/shared/lib';
 import { SortOrder } from '@/shared/types/sort';
 import { ArticleSortField } from '@/entities/Article';
 
 import * as styles from './ArticleSortSelector.module.scss';
+import { ToggleFeature } from '@/shared/lib/features';
 
 interface ArticleSortSelectorProps {
   className?: string;
@@ -23,16 +24,17 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
   const { t } = useTranslation();
 
   const orderOptions = useMemo<SelectOption<SortOrder>[]>(
-    () => [
-      {
-        value: 'asc',
-        content: t('Ascend'),
-      },
-      {
-        value: 'desc',
-        content: t('Descend'),
-      },
-    ],
+    () =>
+      [
+        {
+          value: 'asc',
+          content: t('Ascend'),
+        },
+        {
+          value: 'desc',
+          content: t('Descend'),
+        },
+      ] as SelectOption<SortOrder>[],
     [t],
   );
 
@@ -55,19 +57,45 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
   );
 
   return (
-    <div className={classNames(styles.ArticleSortSelector, {}, [className])}>
-      <Select<ArticleSortField>
-        value={sort}
-        options={sortFieldOptions}
-        label={t('Sort by')}
-        onChange={onChangeSort}
-      />
-      <Select<SortOrder>
-        value={order}
-        options={orderOptions}
-        label={t('By')}
-        onChange={onChangeOrder}
-      />
-    </div>
+    <ToggleFeature
+      name="isAppRedesigned"
+      on={
+        <div
+          className={classNames(styles.ArticleSortSelector, {}, [className])}
+        >
+          <VStack gap="8">
+            <TextRedesigned text={t('Sort by')} />
+            <ListBoxRedesigned
+              value={sort}
+              items={sortFieldOptions}
+              onChange={onChangeSort}
+            />
+            <ListBoxRedesigned
+              value={order}
+              items={orderOptions}
+              onChange={onChangeOrder}
+            />
+          </VStack>
+        </div>
+      }
+      off={
+        <div
+          className={classNames(styles.ArticleSortSelector, {}, [className])}
+        >
+          <Select<ArticleSortField>
+            value={sort}
+            options={sortFieldOptions}
+            label={t('Sort by')}
+            onChange={onChangeSort}
+          />
+          <Select<SortOrder>
+            value={order}
+            options={orderOptions}
+            label={t('By')}
+            onChange={onChangeOrder}
+          />
+        </div>
+      }
+    />
   );
 });

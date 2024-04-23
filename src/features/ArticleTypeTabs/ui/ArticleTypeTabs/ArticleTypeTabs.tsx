@@ -2,9 +2,10 @@ import { memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib';
-import { Tabs } from '@/shared/ui';
+import { Tabs, TabsRedesigned } from '@/shared/ui';
 import { ArticleType } from '@/entities/Article';
 import type { TabItem } from '@/shared/ui';
+import { ToggleFeature } from '@/shared/lib/features';
 
 interface ArticleTypeTabsProps {
   className?: string;
@@ -35,22 +36,36 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
         content: t('Economics'),
       },
     ],
-    [t]
+    [t],
   );
 
   const handleChangeType = useCallback(
     (tab: TabItem) => {
       onChangeType(tab.value as ArticleType);
     },
-    [onChangeType]
+    [onChangeType],
   );
 
   return (
-    <Tabs
-      className={classNames('', {}, [className])}
-      tabs={tabs}
-      value={value}
-      onTabClick={handleChangeType}
+    <ToggleFeature
+      name="isAppRedesigned"
+      on={
+        <TabsRedesigned
+          className={classNames('', {}, [className])}
+          tabs={tabs}
+          value={value}
+          onTabClick={handleChangeType}
+          direction="column"
+        />
+      }
+      off={
+        <Tabs
+          className={classNames('', {}, [className])}
+          tabs={tabs}
+          value={value}
+          onTabClick={handleChangeType}
+        />
+      }
     />
   );
 });

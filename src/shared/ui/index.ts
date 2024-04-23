@@ -29,3 +29,4 @@ export {
   ListBox as ListBoxRedesigned,
   Popover as PopoverRedesigned,
 } from './redesigned/Popups';
+export { Tabs as TabsRedesigned } from './redesigned/Tabs';

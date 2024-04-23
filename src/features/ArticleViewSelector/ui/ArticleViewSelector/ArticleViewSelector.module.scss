@@ -1,9 +1,11 @@
-.icon {
-  fill: currentcolor;
+.ArticleViewSelector {
+  .notSelected {
+    fill: var(--secondary-color);
+  }
 }
 
-.notSelected {
-  & svg {
-    fill: var(--secondary-color);
+.ArticleViewSelectorRedesigned {
+  .notSelected {
+    color: var(--light-bg-redesigned);
   }
 }
