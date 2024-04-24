@@ -30,3 +30,4 @@ export {
   Popover as PopoverRedesigned,
 } from './redesigned/Popups';
 export { Tabs as TabsRedesigned } from './redesigned/Tabs';
+export { Input as InputRedesigned } from './redesigned/Input';

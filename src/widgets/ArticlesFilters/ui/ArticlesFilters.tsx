@@ -5,8 +5,9 @@ import { ArticleSortSelector } from '@/features/ArticleSortSelector';
 import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
 import { ArticleSortField, ArticleType } from '@/entities/Article';
 import { SortOrder } from '@/shared/types/sort';
-import { CardRedesigned, Input, VStack } from '@/shared/ui';
+import { CardRedesigned, Icon, InputRedesigned, VStack } from '@/shared/ui';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import SearchIcon from '@/shared/assets/icons/search.svg';
 
 import * as styles from './ArticlesFilters.module.scss';
 
@@ -45,21 +46,22 @@ export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
       cardPadding="24"
     >
       <VStack gap="32">
-        <ArticleSortSelector
-          order={order}
-          sort={sort}
-          onChangeOrder={onChangeOrder}
-          onChangeSort={onChangeSort}
-        />
-        <Input
+        <InputRedesigned
           placeholder={t('Search')}
           value={search}
           onChange={onChangeSearch}
+          addonLeft={<Icon Svg={SearchIcon} />}
         />
         <ArticleTypeTabs
           value={type}
           onChangeType={onChangeType}
           className={styles.tabs}
+        />
+        <ArticleSortSelector
+          order={order}
+          sort={sort}
+          onChangeOrder={onChangeOrder}
+          onChangeSort={onChangeSort}
         />
       </VStack>
     </CardRedesigned>

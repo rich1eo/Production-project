@@ -1,19 +1,30 @@
-import { InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
-import * as styles from './Input.module.scss';
+import {
+  InputHTMLAttributes,
+  ReactNode,
+  memo,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+
 import { Mods, classNames } from '@/shared/lib/classNames/classNames';
+
+import * as styles from './Input.module.scss';
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'value' | 'onChange' | 'readOnly'
 >;
 
-interface InputProps extends HTMLInputProps {
+type InputProps = {
   className?: string;
   value?: string | number;
   autofocus?: boolean;
   readonly?: boolean;
   onChange?: (value: string) => void;
-}
+  addonLeft?: ReactNode;
+  addonRight?: ReactNode;
+} & HTMLInputProps;
 
 export const Input = memo((props: InputProps) => {
   const {
@@ -24,12 +35,12 @@ export const Input = memo((props: InputProps) => {
     placeholder,
     autofocus,
     readonly,
+    addonLeft,
+    addonRight,
     ...otherProps
   } = props;
-  const [isFocused, setIsFocused] = useState(false);
-  const [caretPosition, setCaretPosition] = useState(0);
   const ref = useRef<HTMLInputElement>(null);
-  const caretIsVisible = isFocused && !readonly;
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     if (autofocus) {
@@ -40,7 +51,6 @@ export const Input = memo((props: InputProps) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(e.target.value);
-    setCaretPosition(e.target.value.length);
   };
 
   const handelBlur = () => {
@@ -51,38 +61,29 @@ export const Input = memo((props: InputProps) => {
     setIsFocused(true);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleSelect = (e: any) => {
-    setCaretPosition(e?.target?.selectionStart || 0);
-  };
-
   const mods: Mods = {
     [styles.readonly]: readonly,
+    [styles.focused]: isFocused,
+    [styles.withAddonLeft]: !!addonLeft,
+    [styles.withAddonRight]: !!addonRight,
   };
 
   return (
-    <div className={classNames(styles.InputWrapper, {}, [className])}>
-      {placeholder && <div className="placeholder">{`${placeholder}>`}</div>}
-      <div className={styles.caretWrapper}>
-        <input
-          ref={ref}
-          className={classNames(styles.input, mods)}
-          type={type}
-          value={value}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handelBlur}
-          onSelect={handleSelect}
-          readOnly={readonly}
-          {...otherProps}
-        />
-        {caretIsVisible && (
-          <span
-            className={styles.caret}
-            style={{ left: `${caretPosition * 12}px` }}
-          />
-        )}
-      </div>
+    <div className={classNames(styles.InputWrapper, mods, [className])}>
+      {addonLeft && <div className={styles.addonLeft}>{addonLeft}</div>}
+      <input
+        ref={ref}
+        className={classNames(styles.input)}
+        type={type}
+        value={value}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handelBlur}
+        readOnly={readonly}
+        placeholder={placeholder}
+        {...otherProps}
+      />
+      {addonRight && <div className={styles.addonRight}>{addonRight}</div>}
     </div>
   );
 });
