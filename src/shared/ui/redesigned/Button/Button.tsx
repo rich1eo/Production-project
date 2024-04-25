@@ -38,8 +38,8 @@ export const Button = (props: ButtonProps) => {
     [styles.square]: square,
     [styles.disabled]: disabled,
     [styles.fullWidth]: fullWidth,
-    [styles.withAddonLeft]: !!addonLeft,
-    [styles.withAddonRight]: !!addonRight,
+    // [styles.withAddonLeft]: !!addonLeft,
+    // [styles.withAddonRight]: !!addonRight,
     [styles.withAddon]: !!addonRight || !!addonLeft,
   };
 

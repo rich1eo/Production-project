@@ -55,7 +55,7 @@ export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
         <ArticleTypeTabs
           value={type}
           onChangeType={onChangeType}
-          className={styles.tabs}
+          // className={styles.tabs}
         />
         <ArticleSortSelector
           order={order}

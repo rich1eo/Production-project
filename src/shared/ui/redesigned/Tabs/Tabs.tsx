@@ -1,7 +1,7 @@
 import { ReactNode, memo, useCallback } from 'react';
 
 import { classNames } from '@/shared/lib';
-import { CardRedesigned } from '../..';
+import { Card } from '../Card';
 import { Flex, FlexDirection } from '../Stack/Flex/Flex';
 
 import * as styles from './Tabs.module.scss';
@@ -41,7 +41,7 @@ export const Tabs = memo((props: TabsProps) => {
       {tabs.map((tab) => {
         const isSelected = tab.value === value;
         return (
-          <CardRedesigned
+          <Card
             key={tab.value}
             variant={isSelected ? 'light' : 'normal'}
             onClick={handleClick(tab)}
@@ -51,7 +51,7 @@ export const Tabs = memo((props: TabsProps) => {
             })}
           >
             {tab.content}
-          </CardRedesigned>
+          </Card>
         );
       })}
     </Flex>
