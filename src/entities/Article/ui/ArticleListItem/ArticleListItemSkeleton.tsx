@@ -1,7 +1,13 @@
 import { memo } from 'react';
 
 import { classNames } from '@/shared/lib';
-import { Card, Skeleton } from '@/shared/ui';
+import {
+  Card as CardDeprecated,
+  SkeletonRedesigned,
+  Skeleton as SkeletonDeprecated,
+  CardRedesigned,
+} from '@/shared/ui';
+import { toggleFeature } from '@/shared/lib/features';
 
 import { ArticleListView } from '../../model/consts/consts';
 
@@ -16,17 +22,29 @@ export const ArticleListItemSkeleton = memo(
   (props: ArticleListItemSkeletonProps) => {
     const { className, view } = props;
 
+    const Skeleton = toggleFeature({
+      name: 'isAppRedesigned',
+      on: () => SkeletonRedesigned,
+      off: () => SkeletonDeprecated,
+    });
+
+    const Card = toggleFeature({
+      name: 'isAppRedesigned',
+      on: () => CardRedesigned,
+      off: () => CardDeprecated,
+    });
+
     if (view === ArticleListView.BIG) {
       return (
         <div className={classNames('', {}, [className, styles[view]])}>
-          <Card>
+          <Card cardPadding="24">
             <div className={styles.header}>
               <Skeleton border="50%" height={30} width={30} />
               <Skeleton width={150} height={16} className={styles.username} />
               <Skeleton width={150} height={16} className={styles.date} />
             </div>
             <Skeleton width={250} height={24} className={styles.title} />
-            <Skeleton height={200} className={styles.img} />
+            <Skeleton height={420} className={styles.img} />
             <div className={styles.footer}>
               <Skeleton height={36} width={200} />
             </div>

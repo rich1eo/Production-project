@@ -21,6 +21,8 @@
   }
 }
 
+// ADDONS
+
 .withAddon {
   padding: 0 16px;
 }
@@ -29,6 +31,8 @@
 .addonRight {
   display: flex;
 }
+
+// VARIANTS
 
 .clear {
   padding: 0;
@@ -45,6 +49,18 @@
 .square {
   padding: 0;
 }
+
+.outline {
+  background: none;
+  border: 1px solid var(--icon-redesigned);
+  border-radius: 34px;
+
+  &:hover {
+    border: 1px solid var(--accent-redesigned);
+  }
+}
+
+// SIZE
 
 .square.m {
   width: var(--font-line-m);
@@ -72,6 +88,8 @@
 .xl {
   font: var(--font-xl-redesigned);
 }
+
+// MODIFICATIONS
 
 .disabled {
   opacity: 0.5;

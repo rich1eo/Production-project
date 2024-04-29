@@ -73,3 +73,15 @@
     font: var(--font-l-redesigned);
   }
 }
+
+// BOLD
+
+.bold {
+  .title {
+    font-weight: 700;
+  }
+
+  .text {
+    font-weight: 700;
+  }
+}
