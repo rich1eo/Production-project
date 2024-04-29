@@ -7,7 +7,7 @@ import * as styles from './Flex.module.scss';
 export type FlexJustify = 'start' | 'center' | 'end' | 'between';
 export type FlexAlign = 'start' | 'center' | 'end';
 export type FlexDirection = 'row' | 'column';
-export type FlexGap = '4' | '8' | '16' | '32';
+export type FlexGap = '4' | '8' | '16' | '24' | '32';
 
 const justifyClasses: Record<FlexJustify, string> = {
   start: styles.justifyStart,
@@ -31,6 +31,7 @@ const gapClasses: Record<FlexGap, string> = {
   4: styles.gap4,
   8: styles.gap8,
   16: styles.gap16,
+  24: styles.gap24,
   32: styles.gap32,
 };
 
@@ -47,6 +48,7 @@ export interface FlexProps extends DivProps {
   direction: FlexDirection;
   gap?: FlexGap;
   max?: boolean;
+  wrap?: boolean;
 }
 
 export const Flex = (props: FlexProps) => {
@@ -58,6 +60,7 @@ export const Flex = (props: FlexProps) => {
     justify = 'start',
     gap,
     max,
+    wrap,
     ...otherProps
   } = props;
 
@@ -71,6 +74,7 @@ export const Flex = (props: FlexProps) => {
 
   const mods: Mods = {
     [styles.max]: max,
+    [styles.wrap]: wrap,
   };
 
   return (

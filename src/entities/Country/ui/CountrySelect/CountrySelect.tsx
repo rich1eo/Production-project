@@ -2,16 +2,10 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib';
-import { ListBox } from '@/shared/ui';
+import { ListBox, ListBoxRedesigned } from '@/shared/ui';
 
 import { Country } from '../../model/types/country';
-
-interface CountrySelectProps {
-  className?: string;
-  value?: Country;
-  onChange?: (value: Country) => void;
-  readonly?: boolean;
-}
+import { ToggleFeature } from '@/shared/lib/features';
 
 const options = [
   {
@@ -40,28 +34,51 @@ const options = [
   },
 ];
 
-export const CountrySelect = memo(
-  ({ className, value, readonly, onChange }: CountrySelectProps) => {
-    const { t } = useTranslation('profile');
+interface CountrySelectProps {
+  className?: string;
+  value?: Country;
+  onChange?: (value: Country) => void;
+  readonly?: boolean;
+}
 
-    const handleChange = useCallback(
-      (value: string) => {
-        onChange?.(value as Country);
-      },
-      [onChange]
-    );
+export const CountrySelect = memo((props: CountrySelectProps) => {
+  const { className, value, readonly, onChange } = props;
+  const { t } = useTranslation('profile');
 
-    return (
-      <ListBox
-        className={classNames('', {}, [className])}
-        defaultValue={t('Country')}
-        items={options}
-        value={value}
-        onChange={handleChange}
-        readonly={readonly}
-        direction="top right"
-        label={t('Country')}
-      />
-    );
-  }
-);
+  const handleChange = useCallback(
+    (value: string) => {
+      onChange?.(value as Country);
+    },
+    [onChange],
+  );
+
+  return (
+    <ToggleFeature
+      name="isAppRedesigned"
+      on={
+        <ListBoxRedesigned
+          className={classNames('', {}, [className])}
+          defaultValue={t('Country')}
+          items={options}
+          value={value}
+          onChange={handleChange}
+          readonly={readonly}
+          direction="top left"
+          label={t('Country')}
+        />
+      }
+      off={
+        <ListBox
+          className={classNames('', {}, [className])}
+          defaultValue={t('Country')}
+          items={options}
+          value={value}
+          onChange={handleChange}
+          readonly={readonly}
+          direction="top right"
+          label={t('Country')}
+        />
+      }
+    />
+  );
+});

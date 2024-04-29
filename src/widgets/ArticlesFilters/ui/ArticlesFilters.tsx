@@ -51,12 +51,9 @@ export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
           value={search}
           onChange={onChangeSearch}
           addonLeft={<Icon Svg={SearchIcon} />}
+          size="s"
         />
-        <ArticleTypeTabs
-          value={type}
-          onChangeType={onChangeType}
-          // className={styles.tabs}
-        />
+        <ArticleTypeTabs value={type} onChangeType={onChangeType} />
         <ArticleSortSelector
           order={order}
           sort={sort}
