@@ -1,5 +1,3 @@
-import { memo } from 'react';
-
 import { classNames } from '@/shared/lib';
 import {
   Card as CardDeprecated,
@@ -18,53 +16,59 @@ interface ArticleListItemSkeletonProps {
   className?: string;
 }
 
-export const ArticleListItemSkeleton = memo(
-  (props: ArticleListItemSkeletonProps) => {
-    const { className, view } = props;
+export const ArticleListItemSkeleton = (
+  props: ArticleListItemSkeletonProps,
+) => {
+  const { className, view } = props;
 
-    const Skeleton = toggleFeature({
-      name: 'isAppRedesigned',
-      on: () => SkeletonRedesigned,
-      off: () => SkeletonDeprecated,
-    });
+  const Skeleton = toggleFeature({
+    name: 'isAppRedesigned',
+    on: () => SkeletonRedesigned,
+    off: () => SkeletonDeprecated,
+  });
 
-    const Card = toggleFeature({
-      name: 'isAppRedesigned',
-      on: () => CardRedesigned,
-      off: () => CardDeprecated,
-    });
+  const Card = toggleFeature({
+    name: 'isAppRedesigned',
+    on: () => CardRedesigned,
+    off: () => CardDeprecated,
+  });
 
-    if (view === ArticleListView.BIG) {
-      return (
-        <div className={classNames('', {}, [className, styles[view]])}>
-          <Card cardPadding="24">
-            <div className={styles.header}>
-              <Skeleton border="50%" height={30} width={30} />
-              <Skeleton width={150} height={16} className={styles.username} />
-              <Skeleton width={150} height={16} className={styles.date} />
-            </div>
-            <Skeleton width={250} height={24} className={styles.title} />
-            <Skeleton height={420} className={styles.img} />
-            <div className={styles.footer}>
-              <Skeleton height={36} width={200} />
-            </div>
-          </Card>
-        </div>
-      );
-    }
+  const mainClass = toggleFeature({
+    name: 'isAppRedesigned',
+    on: () => styles.ArticleListItemSkeletonRedesigned,
+    off: () => '',
+  });
 
+  if (view === ArticleListView.BIG) {
     return (
-      <div className={classNames('', {}, [className, styles[view]])}>
-        <Card>
-          <div>
-            <Skeleton width={200} height={200} className={styles.img} />
+      <div className={classNames(mainClass, {}, [className, styles[view]])}>
+        <Card cardPadding="24" max>
+          <div className={styles.header}>
+            <Skeleton border="50%" height={30} width={30} />
+            <Skeleton width={150} height={16} className={styles.username} />
+            <Skeleton width={150} height={16} className={styles.date} />
           </div>
-          <div className={styles.infoWrapper}>
-            <Skeleton width={130} height={16} />
+          <Skeleton width={250} height={24} className={styles.title} />
+          <Skeleton height={420} className={styles.img} />
+          <div className={styles.footer}>
+            <Skeleton height={36} width={200} />
           </div>
-          <Skeleton width={150} height={16} className={styles.title} />
         </Card>
       </div>
     );
-  },
-);
+  }
+
+  return (
+    <div className={classNames(mainClass, {}, [className, styles[view]])}>
+      <Card className={styles.card}>
+        <div>
+          <Skeleton width="100%" height={200} className={styles.img} />
+        </div>
+        <div className={styles.infoWrapper}>
+          <Skeleton width={130} height={16} />
+        </div>
+        <Skeleton width={150} height={16} className={styles.title} />
+      </Card>
+    </div>
+  );
+};

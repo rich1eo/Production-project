@@ -108,3 +108,24 @@
 .icon {
   fill: currentcolor;
 }
+
+.ArticleListItemSkeletonRedesigned {
+  &.BIG {
+    width: 100%;
+  }
+
+  &.SMALL {
+    width: 240px;
+    height: 350px;
+
+    .card {
+      height: 100%;
+    }
+
+    .img {
+      width: 100%;
+      min-height: 140px;
+      max-height: 140px;
+    }
+  }
+}

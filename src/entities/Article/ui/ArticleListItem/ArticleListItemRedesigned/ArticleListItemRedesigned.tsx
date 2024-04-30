@@ -27,11 +27,13 @@ import styles from './ArticleListItemRedesigned.module.scss';
 
 export const ArticleListItemRedesigned = (props: ArticleListItemProps) => {
   const { className, article, view, target } = props;
-
   const { t } = useTranslation();
 
-  const types = (
-    <TextRedesigned text={article.type.join(', ')} className={styles.types} />
+  const userInfo = (
+    <>
+      <AvatarRedesigned size={32} src={article.user.avatar} />
+      <TextRedesigned text={article.user.username} bold />
+    </>
   );
 
   const views = (
@@ -58,8 +60,7 @@ export const ArticleListItemRedesigned = (props: ArticleListItemProps) => {
       >
         <VStack gap="16">
           <HStack gap="8" max>
-            <AvatarRedesigned size={32} src={article.user.avatar} />
-            <TextRedesigned text={article.user.username} bold />
+            {userInfo}
             <TextRedesigned text={article.createdAt} className={styles.date} />
           </HStack>
           <TextRedesigned title={article.title} bold />
@@ -88,7 +89,6 @@ export const ArticleListItemRedesigned = (props: ArticleListItemProps) => {
             {views}
           </HStack>
         </VStack>
-        {/* {types} */}
       </CardRedesigned>
     );
   }
@@ -100,23 +100,28 @@ export const ArticleListItemRedesigned = (props: ArticleListItemProps) => {
       target={target}
       data-testid="ArticleListItem"
     >
-      <CardRedesigned>
-        <div className={styles.imgWrapper}>
-          <AppImage
-            src={article.img}
-            alt={article.title}
-            className={styles.img}
-            fallback={
-              <SkeletonRedesigned width="100%" height={200} border="6" />
-            }
-          />
-          <TextRedesigned text={article.createdAt} className={styles.date} />
-        </div>
-        <div className={styles.infoWrapper}>
-          {types}
-          {views}
-        </div>
-        <TextRedesigned text={article.title} className={styles.title} />
+      <CardRedesigned className={styles.card}>
+        <AppImage
+          src={article.img}
+          alt={article.title}
+          className={styles.img}
+          fallback={<SkeletonRedesigned width="100%" height={200} border="6" />}
+        />
+        <VStack gap="4" className={styles.info}>
+          <TextRedesigned text={article.title} className={styles.title} />
+          <VStack gap="4" className={styles.footer} max>
+            <HStack justify="between" max>
+              <TextRedesigned
+                text={article.createdAt}
+                className={styles.date}
+              />
+              {views}
+            </HStack>
+            <HStack gap="8" max>
+              {userInfo}
+            </HStack>
+          </VStack>
+        </VStack>
       </CardRedesigned>
     </AppLinkRedesigned>
   );

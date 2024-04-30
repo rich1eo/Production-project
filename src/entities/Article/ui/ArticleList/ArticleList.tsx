@@ -2,7 +2,8 @@ import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib';
-import { Text, TextSize } from '@/shared/ui';
+import { HStack, Text, TextSize } from '@/shared/ui';
+import { ToggleFeature } from '@/shared/lib/features';
 
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
@@ -44,19 +45,37 @@ export const ArticleList = memo((props: ArticleListProps) => {
   }
 
   return (
-    <div
-      className={classNames('', {}, [className, cls[view]])}
-      data-testid="ArticleList"
-    >
-      {articles.map((article) => (
-        <ArticleListItem
-          className={cls.card}
-          key={article.id}
-          article={article}
-          view={view}
-        />
-      ))}
-      {isLoading && getSkeletons(view)}
-    </div>
+    <ToggleFeature
+      name="isAppRedesigned"
+      on={
+        <HStack gap="16" wrap max data-testid="ArticleList">
+          {articles.map((article) => (
+            <ArticleListItem
+              className={cls.card}
+              key={article.id}
+              article={article}
+              view={view}
+            />
+          ))}
+          {isLoading && getSkeletons(view)}
+        </HStack>
+      }
+      off={
+        <div
+          className={classNames('', {}, [className, cls[view]])}
+          data-testid="ArticleList"
+        >
+          {articles.map((article) => (
+            <ArticleListItem
+              className={cls.card}
+              key={article.id}
+              article={article}
+              view={view}
+            />
+          ))}
+          {isLoading && getSkeletons(view)}
+        </div>
+      }
+    />
   );
 });
