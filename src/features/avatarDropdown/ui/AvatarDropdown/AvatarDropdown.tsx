@@ -4,7 +4,11 @@ import { useSelector } from 'react-redux';
 
 import { classNames } from '@/shared/lib';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { getRouteAdminPanel, getRouteProfile } from '@/shared/const/router';
+import {
+  getRouteAdminPanel,
+  getRouteProfile,
+  getRouteSettings,
+} from '@/shared/const/router';
 import { ToggleFeature } from '@/shared/lib/features';
 
 import {
@@ -55,6 +59,10 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
     {
       content: t('Profile'),
       href: getRouteProfile(authData.id),
+    },
+    {
+      content: t('Settings'),
+      href: getRouteSettings(),
     },
     {
       content: t('Sign Out'),
