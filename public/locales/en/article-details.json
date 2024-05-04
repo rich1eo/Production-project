@@ -9,5 +9,9 @@
   "Loading": "Loading...",
   "Rate article": "Rate the article",
   "Leave a review about article": "Leave a review about article",
-  "article.details.rating.card.not.available": "Article ratings coming soon!"
+  "article.details.rating.card.not.available": "Article ratings coming soon!",
+  "edit.btn": "Edit",
+  "article.views_zero": "{{count}} views",
+  "article.views_one": "{{count}} view",
+  "article.views_other": "{{count}} views"
 }

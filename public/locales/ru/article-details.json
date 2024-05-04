@@ -9,5 +9,10 @@
   "Loading": "Загрузка...",
   "Rate article": "Оцените статью",
   "Leave a review about article": "Оставьте отзыв о статье",
-  "article.details.rating.card.not.available": "Оценка статей скоро появится!"
+  "article.details.rating.card.not.available": "Оценка статей скоро появится!",
+  "edit.btn": "Редактировать",
+  "article.views_zero": "{{count}} просмотров",
+  "article.views_one": "{{count}} просмотр",
+  "article.views_few": "{{count}} просмотра",
+  "article.views_many": "{{count}} просмотров"
 }

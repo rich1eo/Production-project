@@ -1,4 +1,4 @@
-import { ReactNode, memo } from 'react';
+import { ReactNode } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 
@@ -11,7 +11,7 @@ interface StickyLayoutProps {
   right?: ReactNode;
 }
 
-export const StickyLayout = memo((props: StickyLayoutProps) => {
+export const StickyLayout = (props: StickyLayoutProps) => {
   const { className, right, left, content } = props;
 
   console.log(left);
@@ -23,4 +23,4 @@ export const StickyLayout = memo((props: StickyLayoutProps) => {
       {right && <div className={styles.right}>{right}</div>}
     </div>
   );
-});
+};
