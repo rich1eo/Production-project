@@ -17,4 +17,12 @@
 
 .block {
   margin-top: 1.6rem;
+  margin-inline: auto;
+}
+
+.img {
+  max-height: 420px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 16px;
 }

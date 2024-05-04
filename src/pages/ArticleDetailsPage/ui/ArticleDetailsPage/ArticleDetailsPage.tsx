@@ -20,13 +20,13 @@ import { AdditionalInfoContainer } from '../AdditionalInfoContainer';
 
 import * as styles from './ArticleDetailsPage.module.scss';
 
-interface ArticlesPageProps {
-  className?: string;
-}
-
 const reducers: ReducerList = {
   articleDetailsPage: articleDetailsPageReducer,
 };
+
+interface ArticlesPageProps {
+  className?: string;
+}
 
 function ArticleDetailsPage({ className }: ArticlesPageProps) {
   const { id } = useParams<{ id: string }>();
@@ -47,7 +47,6 @@ function ArticleDetailsPage({ className }: ArticlesPageProps) {
               <Page className={classNames('', {}, [className])}>
                 <VStack gap="16" max>
                   <DetailsContainer />
-                  <ArticleDetails id={id} />
                   <ArticleRating articleId={id} />
                   <ArticleRecommendationsList
                     className={styles.recommendations}
@@ -81,13 +80,3 @@ function ArticleDetailsPage({ className }: ArticlesPageProps) {
 }
 
 export default memo(ArticleDetailsPage);
-
-/* <ToggleFeature
-                    name="isArticleRatingEnabled"
-                    on={<ArticleRating articleId={id} />}
-                    off={
-                      <Card>
-                        {t('article.details.rating.card.not.available')}
-                      </Card>
-                    }
-                  /> */

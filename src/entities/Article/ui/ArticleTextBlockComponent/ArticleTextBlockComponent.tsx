@@ -1,10 +1,11 @@
 import { memo } from 'react';
 
 import { classNames } from '@/shared/lib';
-import { Text } from '@/shared/ui';
+import { Text, TextRedesigned } from '@/shared/ui';
 import type { ArticleTextBlock } from '../../model/types/article';
 
 import * as styles from './ArticleTextBlockComponent.module.scss';
+import { ToggleFeature } from '@/shared/lib/features';
 
 interface ArticleTextBlockComponentProps {
   block: ArticleTextBlock;
@@ -15,10 +16,23 @@ export const ArticleTextBlockComponent = memo(
   ({ className, block }: ArticleTextBlockComponentProps) => {
     return (
       <div className={classNames('', {}, [className])}>
-        {block.title && <Text title={block.title} className={styles.title} />}
+        {block.title && (
+          <ToggleFeature
+            name="isAppRedesigned"
+            on={<TextRedesigned title={block.title} className={styles.title} />}
+            off={<Text title={block.title} className={styles.title} />}
+          />
+        )}
         {block.paragraphs.length &&
           block.paragraphs.map((paragraph, index) => (
-            <Text key={index} text={paragraph} className={styles.paragraph} />
+            <ToggleFeature
+              name="isAppRedesigned"
+              key={index}
+              on={
+                <TextRedesigned text={paragraph} className={styles.paragraph} />
+              }
+              off={<Text text={paragraph} className={styles.paragraph} />}
+            />
           ))}
       </div>
     );

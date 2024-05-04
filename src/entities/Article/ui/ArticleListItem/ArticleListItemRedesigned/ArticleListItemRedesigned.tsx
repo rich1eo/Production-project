@@ -100,7 +100,7 @@ export const ArticleListItemRedesigned = (props: ArticleListItemProps) => {
       target={target}
       data-testid="ArticleListItem"
     >
-      <CardRedesigned className={styles.card}>
+      <CardRedesigned className={styles.card} borderRadius="round">
         <AppImage
           src={article.img}
           alt={article.title}
@@ -117,7 +117,7 @@ export const ArticleListItemRedesigned = (props: ArticleListItemProps) => {
               />
               {views}
             </HStack>
-            <HStack gap="8" max>
+            <HStack gap="8" max className={styles.userInfo}>
               {userInfo}
             </HStack>
           </VStack>

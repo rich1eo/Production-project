@@ -2,7 +2,6 @@ export * from './deprecated/AppLink';
 export * from './deprecated/Avatar';
 export * from './deprecated/Button';
 export * from './deprecated/Card';
-export * from './deprecated/Code';
 export * from './redesigned/Drawer';
 export * from './deprecated/Input';
 export * from './deprecated/Loader';
@@ -31,3 +30,4 @@ export {
 } from './redesigned/Popups';
 export { Tabs as TabsRedesigned } from './redesigned/Tabs';
 export { Input as InputRedesigned } from './redesigned/Input';
+export { Code } from './redesigned/Code';

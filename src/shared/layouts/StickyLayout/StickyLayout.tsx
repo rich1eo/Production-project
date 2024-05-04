@@ -14,8 +14,6 @@ interface StickyLayoutProps {
 export const StickyLayout = (props: StickyLayoutProps) => {
   const { className, right, left, content } = props;
 
-  console.log(left);
-
   return (
     <div className={classNames(styles.StickyLayout, {}, [className])}>
       {left && <div className={styles.left}>{left}</div>}

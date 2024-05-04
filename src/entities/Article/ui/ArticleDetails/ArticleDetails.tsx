@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { DynamicModuleLoader, ReducerList, classNames } from '@/shared/lib';
@@ -11,6 +11,9 @@ import {
   Avatar,
   HStack,
   VStack,
+  TextRedesigned,
+  AppImage,
+  SkeletonRedesigned,
 } from '@/shared/ui';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
@@ -18,13 +21,11 @@ import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
 import * as selectors from '../../model/selectors/getArticleDetails';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
-import { ArticleBlock } from '../../model/types/article';
-import { ArticleBlockType } from '../../model/consts/consts';
-import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
-import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
-import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+
+import { renderArticleBlock } from './renderArticleBlock';
 
 import * as styles from './ArticleDetails.module.scss';
+import { ToggleFeature } from '@/shared/lib/features';
 
 interface ArticleDetailsProps {
   id?: string;
@@ -33,6 +34,58 @@ interface ArticleDetailsProps {
 
 const reducers: ReducerList = {
   articleDetails: articleDetailsReducer,
+};
+
+const Deprecated = () => {
+  const data = selectors.useArticleDetailsData();
+
+  if (!data) return;
+
+  return (
+    <>
+      <HStack justify="center" max>
+        <Avatar size={200} src={data.img} />
+      </HStack>
+      <VStack gap="4" max data-testid="ArticleDetails.Info">
+        <Text
+          className={styles.title}
+          title={data?.title}
+          text={data.subtitle}
+          size={TextSize.L}
+        />
+        <HStack gap="8">
+          <EyeIcon className={styles.icon} />
+          {<Text text={data.views.toString()} />}
+        </HStack>
+        <HStack gap="8">
+          <CalendarIcon className={styles.icon} />
+          {<Text text={data.createdAt} />}
+        </HStack>
+      </VStack>
+      {data.blocks.map((block) => renderArticleBlock(block))}
+    </>
+  );
+};
+
+const Redesigned = () => {
+  const article = selectors.useArticleDetailsData();
+
+  if (!article) return;
+
+  return (
+    <>
+      <TextRedesigned title={article.title} size={'l'} bold />
+      <TextRedesigned title={article.subtitle} />
+      <AppImage
+        fallback={
+          <SkeletonRedesigned width="100%" height={420} border="16px" />
+        }
+        src={article.img}
+        className={styles.img}
+      />
+      {article.blocks.map((block) => renderArticleBlock(block))}
+    </>
+  );
 };
 
 export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
@@ -47,35 +100,6 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
       dispatch(fetchArticleById(id));
     }
   }, [dispatch, id]);
-
-  const renderBlock = useCallback((block: ArticleBlock) => {
-    switch (block.type) {
-      case ArticleBlockType.CODE:
-        return (
-          <ArticleCodeBlockComponent
-            className={styles.block}
-            key={block.id}
-            block={block}
-          />
-        );
-      case ArticleBlockType.IMG:
-        return (
-          <ArticleImageBlockComponent
-            className={styles.block}
-            key={block.id}
-            block={block}
-          />
-        );
-      case ArticleBlockType.TEXT:
-        return (
-          <ArticleTextBlockComponent
-            className={styles.block}
-            key={block.id}
-            block={block}
-          />
-        );
-    }
-  }, []);
 
   let content;
 
@@ -93,28 +117,11 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
     content = <Text title={t('Article not found')} align={TextAlign.CENTER} />;
   } else if (data) {
     content = (
-      <>
-        <HStack justify="center" max>
-          <Avatar size={200} src={data.img} />
-        </HStack>
-        <VStack gap="4" max data-testid="ArticleDetails.Info">
-          <Text
-            className={styles.title}
-            title={data?.title}
-            text={data.subtitle}
-            size={TextSize.L}
-          />
-          <HStack gap="8">
-            <EyeIcon className={styles.icon} />
-            {<Text text={data.views.toString()} />}
-          </HStack>
-          <HStack gap="8">
-            <CalendarIcon className={styles.icon} />
-            {<Text text={data.createdAt} />}
-          </HStack>
-        </VStack>
-        {data.blocks.map((block) => renderBlock(block))}
-      </>
+      <ToggleFeature
+        name="isAppRedesigned"
+        on={<Redesigned />}
+        off={<Deprecated />}
+      />
     );
   }
 
