@@ -14,7 +14,12 @@ import {
   ButtonSize,
   ButtonTheme,
   Text,
+  TextRedesigned,
+  InputRedesigned,
+  ButtonRedesigned,
+  CardRedesigned,
 } from '@/shared/ui';
+import { ToggleFeature } from '@/shared/lib/features';
 
 interface RatingCardProps {
   className?: string;
@@ -50,7 +55,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
         onAccept?.(selectedStarsCount);
       }
     },
-    [hasFeedback, onAccept]
+    [hasFeedback, onAccept],
   );
 
   const handleAccept = useCallback(() => {
@@ -64,48 +69,101 @@ export const RatingCard = memo((props: RatingCardProps) => {
   }, [onCancel, starsCount]);
 
   const modalContent = (
-    <>
-      <Text title={feedbackTitle} />
-      <Input
-        placeholder={t('Your feedback')}
-        value={feedback}
-        onChange={setFeedback}
-        data-testid="RatingCard.input"
-      />
-    </>
+    <ToggleFeature
+      name="isAppRedesigned"
+      on={
+        <>
+          <TextRedesigned title={feedbackTitle} />
+          <InputRedesigned
+            placeholder={t('Your feedback')}
+            value={feedback}
+            onChange={setFeedback}
+            data-testid="RatingCard.input"
+          />
+        </>
+      }
+      off={
+        <>
+          <Text title={feedbackTitle} />
+          <Input
+            placeholder={t('Your feedback')}
+            value={feedback}
+            onChange={setFeedback}
+            data-testid="RatingCard.input"
+          />
+        </>
+      }
+    />
   );
 
-  return (
-    <Card className={className} max data-testid="RatingCard">
+  const content = (
+    <>
+      {' '}
       <VStack align="center" gap="8" max>
-        <Text title={starsCount ? t('Thank you for feedback') : title} />
+        <ToggleFeature
+          name="isAppRedesigned"
+          on={
+            <>
+              <TextRedesigned
+                title={starsCount ? t('Thank you for feedback') : title}
+              />
+            </>
+          }
+          off={
+            <>
+              <Text title={starsCount ? t('Thank you for feedback') : title} />
+            </>
+          }
+        />
         <StarRating
           selectedStars={starsCount}
           size={40}
           onSelect={handleSelectStars}
         />
       </VStack>
-
       <BrowserView>
         <Modal isOpen={isModalOpen} onClose={handleCancel} lazy>
           <VStack max gap="32">
             {modalContent}
-            <HStack max gap="8" justify="end">
-              <Button
-                theme={ButtonTheme.OUTLINE}
-                onClick={handleAccept}
-                data-testid="RatingCard.send"
-              >
-                {t('Send')}
-              </Button>
-              <Button
-                theme={ButtonTheme.OUTLINE_RED}
-                onClick={handleCancel}
-                data-testid="RatingCard.close"
-              >
-                {t('Cancel')}
-              </Button>
-            </HStack>
+            <ToggleFeature
+              name="isAppRedesigned"
+              on={
+                <HStack max gap="8" justify="end">
+                  <ButtonRedesigned
+                    variant="outline"
+                    onClick={handleAccept}
+                    data-testid="RatingCard.send"
+                  >
+                    {t('Send')}
+                  </ButtonRedesigned>
+                  <ButtonRedesigned
+                    variant="outline"
+                    onClick={handleCancel}
+                    data-testid="RatingCard.close"
+                  >
+                    {t('Cancel')}
+                  </ButtonRedesigned>
+                </HStack>
+              }
+              off={
+                <HStack max gap="8" justify="end">
+                  <Button
+                    theme={ButtonTheme.OUTLINE}
+                    onClick={handleAccept}
+                    data-testid="RatingCard.send"
+                  >
+                    {t('Send')}
+                  </Button>
+                  <Button
+                    theme={ButtonTheme.OUTLINE_RED}
+                    onClick={handleCancel}
+                    data-testid="RatingCard.close"
+                  >
+                    {t('Cancel')}
+                  </Button>
+                </HStack>
+              }
+            />
           </VStack>
         </Modal>
       </BrowserView>
@@ -113,12 +171,43 @@ export const RatingCard = memo((props: RatingCardProps) => {
         <Drawer isOpen={isModalOpen} onClose={handleCancel}>
           <VStack gap="32">
             {modalContent}
-            <Button onClick={handleAccept} size={ButtonSize.L} fullWidth>
-              {t('Send')}
-            </Button>
+            <ToggleFeature
+              name="isAppRedesigned"
+              on={
+                <ButtonRedesigned onClick={handleAccept} size="l" fullWidth>
+                  {t('Send')}
+                </ButtonRedesigned>
+              }
+              off={
+                <Button onClick={handleAccept} size={ButtonSize.L} fullWidth>
+                  {t('Send')}
+                </Button>
+              }
+            />
           </VStack>
         </Drawer>
       </MobileView>
-    </Card>
+    </>
+  );
+
+  return (
+    <ToggleFeature
+      name="isAppRedesigned"
+      on={
+        <CardRedesigned
+          className={className}
+          max
+          cardPadding="24"
+          data-testid="RatingCard"
+        >
+          {content}
+        </CardRedesigned>
+      }
+      off={
+        <Card className={className} max data-testid="RatingCard">
+          {content}
+        </Card>
+      }
+    />
   );
 });

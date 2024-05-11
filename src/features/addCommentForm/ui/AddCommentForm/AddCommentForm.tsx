@@ -5,7 +5,14 @@ import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib';
 import { DynamicModuleLoader, ReducerList } from '@/shared/lib';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, Input, HStack } from '@/shared/ui';
+import {
+  Button,
+  Input,
+  HStack,
+  InputRedesigned,
+  ButtonRedesigned,
+  CardRedesigned,
+} from '@/shared/ui';
 
 import { getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
 import {
@@ -14,6 +21,7 @@ import {
 } from '../../model/slice/addCommentFormSlice';
 
 import * as styles from './AddCommentForm.module.scss';
+import { ToggleFeature } from '@/shared/lib/features';
 
 export interface AddCommentFormProps {
   onSendComment: (text: string) => void;
@@ -44,23 +52,58 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <HStack
-        justify="between"
-        max
-        className={classNames(styles.AddCommentForm, {}, [className])}
-        data-testid="AddCommentForm"
-      >
-        <Input
-          className={styles.input}
-          placeholder={t('Add new comment')}
-          value={text}
-          onChange={handleCommentTextChange}
-          data-testid="AddCommentForm.input"
-        />
-        <Button onClick={handleSendComment} data-testid="AddCommentForm.btn">
-          {t('Send')}
-        </Button>
-      </HStack>
+      <ToggleFeature
+        name="isAppRedesigned"
+        on={
+          <CardRedesigned cardPadding="24" max>
+            <HStack
+              justify="between"
+              gap="16"
+              max
+              className={classNames(styles.AddCommentFormRedesigned, {}, [
+                className,
+              ])}
+              data-testid="AddCommentForm"
+            >
+              <InputRedesigned
+                className={styles.input}
+                placeholder={t('Add new comment')}
+                value={text}
+                onChange={handleCommentTextChange}
+                data-testid="AddCommentForm.input"
+              />
+              <ButtonRedesigned
+                onClick={handleSendComment}
+                data-testid="AddCommentForm.btn"
+              >
+                {t('Send')}
+              </ButtonRedesigned>
+            </HStack>
+          </CardRedesigned>
+        }
+        off={
+          <HStack
+            justify="between"
+            max
+            className={classNames(styles.AddCommentForm, {}, [className])}
+            data-testid="AddCommentForm"
+          >
+            <Input
+              className={styles.input}
+              placeholder={t('Add new comment')}
+              value={text}
+              onChange={handleCommentTextChange}
+              data-testid="AddCommentForm.input"
+            />
+            <Button
+              onClick={handleSendComment}
+              data-testid="AddCommentForm.btn"
+            >
+              {t('Send')}
+            </Button>
+          </HStack>
+        }
+      />
     </DynamicModuleLoader>
   );
 });

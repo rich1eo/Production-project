@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { CommentList } from '@/entities/Comment';
 import { AddCommentForm } from '@/features/addCommentForm';
 import { classNames } from '@/shared/lib';
-import { Text, TextSize, VStack, Loader } from '@/shared/ui';
+import { Text, TextSize, VStack, Loader, TextRedesigned } from '@/shared/ui';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 
@@ -13,6 +13,7 @@ import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { ToggleFeature } from '@/shared/lib/features';
 
 interface ArticleDetailsCommentsProps {
   className?: string;
@@ -32,7 +33,7 @@ export const ArticleDetailsComments = memo(
       (text: string) => {
         dispatch(addCommentForArticle(text));
       },
-      [dispatch]
+      [dispatch],
     );
 
     useInitialEffect(() => {
@@ -41,12 +42,16 @@ export const ArticleDetailsComments = memo(
 
     return (
       <VStack gap="16" max className={classNames('', {}, [className])}>
-        <Text size={TextSize.L} title={t('Comments')} />
+        <ToggleFeature
+          name="isAppRedesigned"
+          on={<TextRedesigned size="l" title={t('Comments')} />}
+          off={<Text size={TextSize.L} title={t('Comments')} />}
+        />
         <Suspense fallback={<Loader />}>
           <AddCommentForm onSendComment={onSendComment} />
         </Suspense>
         <CommentList isLoading={commentsIsLoading} comments={comments} />
       </VStack>
     );
-  }
+  },
 );

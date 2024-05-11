@@ -7,7 +7,7 @@ import {
   Text,
   TextAlign,
   TextSize,
-  Skeleton,
+  Skeleton as SkeletonDeprecated,
   Avatar,
   HStack,
   VStack,
@@ -25,7 +25,7 @@ import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArt
 import { renderArticleBlock } from './renderArticleBlock';
 
 import * as styles from './ArticleDetails.module.scss';
-import { ToggleFeature } from '@/shared/lib/features';
+import { ToggleFeature, toggleFeature } from '@/shared/lib/features';
 
 interface ArticleDetailsProps {
   id?: string;
@@ -104,6 +104,12 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
   let content;
 
   if (isLoading) {
+    const Skeleton = toggleFeature({
+      name: 'isAppRedesigned',
+      on: () => SkeletonRedesigned,
+      off: () => SkeletonDeprecated,
+    });
+
     content = (
       <>
         <Skeleton width={200} height={200} border="50%" />
@@ -114,7 +120,13 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
       </>
     );
   } else if (error) {
-    content = <Text title={t('Article not found')} align={TextAlign.CENTER} />;
+    content = (
+      <ToggleFeature
+        name="isAppRedesigned"
+        on={<TextRedesigned title={t('Article not found')} align="center" />}
+        off={<Text title={t('Article not found')} align={TextAlign.CENTER} />}
+      />
+    );
   } else if (data) {
     content = (
       <ToggleFeature

@@ -3,11 +3,12 @@ import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib';
 import { ArticleList } from '@/entities/Article';
-import { Text, TextSize, VStack } from '@/shared/ui';
+import { Text, TextRedesigned, TextSize, VStack } from '@/shared/ui';
 
 import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi';
 
 import * as styles from './ArticleRecommendationsList.module.scss';
+import { ToggleFeature } from '@/shared/lib/features';
 
 interface ArticleRecommendationsListProps {
   className?: string;
@@ -35,7 +36,11 @@ export const ArticleRecommendationsList = memo(
         ])}
         data-testid="ArticleRecommendationList"
       >
-        <Text size={TextSize.L} title={t('Recommendations')} />
+        <ToggleFeature
+          name="isAppRedesigned"
+          on={<TextRedesigned size="l" title={t('Recommendations')} />}
+          off={<Text size={TextSize.L} title={t('Recommendations')} />}
+        />
         <ArticleList articles={articles} target="_blank" />
       </VStack>
     );
