@@ -5,6 +5,7 @@ import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 import * as styles from './Button.module.scss';
 
 type ButtonVariant = 'clear' | 'outline' | 'filled';
+type ButtonColor = 'error' | 'normal' | 'success';
 
 type ButtonSize = 'm' | 'l' | 'xl';
 
@@ -12,6 +13,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: ReactNode;
   variant?: ButtonVariant;
+  color?: ButtonColor;
   square?: boolean;
   size?: ButtonSize;
   disabled?: boolean;
@@ -25,6 +27,7 @@ export const Button = (props: ButtonProps) => {
     className,
     children,
     variant = 'outline',
+    color = 'normal',
     square,
     size = 'm',
     disabled,
@@ -50,6 +53,7 @@ export const Button = (props: ButtonProps) => {
         className,
         styles[variant],
         styles[size],
+        styles[color],
       ])}
       disabled={disabled}
       {...otherProps}

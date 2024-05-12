@@ -12,6 +12,7 @@ import {
   AppLink,
   AppLinkTheme,
   Button,
+  ButtonRedesigned,
   ButtonTheme,
   HStack,
   Text,
@@ -19,7 +20,7 @@ import {
 } from '@/shared/ui';
 
 import * as styles from './NavBar.module.scss';
-import { ToggleFeature } from '@/shared/lib/features';
+import { ToggleFeature, toggleFeature } from '@/shared/lib/features';
 
 interface NavBarProps {
   className?: string;
@@ -77,14 +78,38 @@ export const NavBar = memo(({ className }: NavBarProps) => {
   }
 
   return (
-    <header className={classNames(styles.Navbar, {}, [className])}>
-      <Button
-        theme={ButtonTheme.CLEAR_INVERTED}
-        onClick={handleOpenModal}
-        className={styles.links}
-      >
-        {t('Sign In')}
-      </Button>
+    <header
+      className={classNames(
+        toggleFeature({
+          name: 'isAppRedesigned',
+          on: () => styles.NavbarRedesigned,
+          off: () => styles.Navbar,
+        }),
+        {},
+        [className],
+      )}
+    >
+      <ToggleFeature
+        name="isAppRedesigned"
+        on={
+          <ButtonRedesigned
+            variant="clear"
+            onClick={handleOpenModal}
+            className={styles.links}
+          >
+            {t('Sign In')}
+          </ButtonRedesigned>
+        }
+        off={
+          <Button
+            theme={ButtonTheme.CLEAR_INVERTED}
+            onClick={handleOpenModal}
+            className={styles.links}
+          >
+            {t('Sign In')}
+          </Button>
+        }
+      />
       {isAuthModal && (
         <LoginModal isOpen={isAuthModal} onClose={handleCloseModal} />
       )}

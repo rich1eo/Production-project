@@ -3,9 +3,19 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib';
-import { Button, ButtonTheme, Input, Text, TextTheme } from '@/shared/ui';
+import {
+  Button,
+  ButtonRedesigned,
+  ButtonTheme,
+  Input,
+  InputRedesigned,
+  Text,
+  TextRedesigned,
+  TextTheme,
+} from '@/shared/ui';
 import { DynamicModuleLoader, ReducerList } from '@/shared/lib';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ToggleFeature, toggleFeature } from '@/shared/lib/features';
 
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
@@ -56,36 +66,81 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     }
   }, [onSuccess, dispatch, password, username]);
 
+  const loginFormClass = toggleFeature({
+    name: 'isAppRedesigned',
+    on: () => styles.LoginFormRedesigned,
+    off: () => styles.LoginForm,
+  });
+
   return (
     <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
-      <div className={classNames(styles.LoginForm, {}, [className])}>
-        <Text title={t('Authorization form')} />
-        <Input
-          autofocus
-          type="text"
-          placeholder={t('Username')}
-          value={username}
-          onChange={handleChangeUsername}
+      <div className={classNames(loginFormClass, {}, [className])}>
+        <ToggleFeature
+          name="isAppRedesigned"
+          on={
+            <>
+              <TextRedesigned title={t('Authorization form')} />
+              <InputRedesigned
+                autofocus
+                type="text"
+                placeholder={t('Username')}
+                value={username}
+                onChange={handleChangeUsername}
+              />
+              <InputRedesigned
+                type="text"
+                placeholder={t('Password')}
+                value={password}
+                onChange={handleChangePassword}
+              />
+              {error && (
+                <TextRedesigned
+                  title={t('Wrong username or password')}
+                  variant="error"
+                />
+              )}
+              <ButtonRedesigned
+                variant="outline"
+                onClick={handleLoginClick}
+                disabled={isLoading}
+                className={styles.signInBtn}
+              >
+                {t('Sign In')}
+              </ButtonRedesigned>
+            </>
+          }
+          off={
+            <>
+              <Text title={t('Authorization form')} />
+              <Input
+                autofocus
+                type="text"
+                placeholder={t('Username')}
+                value={username}
+                onChange={handleChangeUsername}
+              />
+              <Input
+                type="text"
+                placeholder={t('Password')}
+                value={password}
+                onChange={handleChangePassword}
+              />
+              {error && (
+                <Text
+                  title={t('Wrong username or password')}
+                  theme={TextTheme.ERROR}
+                />
+              )}
+              <Button
+                theme={ButtonTheme.OUTLINE}
+                onClick={handleLoginClick}
+                disabled={isLoading}
+              >
+                {t('Sign In')}
+              </Button>
+            </>
+          }
         />
-        <Input
-          type="text"
-          placeholder={t('Password')}
-          value={password}
-          onChange={handleChangePassword}
-        />
-        {error && (
-          <Text
-            title={t('Wrong username or password')}
-            theme={TextTheme.ERROR}
-          />
-        )}
-        <Button
-          theme={ButtonTheme.OUTLINE}
-          onClick={handleLoginClick}
-          disabled={isLoading}
-        >
-          {t('Sign In')}
-        </Button>
       </div>
     </DynamicModuleLoader>
   );

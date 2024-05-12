@@ -7,7 +7,7 @@ import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Text, TextTheme, VStack } from '@/shared/ui';
+import { Text, TextRedesigned, TextTheme, VStack } from '@/shared/ui';
 import { ProfileCard } from '@/entities/Profile';
 import { DynamicModuleLoader, ReducerList } from '@/shared/lib';
 
@@ -20,6 +20,7 @@ import { fetchProfileData } from '../../model/services/fetchProfileData/fetchPro
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import { ValidationProfileError } from '../../model/consts/consts';
+import { ToggleFeature } from '@/shared/lib/features';
 
 interface EditableProfileCardProps {
   className?: string;
@@ -42,7 +43,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
   const validateErrorTranslates = {
     [ValidationProfileError.INCORRECT_USER_DATA]: t(
-      'First name and second name should be filled'
+      'First name and second name should be filled',
     ),
     [ValidationProfileError.INCORRECT_AGE]: t('Age should be not float number'),
     [ValidationProfileError.NO_DATA]: t('Profile can not be empty'),
@@ -60,49 +61,49 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     (value?: string) => {
       dispatch(profileActions.updateProfile({ firstName: value || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleChangeSecondName = useCallback(
     (value?: string) => {
       dispatch(profileActions.updateProfile({ secondName: value || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleChangeCity = useCallback(
     (value?: string) => {
       dispatch(profileActions.updateProfile({ city: value || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleChangeAvatar = useCallback(
     (value?: string) => {
       dispatch(profileActions.updateProfile({ avatar: value || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleChangeUsername = useCallback(
     (value?: string) => {
       dispatch(profileActions.updateProfile({ username: value || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleChangeCurrency = useCallback(
     (currency: Currency) => {
       dispatch(profileActions.updateProfile({ currency: currency || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleChangeCountry = useCallback(
     (country: Country) => {
       dispatch(profileActions.updateProfile({ country: country || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleChangeAge = useCallback(
@@ -111,7 +112,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         dispatch(profileActions.updateProfile({ age: Number(value || 0) }));
       }
     },
-    [dispatch]
+    [dispatch],
   );
 
   return (
@@ -120,11 +121,23 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         <EditableProfileCardHeader />
         {validationErrors?.length &&
           validationErrors.map((err) => (
-            <Text
+            <ToggleFeature
+              name="isAppRedesigned"
               key={err}
-              theme={TextTheme.ERROR}
-              text={validateErrorTranslates[err]}
-              data-testid="EditableProfileCard.Error"
+              on={
+                <TextRedesigned
+                  variant="error"
+                  text={validateErrorTranslates[err]}
+                  data-testid="EditableProfileCard.Error"
+                />
+              }
+              off={
+                <Text
+                  theme={TextTheme.ERROR}
+                  text={validateErrorTranslates[err]}
+                  data-testid="EditableProfileCard.Error"
+                />
+              }
             />
           ))}
         <ProfileCard

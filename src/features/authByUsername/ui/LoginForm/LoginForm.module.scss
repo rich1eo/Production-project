@@ -4,3 +4,14 @@
   gap: 1rem;
   width: 50rem;
 }
+
+.LoginFormRedesigned {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 50rem;
+}
+
+.signInBtn {
+  align-self: flex-end;
+}
