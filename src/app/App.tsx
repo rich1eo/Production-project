@@ -18,8 +18,10 @@ export default function App() {
   const { theme } = useTheme();
 
   useEffect(() => {
-    dispatch(initAuthData());
-  }, [dispatch]);
+    if (!inited) {
+      dispatch(initAuthData());
+    }
+  }, [dispatch, inited]);
 
   if (!inited) {
     return <PageLoader />;

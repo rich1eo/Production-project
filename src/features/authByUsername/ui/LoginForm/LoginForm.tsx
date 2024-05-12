@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { classNames } from '@/shared/lib';
+import { classNames, useForceUpdate } from '@/shared/lib';
 import {
   Button,
   ButtonRedesigned,
@@ -38,6 +38,7 @@ const initialReducers: ReducerList = {
 const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const forceUpdate = useForceUpdate();
 
   const username = useSelector(getLoginUsername);
   const password = useSelector(getLoginPassword);
@@ -63,8 +64,9 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
 
     if (res.meta.requestStatus === 'fulfilled') {
       onSuccess();
+      forceUpdate();
     }
-  }, [onSuccess, dispatch, password, username]);
+  }, [onSuccess, dispatch, forceUpdate, password, username]);
 
   const loginFormClass = toggleFeature({
     name: 'isAppRedesigned',

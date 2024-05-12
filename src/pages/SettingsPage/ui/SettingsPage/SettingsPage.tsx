@@ -5,6 +5,8 @@ import { TextRedesigned, VStack } from '@/shared/ui';
 import { Page } from '@/widgets/Page';
 import { UiDesignSwitcher } from '@/features/uiDesignSwitcher';
 
+import * as styles from './SettingsPage.module.scss';
+
 interface SettingsPageProps {
   className?: string;
 }
@@ -14,7 +16,7 @@ const SettingsPage = (props: SettingsPageProps) => {
   const { t } = useTranslation();
 
   return (
-    <Page className={classNames('', {}, [className])}>
+    <Page className={classNames(styles.SettingsPage, {}, [className])}>
       <VStack gap="16">
         <TextRedesigned title={t('Settings')} />
         <UiDesignSwitcher />

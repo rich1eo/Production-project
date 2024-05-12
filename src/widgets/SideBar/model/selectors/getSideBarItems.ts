@@ -1,5 +1,3 @@
-import { createSelector } from '@reduxjs/toolkit';
-
 import MainIconDeprecated from '@/shared/assets/icons/main-20-20.svg';
 import AboutIconDeprecated from '@/shared/assets/icons/about-20-20.svg';
 import ProfileIconDeprecated from '@/shared/assets/icons/profile-20-20.svg';
@@ -20,8 +18,10 @@ import { getUserAuthData } from '@/entities/User';
 import { toggleFeature } from '@/shared/lib/features';
 
 import { SideBarItemType } from '../types/sidebar';
+import { useSelector } from 'react-redux';
 
-export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
+export const useSidebarItems = () => {
+  const userData = useSelector(getUserAuthData);
   const sidebarItemsList: SideBarItemType[] = [
     {
       path: getRouteMain(),
@@ -69,4 +69,4 @@ export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
   }
 
   return sidebarItemsList;
-});
+};

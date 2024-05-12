@@ -1,4 +1,5 @@
 import { getUserAuthData } from '@/entities/User';
+import { useForceUpdate } from '@/shared/lib';
 import { getFeatureFlag, updateFeatureFlag } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
@@ -19,6 +20,7 @@ export const UiDesignSwitcher = (props: UiDesignSwitcherProps) => {
   const { className } = props;
   const { t } = useTranslation('settings');
   const dispatch = useAppDispatch();
+  const forceUpdate = useForceUpdate();
   const isAppRedesigned = getFeatureFlag('isAppRedesigned');
   const authData = useSelector(getUserAuthData);
   const [isLoading, setIsLoading] = useState(false);
@@ -45,6 +47,7 @@ export const UiDesignSwitcher = (props: UiDesignSwitcherProps) => {
       }),
     ).unwrap();
     setIsLoading(false);
+    forceUpdate();
   };
 
   return (

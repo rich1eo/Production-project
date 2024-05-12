@@ -1,5 +1,4 @@
 import { memo, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import { classNames } from '@/shared/lib';
 import {
@@ -16,7 +15,7 @@ import { ToggleFeature } from '@/shared/lib/features';
 import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 
 import SideBarItem from '../SideBarItem/SideBarItem';
-import { getSidebarItems } from '../../model/selectors/getSideBarItems';
+import { useSidebarItems } from '../../model/selectors/getSideBarItems';
 
 import * as styles from './SideBar.module.scss';
 
@@ -26,7 +25,7 @@ interface SideBarProps {
 
 const SideBar = memo(({ className }: SideBarProps) => {
   const [collapsed, setCollapsed] = useState(false);
-  const sideBarItemsList = useSelector(getSidebarItems);
+  const sideBarItemsList = useSidebarItems();
 
   function handleToggle() {
     setCollapsed((state) => !state);
