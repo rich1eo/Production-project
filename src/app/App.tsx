@@ -11,6 +11,7 @@ import { AppRouter } from './providers/router';
 import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeature } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
+import { AppLoaderLayout } from '@/shared/layouts';
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -24,7 +25,17 @@ export default function App() {
   }, [dispatch, inited]);
 
   if (!inited) {
-    return <PageLoader />;
+    return (
+      <ToggleFeature
+        name="isAppRedesigned"
+        on={
+          <div id="app" className={classNames('app_redesigned', {}, [theme])}>
+            <AppLoaderLayout />
+          </div>
+        }
+        off={<PageLoader />}
+      />
+    );
   }
 
   return (
