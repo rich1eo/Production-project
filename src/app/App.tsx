@@ -6,17 +6,19 @@ import { SideBar } from '@/widgets/SideBar';
 import { initAuthData, useUserInited } from '@/entities/User';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-
-import { AppRouter } from './providers/router';
 import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeature } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { AppLoaderLayout } from '@/shared/layouts';
 
+import { AppRouter } from './providers/router';
+import { useAppToolbar } from './lib/useAppToolbar';
+
 export default function App() {
   const dispatch = useAppDispatch();
   const inited = useUserInited();
   const { theme } = useTheme();
+  const toolbar = useAppToolbar();
 
   useEffect(() => {
     if (!inited) {
@@ -48,7 +50,7 @@ export default function App() {
               header={<NavBar />}
               content={<AppRouter />}
               sidebar={<SideBar />}
-              toolbar={<div>123123123</div>}
+              toolbar={toolbar}
             />
           </Suspense>
         </div>
