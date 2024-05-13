@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, memo, useEffect } from 'react';
 
 import { classNames } from '@/shared/lib';
 import { NavBar } from '@/widgets/NavBar';
@@ -13,8 +13,9 @@ import { AppLoaderLayout } from '@/shared/layouts';
 
 import { AppRouter } from './providers/router';
 import { useAppToolbar } from './lib/useAppToolbar';
+import { withTheme } from './providers/ThemeProvider';
 
-export default function App() {
+const App = memo(() => {
   const dispatch = useAppDispatch();
   const inited = useUserInited();
   const { theme } = useTheme();
@@ -68,4 +69,6 @@ export default function App() {
       }
     />
   );
-}
+});
+
+export default withTheme(App);
