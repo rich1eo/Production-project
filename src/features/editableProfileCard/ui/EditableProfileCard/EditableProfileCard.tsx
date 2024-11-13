@@ -10,6 +10,7 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { Text, TextRedesigned, TextTheme, VStack } from '@/shared/ui';
 import { ProfileCard } from '@/entities/Profile';
 import { DynamicModuleLoader, ReducerList } from '@/shared/lib';
+import { ToggleFeature } from '@/shared/lib/features';
 
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
@@ -20,7 +21,6 @@ import { fetchProfileData } from '../../model/services/fetchProfileData/fetchPro
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import { ValidationProfileError } from '../../model/consts/consts';
-import { ToggleFeature } from '@/shared/lib/features';
 
 interface EditableProfileCardProps {
   className?: string;
